@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/quickGB.css">
+	
+	<title>Login</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 detail-input">
+				<div class="title">商品名称</div>
+				<input placeholder="请填写商品名称，规格如大杯、500g、一箱等" v-model="addName">
+			</div>
+			<div class="col-xs-12 detail-input">
+				<div class="title">备注</div>
+				<input placeholder="商品详情，可不填" v-model="addMark">
+			</div>
+			<div class="col-xs-12 select-input">
+				<div class="row">
+					<div class="col-xs-3 title">价格</div>
+					<input class="col-xs-9" placeholder="商品单价，不确定可以不填" v-model="addPrice" number>
+				</div>
+			</div>
+			<div class="col-xs-12 select-input">
+				<div class="row">
+					<div class="col-xs-3 title">数量上限</div>
+					<input class="col-xs-9" placeholder="拼单购买商品上限，不填为无上限" v-model="addQuantity">
+				</div>
+			</div>
+			<div class="col-xs-12 add-image-container">
+				<!-- <img class="col-xs-5 add-image"> -->
+				<div class="col-xs-5 add-image-box"></div>
+			</div>
+			<input type="file" class="hidden" id="addImageBtn">
+
+			<div class="col-xs-12 add-btn-groups">
+				<div class="row">
+					<div class="release" @click="confirmAdd">添加</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- module js -->
+<script src="./js/quickGB_add_detail.js"></script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/quickGB.css">
+	
+	<title>预览</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="preview-scroll">
+				<div class="col-xs-12 preview-img-box">
+					<div class="preview-info clearfix">
+						<span class="info-number"><span class="current-number">6</span>/9</span>
+						<span class="info-status">已报名</span>
+						<span class="info-place">天堂软件园</span>
+					</div>
+				</div>
+				<div class="col-xs-12 preview-title-container">
+					<div class="title">{{info.title}}</div>
+					<div class="detail">{{info.description}}</div>
+				</div>
+				<div class="col-xs-12 clearfix preview-owner">
+					<img src="" alt="">
+					<div class="preview-owner-info">
+						<div>神奇</div>
+					</div>
+					<div class="pull-right owner-role">单主</div>
+				</div>
+				<div class="col-xs-12 number-input" v-for="list in lists">
+					<div class="row">
+						<div class="col-xs-6 title">
+							<div class="name">{{list.name}}</div>
+							<div class="money">￥{{list.price?list.price:'未知'}}</div>
+						</div>
+						<div class="col-xs-6 calculate pull-right">
+							<!-- <i class="iconfont btn-decs" v-if="list.quantity>0" @click="decrease(list)">&#xe6cc;</i> -->
+							<div class="btn-decs" v-if="list.quantity>0" @click="decrease(list)"></div>
+							<span>{{list.quantity.toString()==''?'无上限':(list.quantity?list.quantity:'')}}</span>
+						    <!-- <i class="iconfont btn-incs" v-if="list.quantity.toString()!=''" 
+					    	@click="increase(list)">&#xe63e;</i> -->
+					    	<div class="btn-incs" v-if="list.quantity.toString()!=''" @click="increase(list)"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 preview-groups" v-if="type==1">
+				<div class="row">
+					<!-- <div class="col-xs-5 text-center preview-cancel" @click="previewCancel">取消</div> -->
+					<div class="col-xs-12 text-center preview-confirm" @click="previewPage">确认发布</div>
+				</div>
+			</div>
+			<div class="col-xs-12 preview-groups" v-if="type==2">
+				<div class="row">
+					<div class="col-xs-12 text-center preview-confirm" @click="joinPin">参加拼单</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/iscroll.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- mmodule js -->
+<script src="./js/quickGB_preview.js"></script>

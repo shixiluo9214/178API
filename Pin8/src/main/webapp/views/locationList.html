@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<link rel="stylesheet" media="screen" href="./css/animate.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/locationList.css">
+	
+	<title>地址列表</title>
+</head>
+<body class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 radio-input">
+			<div class="row">
+				<div class="location-line" v-for="location in locationList">
+					<input type="radio" id="location_{{$index}}" :value="location" v-model="locationSelect">
+					<label for="location_{{$index}}">{{location.commName}}</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- module js -->
+<script src="./js/locationList.js"></script>

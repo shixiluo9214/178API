@@ -1,0 +1,4 @@
+db.driverClassName=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://ccc.c0d6clsrmz4q.ap-southeast-1.rds.amazonaws.com:3306/pin8??useUnicode=true&characterEncoding=utf-8
+db.username=ccc
+db.password=ccc2015ok

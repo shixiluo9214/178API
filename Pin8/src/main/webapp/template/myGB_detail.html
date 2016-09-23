@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/myGB.css">
+	
+	<title>订单详情</title>
+</head>
+<body>
+	<div class="detail-header">
+		<div class="header-top">
+			<img src="" alt="" class="member-photo">
+			<div class="member-info">
+				<div>小小老虎</div>
+			</div>
+		</div>
+		<div class="container-fluid header-bottom">
+			<div class="row">
+				<div class="col-xs-3 text-center" :class="{'active': statusIndex==($index)}" 
+				v-for="status in gbStatus" @click="activeStatus($index)">
+					{{status}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="detail-container scrollable" v-if="statusIndex==0">
+		<div class="detail-description">
+			<span>朋友的运动用品店铺在大促销，百分百正品，挑了一些实用又划算的装备和喜欢运动的人分享。<span>
+		</div>
+		<div class="detail-lists">
+			<div class="detail-list-1" v-for="list in lists">
+				<div class="title">
+					<div class="name">{{list.name}}</div>
+					<div class="extra">{{list.mark}}</div>
+					<div class="money">￥{{list.price?list.price:'未知'}}</div>
+				</div>
+				<div class="calculate">
+					<div class="btn-decs" v-if="list.quantity>0" @click="decrease(list)"></div>
+					<span>{{list.quantity}}</span>
+					<div class="btn-incs" v-if="list.quantity.toString()!=''" @click="increase(list)"></div>
+				</div>
+			</div>
+		</div>
+		<div class="btn-groups">
+			<div class="detail-submit" @click="submitPage1">提交修改</div>
+			<div class="detail-return" @click="returnPage1">退出拼单</div>
+		</div>
+	</div>
+
+	<div class="detail-container scrollable" v-if="statusIndex==1">
+		<div class="detail-description">
+			<span>朋友的运动用品店铺在大促销，百分百正品，挑了一些实用又划算的装备和喜欢运动的人分享。</span>
+		</div>
+		<div class="detail-lists">
+			<div class="catalogue">采购清单</div>
+			<div class="detail-list-2" v-for="list in lists2">
+				<div class="title box-center">
+					<div class="name">{{list.name}}</div>
+					<div class="money">￥{{list.money}}</div>
+					<del class="preMoney" v-if="list.preMoney">￥{{list.preMoney}}</del>
+				</div>
+				<div class="number box-center">x{{list.number}}</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="detail-container scrollable" v-if="statusIndex==2">
+		<div class="detail-description">
+			<div class="description-title box-center">取货地点</div>
+			<div class="description-content box-center">西斗门路3号天堂软件园A-101</div>
+			<div class="description-icon box-center"></div>
+		</div>
+		<div class="detail-lists">
+			<div class="catalogue">账单详情</div>
+			<div class="detail-list-3" v-for="list in lists3.lists">
+				<div class="title box-center">
+					<div class="name">{{list.name}}</div>
+					<div class="money">￥{{list.money}}</div>
+				</div>
+				<div class="number box-center">x{{list.number}}</div>
+			</div>
+			<div class="billing">
+				<div class="box-center total-box">
+					<div class="shipping">邮费 ￥ {{lists3.shipping}}</div>
+					<div class="total">合计 ￥ {{lists3.total}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="btn-groups">
+			<div class="detail-submit" @click="payPage3">提交修改</div>
+			<div class="detail-submit" @click="confirmPage3">退出拼单</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- module js -->
+<script src="./js/myGB_detail.js"></script>

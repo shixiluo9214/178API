@@ -1,0 +1,61 @@
+.container{
+	height: 100%;
+	text-align: center;
+	padding-top: 70px;
+}
+
+.cancel-btn{
+	height: 47px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #fff url("../img/btn_neworder_close@2x.png") no-repeat center center;
+	background-size: 18px 18px;
+}
+
+.quick-btn,.common-btn{
+	margin: 70px auto 20px;
+	width: 71px;
+	height: 71px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.quick-btn{
+	background-image: url("../img/btn_neworder_fresh@2x.png");
+}
+.quick-btn:focus{
+	background-image: url("../img/btn_neworder_fresh_press@2x.png");
+}
+.common-btn{
+	background-image: url("../img/btn_neworder_normal@2x.png");
+}
+.common-btn:focus{
+	background-image: url("../img/btn_neworder_normal_press@2x.png");
+}
+
+
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3),
+only screen and (min--moz-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3/1),
+only screen and (min-device-pixel-ratio: 3) {
+	.quick-btn{
+		background-image: url("../img/btn_neworder_fresh@3x.png");
+	}
+	.quick-btn:focus{
+		background-image: url("../img/btn_neworder_fresh_press@3x.png");
+	}
+	.common-btn{
+		background-image: url("../img/btn_neworder_normal@3x.png");
+	}
+	.common-btn:focus{
+		background-image: url("../img/btn_neworder_normal_press@3x.png");
+	}
+	.cancel-btn{
+		background-image: url("../img/btn_neworder_close@3x.png");
+	}
+}

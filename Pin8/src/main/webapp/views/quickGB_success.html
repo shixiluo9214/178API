@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/quickGB.css">
+	
+	<title>Success</title>
+</head>
+<body class="success-body">
+	<div class="container">
+		<div class="row">
+			<div class="text-center success-alert">
+				<div>恭喜你！成功发起并参与了拼单！</div>
+			</div>
+			<div class="col-xs-12 title">我的拼单详情：</div>
+			<div class="detail-lists">
+				<div class="catalogue">账单详情</div>
+				<div class="detail-list" v-for="list in lists">
+					<div class="title box-center">
+						<div class="name">{{list.name}}</div>
+						<div class="money">￥{{list.price}}</div>
+					</div>
+					<div class="number box-center">x{{list.quantity}}</div>
+				</div>
+				<div class="billing">
+					<div class="box-center total-box">
+						<div class="total">商品合计 ￥ {{total}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="success-groups">
+				<div class="col-xs-6">
+					<div class="btn-confirm" @click="pageMyGB">我的拼单</div>
+				</div>
+				<div class="col-xs-6">
+					<div class="btn-confirm">分享</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- mmodule js -->
+<script src="./js/quickGB_success.js"></script>

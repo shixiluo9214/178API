@@ -1,0 +1,121 @@
+.list-container{
+	background: #5c645f;
+	height: 100%;
+}
+
+.list-box{
+	background-color: #fff;
+	min-height: 165px;
+	position: relative;
+}
+
+.list-box .list-header{
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 1px solid #E7E7E7;
+}
+
+.list-box .header-time{
+	float: left;
+	margin-left: 13px;
+}
+
+.list-box .header-status{
+	float: right;
+	margin-right: 13px;
+	color: #80a120;
+}
+
+.list-box .list-content{
+	padding-top: 17px;
+}
+
+.list-content .main-img{
+	width: 85px;
+	height: 85px;
+}
+
+.list-content .title{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+.prog{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: #E5EAD3;
+}
+.prog-left{
+	height: 4px;
+	background: -webkit-linear-gradient(left, #D3DFB1, #8AA932); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #D3DFB1, #8AA932); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #D3DFB1, #8AA932); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #D3DFB1 , #8AA932);
+}
+
+.content{
+	padding-left: 0;
+	min-height: 144px;
+}
+.description{
+	margin-top: 14px;
+	font-size: 13px;
+	color: #666;
+}
+.position{
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	background: url("../img/ico_order_location@2x.png") no-repeat 0 center;
+	background-size: 10px 14px; 
+	padding-left: 15px;
+	font-size: 11px;
+	color: #a8a8a8;
+    max-width: 65%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.attendee{
+	position: absolute;
+	bottom: 8px;
+	right: 15px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #799a1b;
+	max-width: 35%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.header-imgs{
+	margin-top: 10px;
+	margin-bottom: 40px;
+}
+.header-img{
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+}
+.header-img + .header-img{
+	margin-left: 13px;
+}
+
+
+
+
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3),
+only screen and (min--moz-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3/1),
+only screen and (min-device-pixel-ratio: 3) {
+	.position{
+		background-image: url("../img/ico_order_location@3x.png");
+	}
+}

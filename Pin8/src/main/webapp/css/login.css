@@ -1,0 +1,90 @@
+body,ul,ol,dl,dt,dd,li,h1,h2,h3,h4,h5,h6,p,form,input,table,tr,td,select,textarea{margin:0; padding:0;}
+html{height:100%;}
+body{font-size:12px; font-family:'Microsoft YaHei',tahoma, Arial, Verdana, sans-serif;line-height:20px; background:#fff;height:100%;}
+img,table{border:none;}
+ul{list-style:none;}
+a{text-decoration:none;}
+input{vertical-align:middle;}
+ul li{list-style:none;}
+h2{font-size:12px; font-weight:bold;}
+button{background:#03B848;color:#fff;border:none;outline:none;font-size: 12px;font-family:'Microsoft YaHei',tahoma, Arial, Verdana, sans-serif;}
+.clear{clear:both; height:0; overflow:hidden;}
+.clearfix:after{content:".";clear:both; height:0; overflow:hidden;visibility:hidden;display:block;}
+.clearfix{zoom:1}
+.hidden{display:none}
+
+.container{
+	padding: 0 10px;
+	background: #E9E9E9;
+	min-height: 100%;
+}
+
+.info-box{
+	padding: 10px 0;
+	color: #999;
+}
+
+.input-box{
+	position: relative;
+	background-color: #fff;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 6px;
+	margin-top: 6px;
+}
+.input-box div{
+	display: inline-block;
+}
+
+.input-box .input-title{
+	padding-left: 12px;
+	width: 60px;
+	float: left;
+}
+
+.input-box input{
+	width: 220px;
+	height: 40px;
+	border: none;
+	outline: none;
+	margin: 0;
+	padding: 0;
+	border-radius: 4px;
+	float: left;
+	font-size: 12px;
+}
+
+.input-box #forget-btn{
+	position: absolute;
+	color: #00940F;
+	width: 100px;
+	right: 6px;
+	text-align: center;
+}
+
+.login-btn-groups{
+	padding-top: 16px;
+	display: flex;
+    justify-content: center;
+}
+.btn-group{
+	width: 150px;
+	height: 40px;
+	float: left;
+}
+.login-btn-groups #login-btn{
+	margin-right: 20px;
+}
+
+.security-code-input{
+	width: 110px;
+}
+
+.login-dialog{
+	padding-top: 10px;
+}
+
+.login-dialog span{
+	color: red;
+	text-align: center;
+}

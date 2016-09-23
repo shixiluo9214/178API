@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<link rel="stylesheet" media="screen" href="./css/animate.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/commonGB.css">
+	
+	<title>1 拼单信息</title>
+</head>
+<body class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 detail-input">
+			<div class="title">拼单主题</div>
+			<!-- <textarea autoHeight="true" placeholder="好的标题更能吸引更多的拼友哦" rows="1"></textarea> -->
+			<input placeholder="好的标题更能吸引更多的拼友哦" v-model="submitData.title">
+		</div>
+		<div class="col-xs-12 detail-input">
+			<div class="title">拼单描述</div>
+			<input placeholder="介绍下你的拼单吧，可不填" v-model="submitData.description">
+		</div>
+		<div class="col-xs-12 select-input">
+			<div class="row">
+				<div class="col-xs-6 title">拼单分类</div>
+				<div class="col-xs-6" @click="toShowCategory">
+					<div class="row">
+						<input type="text" placeholder="请选择" readonly class="select-content" v-model="submitData.category">
+						<i class="drop-down"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 select-input">
+			<div class="row">
+				<div class="col-xs-6 title">召集人数</div>
+				<input class="col-xs-6" placeholder="请输入人数上限" v-model="submitData.count">
+			</div>
+		</div>
+		<div class="col-xs-12 select-input">
+			<div class="row">
+				<div class="col-xs-6 title">截止时间</div>
+				<div class="col-xs-6" @click="toShowTime">
+					<div class="row">
+						<!-- <input type="text" placeholder="请选择" readonly class="select-content"> -->
+						<input type="date" id="deadline" v-model="submitData.time">
+						<i class="drop-down"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 select-input">
+			<div class="row">
+				<div class="col-xs-6 title">运费规则</div>
+				<div class="col-xs-6" @click="toShowRule">
+					<div class="row">
+						<input type="text" placeholder="请选择" readonly class="select-content" v-model="submitData.rule">
+						<i class="drop-down"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 select-input">
+			<div class="row">
+				<div class="col-xs-6 title">取货地址</div>
+				<div class="col-xs-6" @click="toShowPosition">
+					<div class="row">
+						<input type="text" placeholder="请选择" readonly class="select-content" 
+						v-model="submitData.position.commName">
+						<i class="drop-down"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 select-input">
+			<div class="row">
+				<div class="col-xs-6 title">允许附近的人看到此拼单</div>
+				<div class="pull-right switch">
+				    <input type="checkbox" id="chk-toggle" class="switch-input" v-model="submitData.checkStatus">
+				    <label for="chk-toggle" class="switch-label"></label>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 common-btn">
+			<input type="button" class="btn btn-confirm" :disabled='!nextAvail' value="下一步" @click="nextStep">
+		</div>
+	</div>
+	<div class="popup-container" v-show="showPopup" @click.self="showPopup=false">
+		<div class="popup animated" v-show="showPopup" transition="popupTransition">
+			<div class="title">请选择分类</div>
+			<div class="popup-scroll">
+				<div class="text-center" v-for="li in scrollInfo"><span @click="selectPopup(li.name||li.commName)">{{li.name||li.commName}}</span></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- module js -->
+<script src="./js/commonGB.js"></script>

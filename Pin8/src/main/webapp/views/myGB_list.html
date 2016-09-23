@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="../css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="../css/myGB.css">
+	
+	<title>参与的拼单</title>
+</head>
+<body>
+	<div class="container list-container scrollable">
+		<div class="list-box" v-for="list in lists" @click="enterDetail(list)">
+			<div class="list-header clearfix">
+				<div class="header-time">{{list.dueDate}}发起</div>
+				<div class="header-status">{{list.status | getStatus}}</div>
+			</div>
+
+			<div class="list-content">
+				<div class="col-xs-3">
+					<img :src="list.picLink?('..'+list.picLink):'../img/btn_neworder_normal@2x.png'"
+						onerror="this.src='../img/btn_neworder_normal@2x.png'">
+				</div>
+				<div class="col-xs-9 content">
+					<div class="title">{{list.title}}</div>
+					<div class="subContent">
+						<div class="time">{{list.dueDate | getDueTime}}</div>
+						<div class="number">{{list.totalMember}}/{{list.memberLimit}}已报名</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="../js/lib/jquery-2.2.1.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/common.js"></script>
+<!-- module js -->
+<script src="../js/myGB_list.js"></script>

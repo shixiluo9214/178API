@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/quickGB.css">
+	
+	<title>1 拼单信息</title>
+</head>
+<body class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 detail-input">
+			<div class="title">拼单主题</div>
+			<!-- <textarea autoHeight="true" placeholder="好的标题更能吸引更多的拼友哦" rows="1"></textarea> -->
+			<input placeholder="好的标题更能吸引更多的拼友哦" v-model="title">
+		</div>
+		<div class="col-xs-12 detail-input">
+			<div class="title">拼单描述</div>
+			<input placeholder="介绍下你的拼单吧，可不填" v-model="description">
+		</div>
+		<div class="col-xs-12 select-input">
+			<div class="row">
+				<div class="col-xs-6 title">允许参与者添加拼单商品 </div>
+				<div class="pull-right switch">
+				    <input type="checkbox" id="chk-toggle" class="switch-input" v-model="checkStatus">
+				    <label for="chk-toggle" class="switch-label"></label>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 quick-btn">
+			<input type="button" class="btn btn-confirm" :disabled='!nextAvail' value="下一步" @click="nextStep">
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- module js -->
+<script src="./js/quickGB_info.js"></script>

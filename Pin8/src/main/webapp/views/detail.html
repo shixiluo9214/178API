@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<link rel="stylesheet" media="screen" href="./css/swiper.min.css">
+	<link rel="stylesheet" media="screen" href="./css/style.css">
+	
+	<title>Detail</title>
+</head>
+<body>
+	<div class="container detail-box hidden">
+		<div class="img-display-container">
+			<div class="img-display swiper-container">
+				<div class="swiper-wrapper">
+					<img class="swiper-slide" v-for="imgLi in showImgList" :src="'..'+imgLi.picLink">
+					<!-- <img class="swiper-slide" v-for="imgLi in showImgList" :src="'/Pin8'+imgLi.picLink"> -->
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<div class="detail-container">
+			<div class="detail-info">{{info.title}}</div>
+			<div class="detail-info">单号:{{info.id}}</div>
+			<div class="detail-info">发起人:{{info.nickName}}</div>
+			<div class="detail-info">截止日期:{{info.dueDate}}</div>
+			<div class="detail-info">状态:{{getStatus}}</div>
+			<div class="detail-info">名额:{{info.memberLimit}}人(已有{{info.totalMember}}人参加)</div>
+			<div class="detail-addition">附加信息:{{info.description}}</div>
+		</div>
+		<div class="detail-list">
+			<ul>
+				<li class="first-list">
+					<div class="tr-width1">商品名</div>
+					<div class="tr-width2">订购价</div>
+					<div class="tr-width3">订购数</div>
+					<div class="tr-width4">余量</div>
+				</li>
+				<li v-for="item in info.items">
+					<div class="tr-width1 list-title" @click="openImgView(item)">{{item.name}}</div>
+					<div class="tr-width2">{{item.listPrice}}/{{item.unit}}</div>
+					<div class="tr-width3">
+						<button class="btn-dec" @click="decreaseNumber(item)">-</button>
+						<div class="num-select">{{item.quantity}}</div>
+						<button class="btn-inc" @click="increaseNumber(item)">+</button>
+					</div>
+					<div class="tr-width4 num-over">{{item.quantityLimit==-1?"无限量":item.quantityLimit-item.totalQuantity}}
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="detail-btn-container">
+			<div>注册用户可以参加</div>
+			<button class="btn-group" id="detail-confirm">购买</button>
+		</div>
+	</div>
+	<div class="img-view-container">
+		<div class="img-close-btn">关闭</div>
+		<div class="img-view-box">
+			<div class="img-view swiper-container">
+				<div class="swiper-wrapper">
+					<img class="swiper-slide" v-for="imgLi in openImgList" :src="'..'+imgLi.picLink">
+					<!-- <img class="swiper-slide" v-for="imgLi in openImgList" :src="'/Pin8'+imgLi.picLink"> -->
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<div class="img-view-infomation">
+			<div class="information-content">
+				Information here!
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script src="./js/lib/zepto.min.js" type="text/javascript"></script>
+<script src="./js/lib/swiper.min.js" type="text/javascript"></script>
+<script src="./js/lib/vue.js" type="text/javascript"></script>
+<script src="./js/detail.js" type="text/javascript"></script>

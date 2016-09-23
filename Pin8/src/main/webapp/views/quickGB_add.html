@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/quickGB.css">
+	
+	<title>2 添加拼单</title>
+</head>
+<body class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 number-input" v-for="list in lists">
+			<div class="row">
+				<div class="col-xs-6 title">
+					<div class="name">{{list.name}}</div>
+					<div class="extraInfo">{{list.mark}}</div>
+					<div class="money">￥{{list.price?list.price:'未知'}}</div>
+				</div>
+				<div class="col-xs-6 calculate pull-right">
+					<!-- <i class="iconfont btn-decs" v-if="list.quantity>0" @click="decrease(list)">&#xe6cc;</i> -->
+					<div class="btn-decs" v-if="list.quantity>0" @click="decrease(list)"></div>
+					<span>{{list.quantity.toString()==''?'无上限':(list.quantity?list.quantity:'')}}</span>
+				    <!-- <i class="iconfont btn-incs" v-if="list.quantity.toString()!=''" 
+				    	@click="increase(list)">&#xe63e;</i> -->
+				    <div class="btn-incs" v-if="list.quantity.toString()!=''" @click="increase(list)"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 add-btn-groups">
+			<div class="row">
+				<i class="col-xs-12 iconfont btn-add" @click="addOne">&#xe60d;</i>
+				<div class="col-xs-4 preview" @click="previewPage">预览</div>
+				<div class="col-xs-8 release" @click="releasePage">发布</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- module js -->
+<script src="./js/quickGB_add.js"></script>

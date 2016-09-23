@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="../css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="../css/myGB.css">
+	
+	<title>订单详情</title>
+</head>
+<body>
+	<div class="detail-header">
+		<div class="header-top">
+			<img src="" alt="" class="member-photo">
+			<div class="member-info">
+				<div>{{gbDetail.nickName}}</div>
+				<div class="iconfont detail-fullStar">&#xf0042;</div>
+				<div class="detail-score">4.9</div>
+			</div>
+			<div class="detail-email"></div>
+			<div class="iconfont detail-phone">&#xe6cf;</div>
+		</div>
+		<div class="container-fluid header-bottom">
+			<div class="row">
+				<div class="col-xs-3 statusBox" :class="{'active': statusIndex==($index)}" 
+				v-for="status in gbStatus" @click="activeStatus($index)">
+					<span>{{status}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="detail-container scrollable" v-if="statusIndex==0">
+		<div class="detail-description">
+			<span>{{gbDetail.description}}<span>
+		</div>
+		<div class="detail-lists">
+			<div class="detail-list-1" v-for="list in gbDetail.items">
+				<div class="title">
+					<div class="name">{{list.name}}</div>
+					<div class="extra">{{list.detail}}</div>
+					<div class="money">￥{{list.listPrice?list.listPrice:'未知'}}</div>
+				</div>
+				<div class="calculate">
+					<div class="btn-decs" v-if="list.totalQuantity>0" @click="decrease(list)"></div>
+					<span>{{list.totalQuantity}}</span>
+					<div class="btn-incs" v-if="list.totalQuantity.toString()!=''" @click="increase(list)"></div>
+				</div>
+			</div>
+		</div>
+		<div class="btn-groups">
+			<div class="detail-submit" @click="submitPage1">提交修改</div>
+			<div class="detail-return" @click="returnPage1">退出拼单</div>
+		</div>
+	</div>
+
+	<div class="detail-container scrollable" v-if="statusIndex==1">
+		<div class="detail-description">
+			<span>{{gbDetail.description}}</span>
+		</div>
+		<div class="detail-lists">
+			<div class="catalogue">采购清单</div>
+			<div class="detail-list-2" v-for="list in gbDetail.items">
+				<div class="title box-center">
+					<div class="name">{{list.name}}</div>
+					<div class="money">￥{{list.listPrice}}</div>
+					<!-- <del class="preMoney" v-if="list.preMoney">￥{{list.preMoney}}</del> -->
+				</div>
+				<div class="number box-center">x{{list.totalQuantity}}</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="detail-container scrollable" v-if="statusIndex==2">
+		<div class="detail-description">
+			<div class="description-title box-center">取货地点</div>
+			<div class="description-content box-center">西斗门路3号天堂软件园A-101</div>
+			<div class="description-icon box-center"></div>
+		</div>
+		<div class="detail-lists">
+			<div class="catalogue">账单详情</div>
+			<div class="detail-list-3" v-for="list in gbDetail.items">
+				<div class="title box-center">
+					<div class="name">{{list.name}}</div>
+					<div class="money">￥{{list.listPrice}}</div>
+				</div>
+				<div class="number box-center">x{{list.totalQuantity}}</div>
+			</div>
+			<div class="billing">
+				<div class="box-center total-box">
+					<div class="shipping">邮费 ￥ {{gbDetail.netAmount}}</div>
+					<div class="total">合计 ￥ {{gbDetail.listAmount}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="btn-groups">
+			<div class="detail-submit" @click="payPage3">付款</div>
+			<div class="detail-submit" @click="confirmPage3">确认收货</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="../js/lib/jquery-2.2.1.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/common.js"></script>
+<!-- module js -->
+<script src="../js/myGB_detail.js"></script>

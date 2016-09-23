@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="./css/newGB.css">
+	
+	<title>Login</title>
+</head>
+<body>
+	<div class="container">
+		<div class="quick-btn" @click="openQuick"></div>
+		<div>召集时间为2小时以内的快速拼单</div>
+		<div class="common-btn" @click="openCommon"></div>
+		<div>需要时间采购，召集时间较长的拼单</div>
+	</div>
+	<div class="cancel-btn" @click="cancelNew">
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="./js/lib/jquery-2.2.1.js"></script>
+<script src="./js/lib/bootstrap.min.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/common.js"></script>
+<!-- mmodule js -->
+<script src="./js/newGB.js"></script>

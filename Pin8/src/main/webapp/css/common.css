@@ -1,0 +1,145 @@
+body,ul,ol,dl,dt,dd,li,h1,h2,h3,h4,h5,h6,p,form,input,table,tr,td,select,textarea{margin:0; padding:0;}
+html{height:100%;}
+body{font-size:15px; font-family:'Microsoft YaHei',tahoma, Arial, Verdana, sans-serif; background:#edf1f4;height:100%;}
+img,table{border:none;}
+ul{list-style:none;}
+a{text-decoration:none;}
+input{vertical-align:middle;outline:none;border:none;}
+ul li{list-style:none;}
+h2{font-size:15px; font-weight:bold;}
+button{border:none;outline:none;font-size: 15px;font-family:'Microsoft YaHei',tahoma, Arial, Verdana, sans-serif;}
+.btn:focus,.btn:focus:active{outline:none;}
+.clear{clear:both; height:0; overflow:hidden;}
+.clearfix:after{content:".";clear:both; height:0; overflow:hidden;visibility:hidden;display:block;}
+.clearfix{zoom:1}
+.hidden{display:none}
+
+@font-face {font-family: 'iconfont';
+    src: url('./icons/iconfont.eot'); /* IE9*/
+    src: url('./icons/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./icons/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('./icons/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('./icons/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/*css for swith button start*/
+.switch{
+	margin-right: 15px;
+}
+
+.switch-input{
+	display: none;
+}
+
+.switch-label{
+	display: block;
+	position: relative;
+	cursor: pointer;
+	padding: 2px;
+	width: 55px;
+	height: 30px;
+	margin-bottom: 0;
+	/*background-color: #ddd;
+	border-radius: 60px;*/
+	transform: translateY(50%);
+}
+
+.switch-label:before,
+.switch-label:after{
+	display: block;
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	bottom: 1px;
+	content: "";
+}
+.switch-label:after{
+	width: 30px;
+	background-color: #fff;
+	border-radius: 30px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	transition: margin 0.4s;
+	-moz-transition: margin 0.4s;
+}
+.switch-label:before{
+	right: 1px;
+	background-color: #f1f1f1;
+	border-radius: 30px;
+	transition: background 0.4s;
+	-moz-transition: background 0.4s;
+}
+
+.switch-input:checked + label:before{
+	background-color: #8CAD2B;
+}
+.switch-input:checked + label:after{
+	margin-left: 23px;
+}
+
+/*css for swith button end*/
+
+
+
+.box-center{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.scrollable{
+	overflow: auto;
+	-webkit-overflow-scrolling : touch;
+}
+
+.drop-down{
+	background: url("../img/ico_itemsarrow_select@2x.png") no-repeat;
+	background-size: 12px 7px;
+	width: 12px;
+	height: 7px;
+	display: inline-block;
+}
+
+
+
+.number-input .btn-decs{
+	display: inline-block;
+	margin-right: 10px;
+	background: url("../img/btn_neworder_minus@2x.png") no-repeat center center;
+	background-size: cover;
+	width: 16px;
+	height: 16px;
+}
+.number-input .btn-incs{
+	display: inline-block;
+	margin-left: 10px;
+	background: url("../img/btn_neworder_add@2x.png") no-repeat center center;
+	background-size: cover;
+	width: 16px;
+	height: 16px;
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3),
+only screen and (min--moz-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3/1),
+only screen and (min-device-pixel-ratio: 3) {
+.drop-down{
+	background-image: url("../img/ico_itemsarrow_select@3x.png");
+}
+.number-input .btn-decs{
+	background-image: url("../img/btn_neworder_minus@3x.png");
+}
+.number-input .btn-incs{
+	background-image: url("../img/btn_neworder_add@3x.png");
+}
+
+}
