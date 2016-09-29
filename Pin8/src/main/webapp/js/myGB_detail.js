@@ -52,7 +52,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: './groupbuy/get',
+						url: '../groupbuy/get',
 						data: JSON.stringify({
 							//to do
 							"userId": "41",

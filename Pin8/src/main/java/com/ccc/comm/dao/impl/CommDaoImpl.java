@@ -31,7 +31,6 @@ public class CommDaoImpl extends BaseDao implements CommDao {
 
 	private static final Logger logger = Logger.getLogger(CommController.class);	
 
-	@Override
 	public List<ConfigItemBean> getConfig(ConfigBean config) {
 		StringBuilder sql = new StringBuilder();
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -217,7 +216,7 @@ public class CommDaoImpl extends BaseDao implements CommDao {
 
 	@Override
 	public List<MessageBean> getMessages(MessageBean message) {
-		String sql = "select m.id, m.sender, m.receiver, m.received,m.topic, m.message_type, m.message, m.event_type, m.event_id, m.ancestor_id,m.received_date, m.created_date,u1.nick_name senderNickName,u2.nick_name receiverNickName"
+		String sql = "select m.id, m.sender, m.receiver, m.received,m.topic, m.message_type, m.message, m.event_type, m.event_id, m.ancestor_id,m.received_date, m.created_date,u1.nick_name senderNickName,u2.nick_name receiverNickName,u1.pic_link senderPic,u2.pic_link receiverPic"
 				+ " from t_message m, t_user u1, t_user u2 where m.sender=u1.id and m.receiver=u2.id ";
         Map<String, Object> paramMap = new HashMap<String, Object>();
         if(message.getReceiver()>0){

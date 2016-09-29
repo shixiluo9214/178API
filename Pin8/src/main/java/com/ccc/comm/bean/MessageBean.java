@@ -25,8 +25,27 @@ public class MessageBean extends BaseBean{
 
 	private long subEventId;
 	private String senderNickName;
-	private String reciverNickName;	
-	
+	private String reciverNickName;
+
+	private String senderPic;
+	private String reciverPic;
+
+	public String getSenderPic() {
+		return senderPic;
+	}
+
+	public void setSenderPic(String senderPic) {
+		this.senderPic = senderPic;
+	}
+
+	public String getReciverPic() {
+		return reciverPic;
+	}
+
+	public void setReciverPic(String reciverPic) {
+		this.reciverPic = reciverPic;
+	}
+
 	public String getReciverNickName() {
 		return reciverNickName;
 	}
