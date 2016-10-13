@@ -2193,6 +2193,7 @@ Address status:
                 <stringProp name="Argument.value">[&#xd;
     {&#xd;
         &quot;id&quot;: &quot;${gbiId_1}&quot;,&#xd;
+         &quot;gbId&quot;:&quot;${gbId}&quot;,&#xd;
         &quot;itemPurchases&quot;: [&#xd;
             {&#xd;
                 &quot;id&quot;: &quot;${gbipId_1}&quot;,&#xd;
