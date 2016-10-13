@@ -211,8 +211,8 @@ public class UserServiceImpl implements UserService {
 		friend.setStatus(1); //1 - active
 		int result = userDaoImpl.updateFriend(friend);
 		FriendBean friendT = new FriendBean();
-		friendT.setUserId(friend.getUserId());
-		friendT.setFriendId(friend.getFriendId());
+		friendT.setUserId(friend.getFriendId());
+		friendT.setFriendId(friend.getUserId());
 		friendT.setStatus(1);
 		userDaoImpl.updateFriend(friendT);
 		return result;
