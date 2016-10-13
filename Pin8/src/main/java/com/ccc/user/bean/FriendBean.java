@@ -8,7 +8,7 @@ public class FriendBean extends BaseBean{
 	
 	private long userId;
 	private long friendId;
-	private int status=0; //0- friend, 1-deleted
+	private int status=0; //0-apply, 1- friend, 20-deleted
 	private String nickName;
 	private String picLink;
 		

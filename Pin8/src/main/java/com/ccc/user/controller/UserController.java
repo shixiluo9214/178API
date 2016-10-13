@@ -122,14 +122,27 @@ public class UserController {
 		}
 		return response;
 	}
-	
-	@RequestMapping(value = "/addFriend", produces = "application/json;charset=UTF-8")
-	public @ResponseBody ResponseBean addFriend(@RequestBody FriendBean friend)
+
+	@RequestMapping(value = "/applyFriend", produces = "application/json;charset=UTF-8")
+	public @ResponseBody ResponseBean applyFriend(@RequestBody FriendBean friend)
 	{
-		logger.info("User addFriend "+friend);
+		logger.info("User applyFriend "+friend);
 		ResponseBean response = new ResponseBean();
 		try {
-			userServiceImpl.addFriend(friend);
+			userServiceImpl.applyFriend(friend);
+			response.setBean(friend);
+		} catch (Exception e) {
+			ErrorUtils.setError(response, e);
+		}
+		return response;
+	}
+	@RequestMapping(value = "/confirmFriend", produces = "application/json;charset=UTF-8")
+	public @ResponseBody ResponseBean confirmFriend(@RequestBody FriendBean friend)
+	{
+		logger.info("User confirmFriend "+friend);
+		ResponseBean response = new ResponseBean();
+		try {
+			userServiceImpl.confirmFriend(friend);
 			response.setBean(friend);
 		} catch (Exception e) {
 			ErrorUtils.setError(response, e);

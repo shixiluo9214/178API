@@ -139,9 +139,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	@Override
 	public List<FriendBean> getFriendList(long userId) {
-        String sql = "select f.user_id, f.friend_id, u.nick_name, u.status,f.created_date,u.pic_link"
+        String sql = "select f.user_id, f.friend_id,f.status, u.nick_name, u.status,f.created_date,u.pic_link"
         		+ " from t_friend f, t_user u"
-        		+ " where f.user_id=:id and f.friend_id=u.id and f.status=0";
+        		+ " where f.user_id=:id and f.friend_id=u.id and f.status in (0,1)";
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("id", Long.valueOf(userId));
         return namedJdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<FriendBean>(FriendBean.class));
@@ -261,7 +261,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("userId", Long.valueOf(request.getUserId()));
         String sql = "select u.id,u.nick_name,u.phone,u.status,IFNULL(f.id,0) friend_id"
-        		+ " from t_user u left join t_friend f on u.id=f.friend_id and f.user_id= :userId"
+        		+ " from t_user u left join t_friend f on u.id=f.friend_id and f.user_id= :userId and f.status in (0,1)"
         		+ " where u.phone in (";
         int i=0;
         StringBuffer sqls;

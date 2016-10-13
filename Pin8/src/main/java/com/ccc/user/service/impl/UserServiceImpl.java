@@ -196,7 +196,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int deleteFriend(FriendBean friend) {
-		friend.setStatus(1); //1- delete
+		friend.setStatus(20); //20- delete
 		return userDaoImpl.updateFriend(friend);
 	}
 
@@ -207,8 +207,20 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int addFriend(FriendBean friend) {
-		friend.setStatus(0); //0 - active
+	public int confirmFriend(FriendBean friend) {
+		friend.setStatus(1); //1 - active
+		int result = userDaoImpl.updateFriend(friend);
+		FriendBean friendT = new FriendBean();
+		friendT.setUserId(friend.getUserId());
+		friendT.setFriendId(friend.getFriendId());
+		friendT.setStatus(1);
+		userDaoImpl.updateFriend(friendT);
+		return result;
+	}
+
+	@Override
+	public int applyFriend(FriendBean friend) {
+		friend.setStatus(0); //0 - apply
 		return userDaoImpl.updateFriend(friend);
 	}
 

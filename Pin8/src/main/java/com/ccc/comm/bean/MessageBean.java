@@ -28,7 +28,7 @@ public class MessageBean extends BaseBean{
 	private String reciverNickName;
 
 	private String senderPic;
-	private String reciverPic;
+	private String receiverPic;
 
 	public String getSenderPic() {
 		return senderPic;
@@ -38,12 +38,12 @@ public class MessageBean extends BaseBean{
 		this.senderPic = senderPic;
 	}
 
-	public String getReciverPic() {
-		return reciverPic;
+	public String getReceiverPic() {
+		return receiverPic;
 	}
 
-	public void setReciverPic(String reciverPic) {
-		this.reciverPic = reciverPic;
+	public void setReceiverPic(String receiverPic) {
+		this.receiverPic = receiverPic;
 	}
 
 	public String getReciverNickName() {

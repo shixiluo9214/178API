@@ -188,7 +188,6 @@ public class CommDaoImpl extends BaseDao implements CommDao {
         	sql_temp += " and id = :id";
         	paramMap.put("id", Long.valueOf(message.getId()));
         }
-	    paramMap.put("id", Long.valueOf(message.getId()));
 
         if(message.getReceiver()>0){
         	sql_temp += " and receiver=:receiver";

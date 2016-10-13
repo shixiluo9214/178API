@@ -154,7 +154,7 @@ public class GroupBuyServiceImpl implements GroupBuyService {
 	public int complete(GroupBuyBean groupBuy) {
 		groupBuy.setStatus(10);
 		int result = groupBuyDaoImpl.setStatus(groupBuy);
-		userServiceImpl.addFriendinGB(groupBuy.getId());		
+	//	userServiceImpl.addFriendinGB(groupBuy.getId());
 
 		MessageBean message = new MessageBean();
 		message.setEventId(groupBuy.getId());

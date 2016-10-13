@@ -28,7 +28,7 @@ public interface UserService {
 
 	public int addFriendinGB(long gbId);
 
-	public int addFriend(FriendBean friend);
+	public int confirmFriend(FriendBean friend);
 
 	public List<AddressBean> getAddresses(long userId);
 
@@ -48,4 +48,5 @@ public interface UserService {
 
 	public void saveGBAddress(GroupBuyBean groupBuy);
 
+	public int applyFriend(FriendBean friend);
 }
