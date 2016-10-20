@@ -1,4 +1,4 @@
-﻿(function($){
+(function($){
 	$(document).ready(function(){
 		initPage();
 		bindEvent();
@@ -73,7 +73,7 @@
 	function userLoginCallServers(loginInfo) {
 		$.ajax({
 			type: 'POST',
-			url: './user/login',
+			url: '../user/login',
 			data: JSON.stringify(loginInfo),
 			dataType: 'json',
 			contentType: 'application/json',
@@ -83,12 +83,7 @@
 					sessionData("userInfo", result.bean);
 					var currentPage = sessionData("currentPage");
 					sessionData("currentPage",null);
-					if(currentPage != null){
-						location.href = currentPage;
-					}else
-					{
-						location.href = "./views/myGB_list.html";
-					}
+					location.href = currentPage;
 				}else if(result.status == 1){
 					loginDialog("Your user name or password error.")
 				}

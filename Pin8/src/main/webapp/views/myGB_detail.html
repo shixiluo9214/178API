@@ -18,11 +18,11 @@
 <body>
 	<div class="detail-header">
 		<div class="header-top">
-			<img src="" alt="" class="member-photo">
+			<img :src="'..'+gbDetail.ownerPic" class="member-photo">
 			<div class="member-info">
 				<div>{{gbDetail.nickName}}</div>
 				<div class="iconfont detail-fullStar">&#xf0042;</div>
-				<div class="detail-score">4.9</div>
+				<div class="detail-score">{{owner.credit}}</div>
 			</div>
 			<div class="detail-email"></div>
 			<div class="iconfont detail-phone">&#xe6cf;</div>
@@ -30,7 +30,7 @@
 		<div class="container-fluid header-bottom">
 			<div class="row">
 				<div class="col-xs-3 statusBox" :class="{'active': statusIndex==($index)}" 
-				v-for="status in gbStatus" @click="activeStatus($index)">
+				v-for="status in gbStatus">
 					<span>{{status}}</span>
 				</div>
 			</div>
@@ -55,8 +55,8 @@
 			</div>
 		</div>
 		<div class="btn-groups">
-			<div class="detail-submit" @click="submitPage1">提交修改</div>
-			<div class="detail-return" @click="returnPage1">退出拼单</div>
+			<div class="detail-submit" @click="submitPage1(gbDetail)">提交修改</div>
+			<div class="detail-return" @click="returnPage1(gbDetail)">退出拼单</div>
 		</div>
 	</div>
 
@@ -95,7 +95,7 @@
 			<div class="billing">
 				<div class="box-center total-box">
 					<div class="shipping">邮费 ￥ {{gbDetail.netAmount}}</div>
-					<div class="total">合计 ￥ {{gbDetail.listAmount}}</div>
+					<div class="total">合计 ￥ {{gbDetail.total}}</div>
 				</div>
 			</div>
 		</div>

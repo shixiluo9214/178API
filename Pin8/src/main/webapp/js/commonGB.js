@@ -35,7 +35,7 @@
 					this.showPopup = true;
 					this.scrollInfo = this.catalogInfo.items;
 					vm.$once("updateSelected", function(value){
-						this.submitData.category = value;
+						this.submitData.category = value.name;
 					});
 				},
 				toShowTime: function(){
@@ -43,7 +43,7 @@
 				},
 				toShowRule: function(){
 					this.showPopup = true;
-					this.scrollInfo = [{'name':'按商品数量分配'},{'name':'参与者均分'},{'name':'免运费'}];
+					this.scrollInfo = [{'name':'按商品数量分配','val':'byQty'},{'name':'参与者均分','val':'byPeople'},{'name':'免运费','val':'byOthers'}];
 					vm.$once("updateSelected", function(value){
 						this.submitData.rule = value;
 					});
@@ -72,7 +72,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: './comm/getConfig',
+						url: '../comm/getConfig',
 						data: JSON.stringify({
 							//to do
 							"configType": "groupbuy_catalog"
@@ -95,7 +95,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: './user/getAddresses',
+						url: '../user/getAddresses',
 						data: JSON.stringify({
 							//to do
 							"userId": "76"

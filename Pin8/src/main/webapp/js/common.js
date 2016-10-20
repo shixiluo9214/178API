@@ -1,7 +1,6 @@
 InteralServer = "http://zilian.co:8080/Pin8/";
 PublicKeyString = 'MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANq7c/hOqvzWWbW+7dzdygNO7/yB8DVDpieFun7xTF655ny/TCjdfWuE7Snd71HYnGCjoKhO2IpYE9eghmgVyTsCAwEAAQ==';
 
-
 function sessionData(key, value){
 	if(typeof(value) == "undefined"){
 		//check undefined

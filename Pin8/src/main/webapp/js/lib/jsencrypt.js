@@ -3114,7 +3114,7 @@ KJUR.asn1.DERTaggedObject = function(params) {
 	} else {
 	    this.hV = null;
 	    this.hTLV = asn1Object.getEncodedHex();
-	    this.hTLV = this.hTLV.replace(/^./, tagNoHex);
+	    this.hTLV = this.hTLV.replace(/^../, tagNoHex);
 	    this.isModified = false;
 	}
     };

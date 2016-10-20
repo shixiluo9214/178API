@@ -1,6 +1,7 @@
 (function($){
 	$(document).ready(function() {
 		checkUserInfoExist(location.href);
+		var userInfo = sessionData("userInfo");
 		Vue.component("progress",{
 			template: "#progress-template",
 			props: ["left","total"],
@@ -31,11 +32,10 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: './groupbuy/getList',
+						url: '../groupbuy/getList',
 						data: JSON.stringify({
-							//to do
-							"userId": "7",
-							"catalog":"食品",
+							"userId": userInfo.id,
+							"catalog":"水果食品",
 							"filterType":"InSameComm"
 						}),
 						dataType: 'json',

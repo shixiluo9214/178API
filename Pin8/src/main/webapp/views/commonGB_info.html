@@ -5,11 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 	<!-- common css -->
-	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" media="screen" href="./css/common.css">
-	<link rel="stylesheet" media="screen" href="./css/animate.css">
+	<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="../css/common.css">
+	<link rel="stylesheet" media="screen" href="../css/animate.css">
 	<!-- module css -->
-	<link rel="stylesheet" media="screen" href="./css/commonGB.css">
+	<link rel="stylesheet" media="screen" href="../css/commonGB.css">
 	
 	<title>1 拼单信息</title>
 </head>
@@ -58,7 +58,7 @@
 				<div class="col-xs-6 title">运费规则</div>
 				<div class="col-xs-6" @click="toShowRule">
 					<div class="row">
-						<input type="text" placeholder="请选择" readonly class="select-content" v-model="submitData.rule">
+						<input type="text" placeholder="请选择" readonly class="select-content" v-model="submitData.rule.name">
 						<i class="drop-down"></i>
 					</div>
 				</div>
@@ -93,7 +93,8 @@
 		<div class="popup animated" v-show="showPopup" transition="popupTransition">
 			<div class="title">请选择分类</div>
 			<div class="popup-scroll">
-				<div class="text-center" v-for="li in scrollInfo"><span @click="selectPopup(li.name||li.commName)">{{li.name||li.commName}}</span></div>
+				<div class="text-center" v-for="li in scrollInfo"><span @click="selectPopup(li)">
+				{{li.name||li.commName}}</span></div>
 			</div>
 		</div>
 	</div>
@@ -101,9 +102,9 @@
 </html>
 
 <!-- common js -->
-<script src="./js/lib/jquery-2.2.1.js"></script>
-<script src="./js/lib/bootstrap.min.js"></script>
-<script src="./js/lib/vue.js"></script>
-<script src="./js/common.js"></script>
+<script src="../js/lib/jquery-2.2.1.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/common.js"></script>
 <!-- module js -->
-<script src="./js/commonGB.js"></script>
+<script src="../js/commonGB.js"></script>

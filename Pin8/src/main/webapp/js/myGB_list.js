@@ -1,6 +1,7 @@
-﻿(function($){
+(function($){
 	$(document).ready(function() {
 		checkUserInfoExist(location.href);
+		var userInfo = sessionData("userInfo");
 		Vue.filter("getStatus", function(value){
 			var o;
 			switch(value){
@@ -59,16 +60,14 @@
 						type: 'POST',
 						url: '../groupbuy/getList',
 						data: JSON.stringify({
-							"userId": localStorage.getItem("userId"),
+							//to do
+							"userId": '7',
 							"filterType":"ParticipateByMe"
 						}),
 						dataType: 'json',
 						contentType: 'application/json',
 						success: function(result){
 							if(result.status==0){
-								for(var i=0;i<result.bean.length;i++){
-									//result.bean[i].picLink = result.bean[i].picLink.replace(/\\/g,"/");
-								}
 								self.lists = result.bean;
 							}
 							console.log("My Gb list");

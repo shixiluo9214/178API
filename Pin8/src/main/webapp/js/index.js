@@ -1,77 +1,99 @@
-/* rem标准统一
- * 返回示例
- * 运行后  1rem 相当于 屏幕大小除于10的像素 例如 ：iPhone4S下面就是 1rem = 32px
- *
- */
-function resize() {
-	window.remFontSize = document.documentElement.clientWidth / 10;
-	document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + "px"
-}
-var b = null;
-window.addEventListener("resize", function() {
-	clearTimeout(b),
-		b = setTimeout(resize, 300)
-}, !1);
-resize();
+(function($){
 
-Zepto(function($){
-	$(document).ready(function(){
-		initPage();
-		bindEvent();
-		
-		if($(".swiper-container").length){
-			var swiper = new Swiper('.img-display', {
-		        pagination: '.swiper-pagination',
-		        paginationClickable: true
-		    });
+	// $('#submit').ajaxSubmit({
+	// 	url: '../groupbuy/addItem',
+	// 	data: JSON.stringify([
+	// 		{
+	// 		    "gbId": "533",
+	// 		    "userId": "41",
+	// 		    "name": "奶粉1",
+	// 		    "listPrice": "14.31",
+	// 		    "quantity": "5",
+	// 		    "unit": "罐",
+	// 		    "quantityLimit": "20",
+	// 		    "detail": "一段奶粉",
+	// 		    "pics": [
+	// 		        {
+	// 		            "picLink": "\\upload\\groupbuyItemFolder\\335_1_0_1454571467709.jpg"
+	// 		        }
+	// 		    ]
+	// 		},
+	// 		{
+	// 		    "gbId": "533",
+	// 		    "userId": "41",
+	// 		    "name": "奶粉2",
+	// 		    "listPrice": "14121.33",
+	// 		    "quantity": "0",
+	// 		    "unit": "罐",
+	// 		    "quantityLimit": "20",
+	// 		    "detail": "二段奶粉",
+	// 		    "pics": [
+	// 		        {
+	// 		            "picLink": "\\upload\\groupbuyItemFolder\\335_1_0_1454571467709.jpg"
+	// 		        }
+	// 		    ]
+	// 		}
+	// 	]),
+	// 	success: function(result){
+	// 		console.log("submit info successfully!", result);
+	// 	},
+	// 	error: function(result){
+	// 	  	console.log('error',result);
+	// 	}
+	// });
+
+
+
+	$.ajax({
+		type: 'POST',
+		url: '../groupbuy/addItem',
+		data: JSON.stringify([
+			{
+			    "gbId": "533",
+			    "userId": "41",
+			    "name": "奶粉1",
+			    "listPrice": "14.31",
+			    "quantity": "5",
+			    "unit": "罐",
+			    "quantityLimit": "20",
+			    "detail": "一段奶粉"
+			},
+			{
+			    "gbId": "533",
+			    "userId": "41",
+			    "name": "奶粉2",
+			    "listPrice": "14121.33",
+			    "quantity": "0",
+			    "unit": "罐",
+			    "quantityLimit": "20",
+			    "detail": "二段奶粉"
+			}
+		]),
+		dataType: 'json',
+		contentType: 'application/json',
+		success: function(result){
+			console.log("submit info successfully!", result);
+		},
+		error: function(result){
+		  	console.log('error',result);
 		}
 	});
 	
-
-
-	function initPage(){
-		$("body").height( $(window.height ));
-	}
-
-	function bindEvent(){
-
-		$("#register-confirm").on("click",function(){
-			location.href = "views/detail.html";
-		});
-
-		$("#detail-confirm").on("click",function(){
-			location.href = "views/succeed.html";
-		});
-
-		$(".btn-dec").on("click",function(){
-			var $selectNum = $(this).parent().parent().find(".num-select");
-			var $overNum = $(this).parent().parent().find(".num-over");
-			if(parseInt($selectNum.text())>0 && parseInt($overNum.text())>=0){
-				if(isNaN($overNum.text())) alert("1");
-				$selectNum.text( parseInt($selectNum.text())-1 );
-				$overNum.text( parseInt($overNum.text())+1 );
-			}
-		});
-
-		$(".btn-inc").on("click",function(){
-			var $selectNum = $(this).parent().parent().find(".num-select");
-			var $overNum = $(this).parent().parent().find(".num-over");
-			if(parseInt($overNum.text())>0){
-				$selectNum.text( parseInt($selectNum.text())+1 );
-				$overNum.text( parseInt($overNum.text())-1 );
-			}
-		});
-
-		$(".list-title").on("click",function(){
-			$(".img-view-container").show();
-			var swiper = new Swiper('.img-view', {
-		        pagination: '.swiper-pagination',
-		        paginationClickable: true
-		    });
-		});
-
-		$(".img-close-btn").on("click",function(){
-			$(".img-view-container").hide();
-		});
-	}
-});
+	
+	// $.ajaxFileUpload({
+	// 	type: 'POST',
+	// 	url: '../groupbuy/addItem',
+	// 	secureuri : false,
+	// 	fileElementId : "uploadFile",
+	// 	data: '',
+	// 	dataType: 'json',
+	// 	contentType: 'multipart/form-data',
+	// 	charset: 'UTF-8',
+	// 	success: function(result){
+	// 		console.log("submit info successfully!", result);
+	// 	},
+	// 	error: function(result){
+	// 	  	console.log('error',result);
+	// 	}
+	// });
+})(jQuery);

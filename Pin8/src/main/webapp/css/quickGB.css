@@ -154,6 +154,7 @@
 	height: 160px;
 	background: #d9d9d9;
 	position: relative;
+	padding: 0;
 }
 
 
@@ -341,6 +342,25 @@
 	width: 100%;
 	padding-bottom: 42px;
 }
+
+.preview-inner{
+	height: 100%;
+}
+
+.preview-img{
+	width: 100%;
+	height: 100%;
+}
+.preview-img img{
+	width: 100%;
+	height: 100% !important;
+	object-fit: cover;
+}
+
+.preview-img-container{
+	height: 100%;
+}
+
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3),
 only screen and (min--moz-device-pixel-ratio: 3),

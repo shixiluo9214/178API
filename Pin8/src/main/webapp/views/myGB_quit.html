@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="../css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="../css/myGB.css">
+	
+	<title>退出拼单</title>
+</head>
+<body>
+	<div class="quit-body">
+		<div class="title">本操作将退出当前拼单，并通过拼吧消息通知发起者。请选择你退出本拼单的原因。</div>
+		<div class="option" v-text="quitOption"></div>
+		<div class="add-container">
+			<div class="add-title">补充理由</div>
+			<textarea type="text" class="add-content" v-model="quitReason"></textarea>
+		</div>
+		<div class="description">
+			<div>1.在终止拼单后，单主将收到消息通知。</div>
+			<div>2.召集状态中退出拼单，不会影响您的拼单信用。</div>
+		</div>
+		<div class="btn-container">
+			<div class="btn-confirm" @click="quitConfirm">确定</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="../js/lib/jquery-2.2.1.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/common.js"></script>
+<!-- module js -->
+<script src="../js/myGB_quit.js"></script>

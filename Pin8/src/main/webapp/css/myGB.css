@@ -103,10 +103,20 @@
 	color: #fff;
 }
 
-.detail-header .detail-fullStar{
+.detail-header .detail-fullStar,
+.detail-header .detail-halfStar,
+.detail-header .detail-emptyStar{
 	display: inline-block;
-	color: #f9bf2d;
 	font-size: 14px;
+}
+.detail-header .detail-fullStar{
+	color: #f9bf2d;
+}
+.detail-header .detail-halfStar{
+	color: linear-gradient(to right, #f9bf2d 0, #f9bf2d 50%, #fff 50%, #fff 1);
+}
+.detail-header .detail-emptyStar{
+
 }
 
 .detail-header .detail-score{
@@ -291,6 +301,7 @@
 .detail-list-2 .money,
 .detail-list-3 .money{
 	display: inline-block;
+	color: #8BAD2B;
 }
 .detail-list-2 .preMoney{
 	display: inline-block;
@@ -367,6 +378,80 @@
 
 
 
+.quit-body .title{
+    padding: 8px 7px;
+    font-size: 15px;
+    background: #fff;
+}
+
+.quit-body .option{
+	padding: 11px 7px;
+    background: #fff;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.quit-body .add-container{
+    background: #fff;
+    border-top: 1px solid #c9c9c9;
+    padding: 13px 7px;
+}
+
+.quit-body .add-title{
+    font-size: 12px;
+    color: #c3c3c3;
+}
+
+.quit-body .add-content{
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+    margin-top: 5px;
+    margin-bottom: 22px;
+}
+
+.quit-body .description{
+	padding: 20px 7px;
+	color: #c1c1c1;
+	font-size: 13px;
+}
+
+.quit-body .description > div{
+	margin-top: 5px;
+}
+
+.quit-body .btn-container{
+	width: 100%;
+	padding: 0 7px;
+	margin-top: 110px;
+}
+.quit-body .btn-confirm{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background-color: rgba(0,0,0,0);
+	border: 1px solid #8BAD2B;
+	border-radius: 25px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #8BAD2B;
+	text-align: center;
+}
+
+.quit-body .btn-confirm:active,.btn-confirm:focus{
+	box-shadow: none;
+	color: #8BAD2B;
+}
+
+.quit-body .btn-confirm[disabled]{
+	border-color: #B8B8B8;
+	color: #B8B8B8;
+}
+.quit-body .btn-confirm[disabled]:active,
+.quit-body .btn-confirm[disabled]:focus{
+	color: #B8B8B8;
+}
 
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3),

@@ -8,10 +8,10 @@
 	<meta content="telephone=no" name="format-detection">
 
 	<!-- common css -->
-	<link rel="stylesheet" media="screen" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" media="screen" href="./css/common.css">
+	<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="../css/common.css">
 	<!-- module css -->
-	<link rel="stylesheet" media="screen" href="./css/quickGB.css">
+	<link rel="stylesheet" media="screen" href="../css/quickGB.css">
 	
 	<title>预览</title>
 </head>
@@ -20,24 +20,46 @@
 		<div class="row">
 			<div class="preview-scroll">
 				<div class="col-xs-12 preview-img-box">
+					<div id="carousel-example-generic" class="carousel slide preview-img-container" data-ride="carousel">
+				  		<!-- Indicators -->
+				  		<ol class="carousel-indicators">
+					    	<li data-target="#carousel-example-generic" v-for="img in imageLists" 
+					    	data-slide-to="{{$index}}" :class="[$index==0?'active':'']"></li>
+		 		 		</ol>
+
+				  		<!-- Wrapper for slides -->
+				  		<div class="carousel-inner preview-inner" role="listbox">
+				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
+					      		<img :src="img" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
+					    	</div>
+				  		</div>
+				  	</div>
+
 					<div class="preview-info clearfix">
-						<span class="info-number"><span class="current-number">6</span>/9</span>
+						<span class="info-number"><span class="current-number">1</span>/{{info.count}}</span>
 						<span class="info-status">已报名</span>
-						<span class="info-place">天堂软件园</span>
+						<span class="info-place">{{info.position.commName}}</span>
 					</div>
 				</div>
 				<div class="col-xs-12 preview-title-container">
 					<div class="title">{{info.title}}</div>
 					<div class="detail">{{info.description}}</div>
 				</div>
-				<div class="col-xs-12 clearfix preview-owner">
-					<img src="" alt="">
+				<div class="col-xs-12 clearfix preview-owner" v-if="type==1">
+					<img :src="'..'+userInfo.picLink">
 					<div class="preview-owner-info">
-						<div>神奇</div>
+						<div>{{userInfo.nickName}}</div>
 					</div>
 					<div class="pull-right owner-role">单主</div>
 				</div>
-				<div class="col-xs-12 number-input" v-for="list in lists">
+				<div class="col-xs-12 clearfix preview-owner" v-if="type==2">
+					<img :src="'..'+ownerInfo.picLink">
+					<div class="preview-owner-info">
+						<div>{{ownerInfo.nickName}}</div>
+					</div>
+					<div class="pull-right owner-role">单主</div>
+				</div>
+				<div class="col-xs-12 number-input" v-if="lists" v-for="list in lists">
 					<div class="row">
 						<div class="col-xs-6 title">
 							<div class="name">{{list.name}}</div>
@@ -50,6 +72,21 @@
 						    <!-- <i class="iconfont btn-incs" v-if="list.quantity.toString()!=''" 
 					    	@click="increase(list)">&#xe63e;</i> -->
 					    	<div class="btn-incs" v-if="list.quantity.toString()!=''" @click="increase(list)"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 number-input" v-if="details" v-for="detail in details">
+					<div class="row">
+						<div class="col-xs-6 title">
+							<div class="name">{{detail.name}}</div>
+							<div class="money">￥{{detail.listPrice?detail.listPrice:'未知'}}</div>
+						</div>
+						<div class="col-xs-6 calculate pull-right">
+							<div class="btn-decs" v-if="detail.totalQuantity>0" @click="decreaseDetail(detail)"></div>
+							<span>{{detail.totalQuantity.toString()==''?'无上限':
+							(detail.totalQuantity?detail.totalQuantity:'')}}</span>
+					    	<div class="btn-incs" v-if="detail.totalQuantity.toString()!=''" 
+					    	@click="increaseDetail(detail)"></div>
 						</div>
 					</div>
 				</div>
@@ -72,10 +109,12 @@
 </html>
 
 <!-- common js -->
-<script src="./js/lib/jquery-2.2.1.js"></script>
-<script src="./js/lib/iscroll.js"></script>
-<script src="./js/lib/bootstrap.min.js"></script>
-<script src="./js/lib/vue.js"></script>
-<script src="./js/common.js"></script>
+<script src="../js/lib/jquery-2.2.1.js"></script>
+<script src="../js/lib/iscroll.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/lib/hammer.min.js"></script>
+<script src="../js/lib/vue-touch.min.js"></script>
+<script src="../js/common.js"></script>
 <!-- mmodule js -->
-<script src="./js/quickGB_preview.js"></script>
+<script src="../js/quickGB_preview.js"></script>
