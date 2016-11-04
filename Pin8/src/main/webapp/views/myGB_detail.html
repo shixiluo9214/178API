@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -21,7 +21,10 @@
 			<img :src="'..'+gbDetail.ownerPic" class="member-photo">
 			<div class="member-info">
 				<div>{{gbDetail.nickName}}</div>
-				<div class="iconfont detail-fullStar">&#xf0042;</div>
+				<!-- <div class="iconfont detail-fullStar">&#xf0042;</div> -->
+				<i class="starIcon full-star" v-for="i in fullNum"></i>
+				<i class="starIcon half-star" v-for="i in halfNum"></i>
+				<i class="starIcon empty-star" v-for="i in emptyNum"></i>
 				<div class="detail-score">{{owner.credit}}</div>
 			</div>
 			<div class="detail-email"></div>
@@ -102,6 +105,38 @@
 		<div class="btn-groups">
 			<div class="detail-submit" @click="payPage3">付款</div>
 			<div class="detail-submit" @click="confirmPage3">确认收货</div>
+		</div>
+		<div class="payBackground" v-show="payStatus" @click.self="payStatus=false">
+			<div class="payContainer">
+				<div class="pay-title">请根据单主的支付信息选择付款方式，复制后支付宝或微信账号将被复制在剪贴板。完成付款后请点击付款完成，以便系统进行记录。</div>
+				<div class="pay-alipay">18012345678, 李笑<div class="pay-oper">复制</div></div>
+				<div class="pay-wechat">lixiao915<div class="pay-oper">复制</div></div>
+				<div class="pay-cash">当面现金交易<div class="pay-oper">选择</div></div>
+				<div class="pay-btnGroup clearfix">
+					<div class="pay-later" @click="payStatus=false">稍后付款</div>
+					<div class="pay-done" @click="finishPay">付款完成</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="detail-container scrollable" v-if="statusIndex==3">
+		<div class="valuate-box" v-if="!valuation.length">
+			<div class="score-title">请对本次拼单进行评价</div>
+			<i class="starIcon full-star" v-for="i in valuateScore" @click="setValuateScore($event)"></i>
+			<i class="starIcon empty-star" v-for="i in 5-valuateScore" @click="setValuateScore($event)"></i>
+			<div class="valuate-title">请选择您对<span class='valuate-name'>{{owner.nickName}}</span>的印象</div>
+			<textarea cols="35" rows="5" placeholder="请说说对TA的印象吧" v-model="valuationText"></textarea>
+			<button class="valuate-btn" @click="submitValuation" :disabled="!valuateScore||!valuationText">提交评价</button>
+		</div>
+		<div class="valuate-result" v-if="valuation.length">
+			<div class="result-title">你对<span class='valuate-name'>{{owner.nickName}}</span>的印象</div>
+			<div class="result-content">{{valuation[0].detail}}</div>
+			<img :src="'..'+userInfo.picLink" class="result-me-img">
+		</div>
+		<div class="btn-groups">
+			<button class="detail-submit" @click="historyPage4()">拼单历史</button>
+			<button class="detail-submit" @click="sharePage4()" :disabled="!valuation">分享</button>
 		</div>
 	</div>
 </body>

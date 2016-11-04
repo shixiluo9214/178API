@@ -6,20 +6,30 @@
 		var vm = new Vue({
 			el: "body",
 			data: {
+				userInfo: userInfo,
 				gbStatus: ['召集中','采购中','结算中','已结束'],
 				statusIndex: status,
-				// lists: [{"name":"Name1","mark":"","price":12,"quantity":"2"},
-				// 		{"name":"Name2","mark":"Mark","price":35,"quantity":"3"}],
-				// lists2:[{"name":"加强护膝一双","money":"160.00","preMoney":"150.00","number":2},
-				// 		{"name":"防狼安全喷雾","money":"90.00","number":3},
-				// 		{"name":"荧光水壶腰包","money":"136.00","number":4}],
-				// lists3:{"shipping":"20.00","total":"566.00",
-				// 		"lists":[{"name":"加强护膝一双","money":"160.00","number":2},
-				// 				{"name":"防狼安全喷雾","money":"90.00","number":3},
-				// 				{"name":"荧光水壶腰包","money":"136.00","number":4}]
-				// 		}
 				gbDetail: '',
-				owner: ''
+				owner: '',
+				payStatus: false,
+				valuation: '',
+				valuateScore: 0,
+				valuationText: ''
+			},
+			computed: {
+				fullNum: function(){
+					return parseInt(this.owner.credit);
+				},
+				halfNum: function(){
+					if(this.owner.credit!=5){
+						return this.owner.credit-parseInt(this.owner.credit);
+					}
+				},
+				emptyNum: function(){
+					if(this.owner.credit<=4){
+						return 5-Math.ceil(this.owner.credit);
+					}
+				}
 			},
 			ready: function(){
 				this.getShopDetail();
@@ -45,10 +55,16 @@
 					location.href = "./myGB_quit.html?id="+shopId;
 				},
 				payPage3: function(){
-					location.href = "./myGB_list.html";
+					this.payStatus = true;
 				},
 				confirmPage3: function(){
 					this.confirmReceive();
+				},
+				historyPage4: function(){
+
+				},
+				sharePage4: function(){
+
 				},
 				getShopDetail: function(){
 					var self = this;
@@ -87,6 +103,9 @@
 						success: function(result){
 							if(result.status==0){
 								self.owner = result.bean;
+								if(self.statusIndex==3){
+									self.getValuation();
+								}
 							}
 							console.log("Owner infomation:");
 							self.$log("owner");
@@ -139,6 +158,84 @@
 						success: function(result){
 							if(result.status==0){
 								console.log("Submit update successfully.");
+							}
+						},
+						error: function(result){
+						  	console.log('error',result);
+						}
+					});
+				},
+				finishPay: function(){
+					var self = this;
+					$.ajax({
+						type: 'POST',
+						url: '../groupbuy/pay',
+						data: JSON.stringify({
+							"id": shopId
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: function(result){
+							if(result.status==0){
+								console.log("Finish pay successfully.");
+								location.href = "./myGB_detail.html?status=3&id="+shopId;
+							}
+						},
+						error: function(result){
+						  	console.log('error',result);
+						}
+					});
+				},
+				setValuateScore: function(e){
+					this.valuateScore = $(e.target).index();
+				},
+				getValuation: function(){
+					var self = this;
+					$.ajax({
+						type: 'POST',
+						url: '../comm/getValuations',
+						data: JSON.stringify({
+						    "valuator": userInfo.id,
+						    "valuatee": this.owner.id,
+						    "eventType": "EVENT_GROUPBUY",
+						    "eventId": shopId,
+						    "valuateType": "GroupBuyOwner"
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: function(result){
+							if(result.status==0){
+								self.valuation = result.bean;
+								console.log("get valuation:");
+								self.$log("valuation");
+							}
+						},
+						error: function(result){
+						  	console.log('error',result);
+						}
+					});
+				},
+				submitValuation: function(){
+					var self = this;
+					$.ajax({
+						type: 'POST',
+						url: '../comm/valuate',
+						data: JSON.stringify({
+						    "valuator": userInfo.id,
+						    "valuatee": this.owner.id,
+						    "eventType": "EVENT_GROUPBUY",
+						    "eventId": shopId,
+						    "valuateType": "GroupBuyOwner",
+						    "detail": this.valuationText,
+						    "scale": this.valuateScore
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: function(result){
+							if(result.status==0){
+								self.valuation = result.bean;
+								console.log("get valuation:");
+								self.$log("valuation");
 							}
 						},
 						error: function(result){

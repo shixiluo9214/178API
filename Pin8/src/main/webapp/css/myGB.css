@@ -103,20 +103,38 @@
 	color: #fff;
 }
 
-.detail-header .detail-fullStar,
-.detail-header .detail-halfStar,
-.detail-header .detail-emptyStar{
+.detail-fullStar,
+.detail-halfStar,
+.detail-emptyStar{
 	display: inline-block;
 	font-size: 14px;
+	border: #f9bf2d;
 }
-.detail-header .detail-fullStar{
+.detail-fullStar{
 	color: #f9bf2d;
 }
-.detail-header .detail-halfStar{
+.detail-halfStar{
 	color: linear-gradient(to right, #f9bf2d 0, #f9bf2d 50%, #fff 50%, #fff 1);
 }
-.detail-header .detail-emptyStar{
+.detail-emptyStar{
+	color: #fff;
+}
 
+.starIcon{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-size: 20px;
+	background-repeat: no-repeat;
+}
+.starIcon.full-star{
+	background-image: url("../img/full-star.png");
+}
+.starIcon.half-star{
+	background-image: url("../img/half-star.png");
+}
+.starIcon.empty-star{
+	background-image: url("../img/empty-star.png");
 }
 
 .detail-header .detail-score{
@@ -127,7 +145,7 @@
     line-height: 16px;
     padding: 0 2px;
     border-radius: 2px;
-    vertical-align: middle;
+    vertical-align: text-top;
 }
 
 .detail-header .detail-email{
@@ -262,10 +280,15 @@
 	margin-right: 14px;
 	position: relative;
 	top: 7px;
+	background: none;
 }
 .detail-container .detail-submit{
 	color: #8BAE29;
 	border: 1px solid #8BAE29;
+}
+.detail-container .detail-submit:disabled{
+	color: #717171;
+	border: 1px solid #717171;
 }
 .detail-container .detail-return{
 	color: #717171;
@@ -453,6 +476,171 @@
 	color: #B8B8B8;
 }
 
+
+.payBackground{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background: rgba(0,0,0,0.3);
+}
+
+.payBackground .payContainer{
+	position: absolute;
+	top: 47%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #fff;
+}
+
+.payBackground .pay-title{
+    font-size: 14px;
+    padding: 20px 10px 0 10px;
+}
+.payBackground .pay-alipay,
+.payBackground .pay-wechat,
+.payBackground .pay-cash{
+	border-bottom: 1px solid #c3c3c3;
+    margin-top: 15px;
+    padding: 10px;
+}
+.payBackground .pay-oper{
+	float: right;
+	color: #8BAE29;
+}
+.payBackground .pay-btnGroup{
+	margin-top: 25px;
+    padding: 0 10px;
+}
+.payBackground .pay-later,
+.payBackground .pay-done{
+    text-align: center;
+    width: 45%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    border-radius: 4px
+}
+.payBackground .pay-later{
+    float: left;
+    border: 1px solid #8BAE29;
+    color: #8BAE29;
+}
+.payBackground .pay-done{
+    float: right;
+    background: #8BAE29;
+    color: #fff;
+}
+
+.valuate-box{
+	text-align: center;
+}
+
+.valuate-box .score-title:before,
+.valuate-box .score-title:after{
+	content: '';
+	display: inline-block;
+	width: 50px;
+	height: 1px;
+	background: #DBDBDB;
+	margin-bottom: 5px;
+}
+.valuate-box .score-title:before{
+	margin-right: 14px;
+}
+.valuate-box .score-title:after{
+	margin-left: 14px;
+}
+.valuate-box .score-title{
+	margin-top: 35px;
+}
+
+.valuate-box .starIcon{
+	width: 30px;
+	height: 30px;
+	background-size: 30px;
+	margin: 15px 0;
+}
+.valuate-box .starIcon + .starIcon{
+	margin-left: 10px;
+}
+
+.valuate-box .valuate-title:before,
+.valuate-box .valuate-title:after{
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 1px;
+	background: #DBDBDB;
+	margin-bottom: 5px;
+}
+.valuate-box .valuate-title:before{
+	margin-right: 14px;
+}
+.valuate-box .valuate-title:after{
+	margin-left: 14px;
+}
+
+.valuate-box textarea{
+	resize: none;
+    margin-top: 33px;
+    background: #edf1f4;
+    border-color: #d2d2d2;
+    padding-top: 10px;
+    padding-left: 10px;
+    outline: none;
+}
+
+.valuate-box .valuate-btn{
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background: #8BAE29;
+    margin: 24px auto 0;
+}
+.valuate-box .valuate-btn:disabled{
+	background: #d2d2d2;
+}
+
+.valuate-name{
+	color: #1dc700;
+}
+
+.valuate-result{
+	text-align: center;
+}
+.valuate-result .result-title:before,
+.valuate-result .result-title:after{
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 1px;
+	background: #DBDBDB;
+	margin-bottom: 5px;
+}
+.valuate-result .result-title:before{
+	margin-right: 14px;
+}
+.valuate-result .result-title:after{
+	margin-left: 14px;
+}
+.valuate-result .result-title{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.valuate-result .result-content{
+    display: inline-block;
+    background: #d2d2d2;
+    padding: 5px 10px;
+    min-width: 232px;
+    text-align: left;
+}
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3),
 only screen and (min--moz-device-pixel-ratio: 3),

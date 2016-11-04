@@ -1,5 +1,23 @@
 (function($){
 
+	$(document).ready(function(){
+		$("#submit").on("click", function(){
+			$.ajaxFileUpload({
+				url: '../groupbuy/addItem',
+				type: 'POST',
+				secureuri: false,
+				fileElementId: "uploadFile1",
+				dataType: 'text',
+				success: function(data, status){
+					console.log("success",data,status);
+				},
+				error: function(data, status){
+					console.log("error");
+				}
+			})
+		});
+	});
+
 	// $('#submit').ajaxSubmit({
 	// 	url: '../groupbuy/addItem',
 	// 	data: JSON.stringify([
@@ -44,40 +62,40 @@
 
 
 
-	$.ajax({
-		type: 'POST',
-		url: '../groupbuy/addItem',
-		data: JSON.stringify([
-			{
-			    "gbId": "533",
-			    "userId": "41",
-			    "name": "奶粉1",
-			    "listPrice": "14.31",
-			    "quantity": "5",
-			    "unit": "罐",
-			    "quantityLimit": "20",
-			    "detail": "一段奶粉"
-			},
-			{
-			    "gbId": "533",
-			    "userId": "41",
-			    "name": "奶粉2",
-			    "listPrice": "14121.33",
-			    "quantity": "0",
-			    "unit": "罐",
-			    "quantityLimit": "20",
-			    "detail": "二段奶粉"
-			}
-		]),
-		dataType: 'json',
-		contentType: 'application/json',
-		success: function(result){
-			console.log("submit info successfully!", result);
-		},
-		error: function(result){
-		  	console.log('error',result);
-		}
-	});
+	// $.ajax({
+	// 	type: 'POST',
+	// 	url: '../groupbuy/addItem',
+	// 	data: JSON.stringify([
+	// 		{
+	// 		    "gbId": "533",
+	// 		    "userId": "41",
+	// 		    "name": "奶粉1",
+	// 		    "listPrice": "14.31",
+	// 		    "quantity": "5",
+	// 		    "unit": "罐",
+	// 		    "quantityLimit": "20",
+	// 		    "detail": "一段奶粉"
+	// 		},
+	// 		{
+	// 		    "gbId": "533",
+	// 		    "userId": "41",
+	// 		    "name": "奶粉2",
+	// 		    "listPrice": "14121.33",
+	// 		    "quantity": "0",
+	// 		    "unit": "罐",
+	// 		    "quantityLimit": "20",
+	// 		    "detail": "二段奶粉"
+	// 		}
+	// 	]),
+	// 	dataType: 'json',
+	// 	contentType: 'application/json',
+	// 	success: function(result){
+	// 		console.log("submit info successfully!", result);
+	// 	},
+	// 	error: function(result){
+	// 	  	console.log('error',result);
+	// 	}
+	// });
 	
 	
 	// $.ajaxFileUpload({
