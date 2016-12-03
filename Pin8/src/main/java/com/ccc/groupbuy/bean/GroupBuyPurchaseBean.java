@@ -22,8 +22,17 @@ public class GroupBuyPurchaseBean extends BaseBean{
 	
 	private String nickName;
 	private String picLink;
+	private float credit;
 
 	private List<GroupBuyItemPurchaseBean> items;
+
+	public float getCredit() {
+		return credit;
+	}
+
+	public void setCredit(float credit) {
+		this.credit = credit;
+	}
 
 	public void addItem(GroupBuyItemPurchaseBean item){
 		if(items ==null){

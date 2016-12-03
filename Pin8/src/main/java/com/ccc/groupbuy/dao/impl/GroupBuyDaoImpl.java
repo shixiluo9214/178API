@@ -376,7 +376,7 @@ public class GroupBuyDaoImpl extends BaseDao implements GroupBuyDao {
 
 	@Override
 	public List<GroupBuyPurchaseBean> getPurchases(long gbId,long userId) {
-		String sql = "select gbp.id,gbp.gb_id,u.id user_id,gbp.status,gbp.pay_status,gbp.collect_status,gbp.receive_status,gbp.list_amount,gbp.net_amount,gbp.freight,gbp.total,u.nick_name,u.pic_link"
+		String sql = "select gbp.id,gbp.gb_id,u.id user_id,gbp.status,gbp.pay_status,gbp.collect_status,gbp.receive_status,gbp.list_amount,gbp.net_amount,gbp.freight,gbp.total,u.nick_name,u.pic_link,u.credit"
 				+ " from t_gb_purchase gbp, t_user u"
 				+ " where gbp.gb_id=:gbid and gbp.user_id=u.id and gbp.status<20";
         Map<String, Object> paramMap = new HashMap<String, Object>();
