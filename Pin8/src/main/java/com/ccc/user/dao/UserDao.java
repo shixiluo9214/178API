@@ -1,6 +1,7 @@
 package com.ccc.user.dao;
 
 
+import java.util.Collection;
 import java.util.List;
 
 import com.ccc.user.bean.AddressBean;
@@ -49,4 +50,9 @@ public interface UserDao {
 
 	boolean checkAddressExisting(AddressBean address);
 
+	int updateFriendApply(FriendBean friend);
+
+	int insertFriendApply(FriendBean friend);
+
+	List<FriendBean> getFriendApplyList(long userId);
 }

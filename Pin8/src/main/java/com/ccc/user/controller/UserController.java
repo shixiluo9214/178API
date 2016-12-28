@@ -129,6 +129,7 @@ public class UserController {
 		logger.info("User applyFriend "+friend);
 		ResponseBean response = new ResponseBean();
 		try {
+			friend.setStatus(0);
 			userServiceImpl.applyFriend(friend);
 			response.setBean(friend);
 		} catch (Exception e) {
@@ -142,6 +143,7 @@ public class UserController {
 		logger.info("User confirmFriend "+friend);
 		ResponseBean response = new ResponseBean();
 		try {
+			friend.setStatus(1);
 			userServiceImpl.confirmFriend(friend);
 			response.setBean(friend);
 		} catch (Exception e) {

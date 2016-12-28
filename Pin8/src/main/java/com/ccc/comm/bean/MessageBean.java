@@ -30,6 +30,9 @@ public class MessageBean extends BaseBean{
 	private String senderPic;
 	private String receiverPic;
 
+	private Date fromDate;
+	private Date toDate;
+
 	public String getSenderPic() {
 		return senderPic;
 	}
@@ -143,5 +146,20 @@ public class MessageBean extends BaseBean{
 	public void setEventId(long eventId) {
 		this.eventId = eventId;
 	}
-	
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
+	}
 }

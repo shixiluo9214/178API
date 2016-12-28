@@ -235,7 +235,20 @@ public class CommDaoImpl extends BaseDao implements CommDao {
             paramMap.put("eventType", message.getEventType());
             paramMap.put("eventId", Long.valueOf(message.getEventId()));
             sql +=" and event_type=:eventType and event_id=:eventId";
-        }        
+        }
+
+		if(message.getFromDate()!= null)
+		{
+			sql +=" and m.created_date >= :fromDate ";
+			paramMap.put("fromDate", message.getFromDate());
+		}
+
+		if(message.getToDate()!= null)
+		{
+			sql +=" and m.created_date <= :toDate ";
+			paramMap.put("toDate", message.getToDate());
+		}
+
         sql +=" order by created_date desc";
         
         return namedJdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<MessageBean>(MessageBean.class));

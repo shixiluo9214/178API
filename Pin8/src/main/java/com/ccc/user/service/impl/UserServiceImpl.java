@@ -191,7 +191,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<FriendBean> getFriendList(long userId) {
-		return userDaoImpl.getFriendList(userId);
+		List<FriendBean> friendList = userDaoImpl.getFriendList(userId);
+		friendList.addAll(userDaoImpl.getFriendApplyList(userId));
+		return friendList;
 	}
 
 	@Override
@@ -207,23 +209,26 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int confirmFriend(FriendBean friend) {
-		friend.setStatus(1); //1 - active
-		int result = userDaoImpl.updateFriend(friend);
-		FriendBean friendT = new FriendBean();
-		friendT.setUserId(friend.getFriendId());
-		friendT.setFriendId(friend.getUserId());
-		friendT.setStatus(1);
-		userDaoImpl.updateFriend(friendT);
-		return result;
+	public int applyFriend(FriendBean friend) {
+		return userDaoImpl.insertFriendApply(friend);
 	}
 
 	@Override
-	public int applyFriend(FriendBean friend) {
-		friend.setStatus(0); //0 - apply
-		return userDaoImpl.updateFriend(friend);
-	}
+	public int confirmFriend(FriendBean friend) {
+		int result = userDaoImpl.updateFriendApply(friend);
 
+		friend.setStatus(10);
+		friend.setId(0);
+		userDaoImpl.updateFriend(friend);
+
+		FriendBean friendT = new FriendBean();
+		friendT.setUserId(friend.getFriendId());
+		friendT.setFriendId(friend.getUserId());
+		friendT.setStatus(10);
+		userDaoImpl.updateFriend(friendT);
+
+		return result;
+	}
 
 	@Override
 	public List<AddressBean> getAddresses(long userId) {
