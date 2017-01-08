@@ -33,7 +33,7 @@
                  	 	reader.readAsDataURL(file[0]);  
 	                 	reader.onloadend=function(){
                         	self.imgBox.push({
-                        		'src': this.result
+                        		'picLink': this.result
                         	});
 	                    }
 

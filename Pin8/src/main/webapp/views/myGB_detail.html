@@ -109,8 +109,12 @@
 		<div class="payBackground" v-show="payStatus" @click.self="payStatus=false">
 			<div class="payContainer">
 				<div class="pay-title">请根据单主的支付信息选择付款方式，复制后支付宝或微信账号将被复制在剪贴板。完成付款后请点击付款完成，以便系统进行记录。</div>
-				<div class="pay-alipay">18012345678, 李笑<div class="pay-oper">复制</div></div>
-				<div class="pay-wechat">lixiao915<div class="pay-oper">复制</div></div>
+				<div class="pay-alipay"><span id="alipayNumber">18012345678</span>, 李笑
+					<div class="pay-oper" @click="copyNumber('alipayNumber')">复制</div>
+				</div>
+				<div class="pay-wechat"><span id="wechatNumber">lixiao915</span>
+					<div class="pay-oper" @click="copyNumber('wechatNumber')">复制</div>
+				</div>
 				<div class="pay-cash">当面现金交易<div class="pay-oper">选择</div></div>
 				<div class="pay-btnGroup clearfix">
 					<div class="pay-later" @click="payStatus=false">稍后付款</div>

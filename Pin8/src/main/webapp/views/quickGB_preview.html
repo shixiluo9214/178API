@@ -31,15 +31,17 @@
 				  		<div class="carousel-inner preview-inner" role="listbox">
 				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
 					      		<img :src="img" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
+					      		<div class="preview-info clearfix">
+									<span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
+									<span class="info-status">已报名</span>
+									<span class="info-place">{{info.position.commName}}</span>
+								</div>
 					    	</div>
+					    	
 				  		</div>
 				  	</div>
 
-					<div class="preview-info clearfix">
-						<span class="info-number"><span class="current-number">1</span>/{{info.count}}</span>
-						<span class="info-status">已报名</span>
-						<span class="info-place">{{info.position.commName}}</span>
-					</div>
+					
 				</div>
 				<div class="col-xs-12 preview-title-container">
 					<div class="title">{{info.title}}</div>

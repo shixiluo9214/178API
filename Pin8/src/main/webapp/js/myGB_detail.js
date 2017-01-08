@@ -242,6 +242,17 @@
 						  	console.log('error',result);
 						}
 					});
+				},
+				copyNumber: function(number) {
+					var str = $("#"+number).text();
+					var save = function(e){
+				        e.clipboardData.setData('text/plain', str);
+				        e.preventDefault();
+				    }
+				    document.addEventListener('copy', save);
+				    document.execCommand('copy');
+				    document.removeEventListener('copy',save);
+				    alert('复制成功！');
 				}
 			}
 		});

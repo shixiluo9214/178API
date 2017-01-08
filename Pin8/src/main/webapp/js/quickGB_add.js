@@ -4,7 +4,7 @@
 		var vm = new Vue({
 			el: "body",
 			data: {
-				lists: [],
+				lists: sessionData("addLists"),
 				info: sessionData("addInfo")
 			},
 			methods: {
@@ -16,7 +16,6 @@
 					// 	location.href="./quickGB_success.html";
 					// });
 					this.submitInfo();
-					// this.submitLists();
 				},
 				submitInfo: function(){
 					var self = this;
@@ -41,60 +40,48 @@
 						dataType: 'json',
 						contentType: 'application/json',
 						success: function(result){
-							console.log("submit info successfully!", result);
-							//to delete
-							location.href="./quickGB_success.html";
+							if(result.status==0) {
+								console.log("submit info successfully!", result);
+								self.submitLists(result);
+							}
 						},
 						error: function(result){
 						  	console.log('error',result);
 						}
 					});
 				},
-				submitLists: function(){
+				submitLists: function(result){
 					var self = this;
+					var ajaxData = [];
+					self.$log('lists');
+					for(var i=0;i<self.lists.length;i++) {
+						ajaxData.push({
+							"gbId": result.bean.id,
+						    "userId": userInfo.id,
+						    "name": self.lists[i].name,
+						    "listPrice": self.lists[i].price,
+						    "quantity": self.lists[i].quantity,
+						    "unit": "罐",
+						    "quantityLimit": self.lists[i].totalQuantity,
+						    "detail": self.lists[i].mark,
+						    "pics": self.lists[i].imgBox
+						});
+					}
 					$.ajax({
 						type: 'POST',
 						url: '../groupbuy/addItem',
-						data: JSON.stringify([
-							{
-							    "gbId": "533",
-							    "userId": "41",
-							    "name": "奶粉1",
-							    "listPrice": "14.31",
-							    "quantity": "5",
-							    "unit": "罐",
-							    "quantityLimit": "20",
-							    "detail": "一段奶粉",
-							    "pics": [
-							        {
-							            "picLink": "\\upload\\groupbuyItemFolder\\335_1_0_1454571467709.jpg"
-							        }
-							    ]
-							},
-							{
-							    "gbId": "533",
-							    "userId": "41",
-							    "name": "奶粉2",
-							    "listPrice": "14121.33",
-							    "quantity": "0",
-							    "unit": "罐",
-							    "quantityLimit": "20",
-							    "detail": "二段奶粉",
-							    "pics": [
-							        {
-							            "picLink": "\\upload\\groupbuyItemFolder\\335_1_0_1454571467709.jpg"
-							        }
-							    ]
-							}
-						]),
-						dataType: 'text/plain',
+						data: JSON.stringify(ajaxData),
+						beforeSend: function(XMLHttpRequest) {
+							XMLHttpRequest.setRequestHeader("Content-Type", "multipart/form-data; boundary=6Mzk3h9whuKqi5YM_8irDye2i5_ulrErzYLB2");
+						},
 						contentType: 'multipart/form-data',
 						charset: 'UTF-8',
 						success: function(result){
 							console.log("submit info successfully!", result);
+							location.href="./quickGB_success.html";
 						},
-						error: function(result){
-						  	console.log('error',result);
+						error: function(XMLHttpRequest, textStatus, errorThrown){
+						  	console.log('error',XMLHttpRequest);
 						}
 					});
 				},
