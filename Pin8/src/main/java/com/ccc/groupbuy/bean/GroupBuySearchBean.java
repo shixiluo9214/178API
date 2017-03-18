@@ -3,6 +3,8 @@ package com.ccc.groupbuy.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class GroupBuySearchBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -63,5 +65,16 @@ public class GroupBuySearchBean implements Serializable {
 	}
 	public void setToDate(Date endDate) {
 		this.toDate = endDate;
-	}		
+	}	
+	
+	public String toString(){
+		StringBuffer sb = new StringBuffer();
+		if(userId>0){
+			sb.append("userid:").append(userId).append(",");
+		}
+		if(!StringUtils.isEmpty(filterType)){
+			sb.append("filterType:").append(filterType).append(",");
+		}
+		return sb.toString();
+	}
 }
