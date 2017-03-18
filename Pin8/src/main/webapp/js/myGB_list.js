@@ -54,6 +54,9 @@
 							break;
 					}
 				},
+				goToNearbyGBList: function(){
+					location.href="./nearBy.html";
+				},
 				getList: function(){
 					var self = this;
 					$.ajax({
@@ -61,7 +64,7 @@
 						url: '../groupbuy/getList',
 						data: JSON.stringify({
 							//to do
-							"userId": '7',
+							"userId": userInfo.id,
 							"filterType":"ParticipateByMe"
 						}),
 						dataType: 'json',
