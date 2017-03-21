@@ -16,6 +16,16 @@
 	<title>参与的拼单</title>
 </head>
 <body>
+
+	<!--only for testing purpose, need to remove it once testing is done -->
+	<div class="container">
+		<button type="button" class="btn btn-default"  @click="goToNearbyGBList()">附近的拼单</button>
+		<button type="button" class="btn btn-default"  @click="goToCreateGB()">新建拼单</button>
+		<button type="button" class="btn btn-default"  @click="goToGBDetails()">查看拼单详情</button>
+	</div>
+	
+	<!--only for testing purpose, need to remove it once testing is done -->
+
 	<div class="container list-container scrollable">
 		<div class="list-box" v-for="list in lists" @click="enterDetail(list)">
 			<div class="list-header clearfix">

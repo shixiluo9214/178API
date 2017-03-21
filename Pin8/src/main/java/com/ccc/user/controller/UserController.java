@@ -75,6 +75,7 @@ public class UserController {
 	public @ResponseBody ResponseBean login(@RequestBody UserBean user)
 	{
 		logger.info("User login "+ user);
+		printParametersInRequest();
 		ResponseBean response = new ResponseBean();
 		try {
 			response.setBean(userServiceImpl.loginUser(user));
@@ -83,6 +84,18 @@ public class UserController {
 		}
 		return response;
 	}	
+
+	private void printParametersInRequest() {
+		java.util.Enumeration<String> paras = request.getParameterNames();
+		if(paras!=null){
+			while(paras.hasMoreElements()){
+				String tmpPara = paras.nextElement();
+				logger.info(tmpPara + ":" + request.getParameter(tmpPara));
+			}
+		}
+		
+		
+	}
 
 	@RequestMapping(value = "/getUser", produces = "application/json;charset=UTF-8")
 	public @ResponseBody ResponseBean getUser(@RequestBody UserBean user)

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.ccc.comm.bean.HistorySummaryBean;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.framework.bean.BaseBean;
@@ -253,4 +255,14 @@ public class UserBean extends BaseBean{
 		this.address = address;
 	}
 	
+	public String toString(){
+		StringBuffer sb = new StringBuffer();
+		if(StringUtils.isNotEmpty(phone)){
+			sb.append("phone:").append(phone).append(",");
+		}
+		if(id>0){
+			sb.append("id:").append(id).append(",");
+		}
+		return sb.toString();
+	}
 }

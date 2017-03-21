@@ -55,6 +55,9 @@
 							break;
 					}
 				},
+				goToNearbyGBList: function(){
+					location.href="./nearBy.html";
+				},
 				getList: function(){
 					var self = this;
 					$.ajax({

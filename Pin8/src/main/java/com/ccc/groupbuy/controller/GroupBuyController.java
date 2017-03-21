@@ -199,6 +199,7 @@ public class GroupBuyController {
     public @ResponseBody ResponseBean addItem(RequestBean bean,HttpServletRequest request)  {		
 
 		logger.info("GroupBuy addItem "+ bean);
+		logger.info("getJsonContent:\n" + bean.getJsonContent());
 		
 		objectMapper = new ObjectMapper();
 		ResponseBean response = new ResponseBean();	
