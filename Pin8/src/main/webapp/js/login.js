@@ -18,9 +18,9 @@
 					"password": $("#login-password").val()
 				}
 			if(loginInfo.phone.length<11){
-				loginDialog("Please fill in correct phone");
+				loginDialog("请填写正确的用户名。");
 			}else if(loginInfo.password.length < 6){
-				loginDialog("Please fill in correct password");
+				loginDialog("请填写正确的密码。");
 			}else{
 				var encrypt = new JSEncrypt();
 				encrypt.setPublicKey(PublicKeyString);
@@ -43,11 +43,13 @@
 				"password": passWord
 			};
 			if(phoneNumber.length<11){
-				registerDialog("Please fill in correct phone");
+				registerDialog("请填写正确的用户名。");
 			}else if(!nickName){
-				registerDialog("Please fill in correct nick name");
-			}else if(!(passWord.length>5 && passWordConfirm.length>5 && passWord == passWordConfirm)){
-				registerDialog("Please fill in correct password");
+				registerDialog("请填写昵称。");
+			}else if(passWord.length<6){
+				registerDialog("请填写正确的密码。");
+			}else if(!(passWordConfirm.length>5 && passWord == passWordConfirm)) {
+				registerDialog("请填写正确的确认密码。");
 			}else{
 				var encrypt = new JSEncrypt();
 				encrypt.setPublicKey(PublicKeyString);
@@ -66,6 +68,13 @@
 
 		$("#security-code-btn").on("click", function(){
 			//security code button
+			if (!$(this).hasClass("disabled")) {
+				displaySTime();
+				securityCallServers();
+			}
+		});
+
+		$("#forget-btn").on("click", function() {
 
 		});
 	}
@@ -73,7 +82,7 @@
 	function userLoginCallServers(loginInfo) {
 		$.ajax({
 			type: 'POST',
-			url: './user/login',
+			url: '../user/login',
 			data: JSON.stringify(loginInfo),
 			dataType: 'json',
 			contentType: 'application/json',
@@ -83,12 +92,9 @@
 					sessionData("userInfo", result.bean);
 					var currentPage = sessionData("currentPage");
 					sessionData("currentPage",null);
-					if(currentPage == null){
-						currentPage = "./views/myGB_list.html";
-					}
 					location.href = currentPage;
 				}else if(result.status == 1){
-					loginDialog("Your user name or password error.")
+					loginDialog("用户名或者密码错误。")
 				}
 			},
 			error: function(result){
@@ -100,14 +106,14 @@
 	function userAddCallServers(info) {
 		$.ajax({
 			type: 'POST',
-			url: './user/add',
+			url: '../user/add',
 			data: JSON.stringify(info),
 			dataType: 'json',
 			contentType: 'application/json',
 			success: function(result){
 				console.log('add user success',result);
 				if(result.status == 0){
-					location.href = "./views/detail.html";
+					location.href = "../views/detail.html";
 				}else if(result.status == 1){
 					registerDialog("Your phone have been registered.")
 				}
@@ -116,6 +122,11 @@
 			  	console.log('error',result);
 			}
 		});
+	}
+
+	function securityCallServers() {
+		// security server
+		
 	}
 
 	function randomString(len) {
@@ -136,4 +147,17 @@
 	function registerDialog(msg){
 		$(".register-dialog span").show().text(msg);
 	}
+
+	function displaySTime(time) {
+		if (time == 0) {
+			$("#security-code-btn").html("发送验证码").removeClass("disabled");
+		} else {
+			if (!time) time = 59;
+			$("#security-code-btn").html(time + 's').addClass("disabled");
+			setTimeout(function() {
+				displaySTime(--time);
+			}, 1000);
+		}
+	}
+
 })(jQuery);

@@ -12,6 +12,7 @@
 					o = '采购中';
 					break;
 				case 2:
+				case 3:
 					o = '结算中';
 					break;
 				case 10:
@@ -60,8 +61,7 @@
 						type: 'POST',
 						url: '../groupbuy/getList',
 						data: JSON.stringify({
-							//to do
-							"userId": '7',
+							"userId": userInfo.id,
 							"filterType":"ParticipateByMe"
 						}),
 						dataType: 'json',

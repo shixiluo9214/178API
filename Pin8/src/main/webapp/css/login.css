@@ -72,6 +72,18 @@ button{background:#03B848;color:#fff;border:none;outline:none;font-size: 12px;fo
 	height: 40px;
 	float: left;
 }
+#security-code-btn {
+	position: absolute;
+	right: 6px;
+}
+#security-code-btn.disabled {
+	background: #c6c6c6;
+}
+#register-confirm {
+	display: block;
+	float: none;
+	margin: 20px auto;
+}
 .login-btn-groups #login-btn{
 	margin-right: 20px;
 }
