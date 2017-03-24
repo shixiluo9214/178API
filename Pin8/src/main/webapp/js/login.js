@@ -67,9 +67,7 @@
 		});
 
 		$("#security-code-btn").on("click", function(){
-<<<<<<< .merge_file_9Bs6k4
-			// security code button
-=======
+
 			//security code button
 			if (!$(this).hasClass("disabled")) {
 				displaySTime();
@@ -78,7 +76,6 @@
 		});
 
 		$("#forget-btn").on("click", function() {
->>>>>>> .merge_file_uSvXTJ
 
 		});
 	}
@@ -96,7 +93,7 @@
 		//console.log('invitationCode:' + invitationCode);
 		$.ajax({
 			type: 'POST',
-			url: '../user/login',
+			url: './user/login',
 			data: JSON.stringify(loginInfo),
 			dataType: 'json',
 			contentType: 'application/json',
@@ -106,7 +103,7 @@
 					sessionData("userInfo", result.bean);
 					var currentPage = sessionData("currentPage");
 					sessionData("currentPage",null);
-<<<<<<< .merge_file_9Bs6k4
+
 					if(invitationCode!=null){//need to jump to gb details page
 						//location.href = "./views/myGB_detail.html";;
 						location.href = "./views/quickGB_preview.html?type=3&invitationCode="+invitationCode;
@@ -115,8 +112,7 @@
 					if(currentPage == null){
 						currentPage = "./views/myGB_list.html";
 					}
-=======
->>>>>>> .merge_file_uSvXTJ
+
 					location.href = currentPage;
 				}else if(result.status == 1){
 					loginDialog("用户名或者密码错误。")
@@ -155,14 +151,14 @@
 	}
 
 	function randomString(len) {
-	　　len = len || 32;
-	　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /** **默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1*** */
-	　　var maxPos = $chars.length;
-	　　var pwd = '';
-	　　for (i = 0; i < len; i++) {
-	　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-	　　}
-	　　return pwd;
+		len = len || 32;
+		var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /** **默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1*** */	
+		var maxPos = $chars.length;
+		var pwd = '';
+		for (i = 0; i < len; i++) {
+			pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+		}
+		return pwd;
 	}
 
 	function loginDialog(msg){

@@ -3,6 +3,6 @@
 /.settings/
 /logs/
 .classpath
-.project
-
+.projec
+/src/main/webapp/upload/
 
