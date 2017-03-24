@@ -179,6 +179,43 @@
 						}
 					});
 				},
+				getDetailByInvitationCodeFunction: function(invitationCode){
+					var self = this;
+					$.ajax({
+						type: 'POST',
+						url: '../groupbuy/get',
+						data: JSON.stringify({
+							"gbId": 0,
+							"invitationCode": invitationCode
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: function(result){
+							if(result.status==0){
+								self.info = {
+									id: result.bean.id,
+									title: result.bean.title,
+									description: result.bean.description,
+									count: result.bean.memberLimit,
+									position: {
+										commName: result.bean.deliverInfo
+									},
+									createdBy: result.bean.createdBy
+								}
+								self.details = result.bean.items;
+								console.log('result data');
+								self.$log("details");
+								if(self.type == 2){
+									self.getOwnerInfo();
+								}
+								
+							}
+						},
+						error: function(result){
+						  	console.log('error',result);
+						}
+					});
+				},
 				getOwnerInfo: function(){
 					var self = this;
 					$.ajax({
@@ -213,6 +250,7 @@
 				}
 			},
 			ready: function(){
+				//1 for new group buy    2 for near buy  3 by invitation code
 				if(this.type == 1){
 					this.info = addInfo;
 					this.lists = addLists;	
@@ -224,6 +262,10 @@
 					this.$log("imageLists");
 				}else if(this.type == 2){
 					this.getDetailFunction();
+				}
+				else if(this.type == 3){//with invitation code
+					var inviCode = urlData("invitationCode") ; 
+					this.getDetailByInvitationCodeFunction(inviCode);
 				}
 				
 				$('.carousel').carousel({

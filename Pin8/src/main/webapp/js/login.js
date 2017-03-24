@@ -65,12 +65,22 @@
 		});
 
 		$("#security-code-btn").on("click", function(){
-			//security code button
+			// security code button
 
 		});
 	}
+	
+	function getUrlVars() {
+	    var vars = {};
+	    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	    vars[key] = value;
+	    });
+	    return vars;
+	}
 
 	function userLoginCallServers(loginInfo) {
+		var invitationCode = getUrlVars()["invitationCode"];
+		//console.log('invitationCode:' + invitationCode);
 		$.ajax({
 			type: 'POST',
 			url: './user/login',
@@ -83,6 +93,11 @@
 					sessionData("userInfo", result.bean);
 					var currentPage = sessionData("currentPage");
 					sessionData("currentPage",null);
+					if(invitationCode!=null){//need to jump to gb details page
+						//location.href = "./views/myGB_detail.html";;
+						location.href = "./views/quickGB_preview.html?type=3&invitationCode="+invitationCode;
+						return;
+					}
 					if(currentPage == null){
 						currentPage = "./views/myGB_list.html";
 					}
@@ -120,7 +135,7 @@
 
 	function randomString(len) {
 	　　len = len || 32;
-	　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+	　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /** **默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1*** */
 	　　var maxPos = $chars.length;
 	　　var pwd = '';
 	　　for (i = 0; i < len; i++) {

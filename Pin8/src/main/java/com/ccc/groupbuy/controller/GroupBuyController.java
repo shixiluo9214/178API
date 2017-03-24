@@ -276,8 +276,10 @@ public class GroupBuyController {
 		logger.info("GroupBuy get "+ search);
 		ResponseBean response = new ResponseBean();
 		try {
+			logger.info("GbId:"+ search.getGbId());
 			if(search.getGbId()==0 && StringUtils.isNotEmpty(search.getInvitationCode())){
 				String tmp = search.getInvitationCode();
+				logger.info("InvitationCode:"+ tmp);
 				search.setInvitationCode(tmp.substring(tmp.length()-8));
 				search.setGbId(Long.parseLong(tmp.substring(0, tmp.length()-8)));
 			}
