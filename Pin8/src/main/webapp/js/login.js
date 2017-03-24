@@ -127,14 +127,14 @@
 	function userAddCallServers(info) {
 		$.ajax({
 			type: 'POST',
-			url: '../user/add',
+			url: './user/add',
 			data: JSON.stringify(info),
 			dataType: 'json',
 			contentType: 'application/json',
 			success: function(result){
 				console.log('add user success',result);
 				if(result.status == 0){
-					location.href = "../views/detail.html";
+					location.href = "./views/detail.html";
 				}else if(result.status == 1){
 					registerDialog("Your phone have been registered.")
 				}
