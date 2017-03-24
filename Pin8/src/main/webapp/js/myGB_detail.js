@@ -61,7 +61,7 @@
 					this.confirmReceive();
 				},
 				historyPage4: function(){
-
+					location.href = "./myGB_list.html";
 				},
 				sharePage4: function(){
 
@@ -233,7 +233,7 @@
 						contentType: 'application/json',
 						success: function(result){
 							if(result.status==0){
-								self.valuation = result.bean;
+								self.valuation = result.bean[0];
 								console.log("get valuation:");
 								self.$log("valuation");
 							}

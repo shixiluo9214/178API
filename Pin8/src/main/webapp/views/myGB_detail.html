@@ -27,8 +27,8 @@
 				<i class="starIcon empty-star" v-for="i in emptyNum"></i>
 				<div class="detail-score">{{owner.credit}}</div>
 			</div>
-			<div class="detail-email"></div>
-			<div class="iconfont detail-phone">&#xe6cf;</div>
+			<a :href="'sms:'+owner.phone"><div class="detail-email"></div></a>
+			<a :href="'tel:'+owner.phone"><div class="iconfont detail-phone">&#xe6cf;</div></a>
 		</div>
 		<div class="container-fluid header-bottom">
 			<div class="row">

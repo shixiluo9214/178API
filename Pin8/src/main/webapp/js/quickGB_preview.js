@@ -107,8 +107,7 @@
 						success: function(result){
 							if(result.status==0){
 								console.log('success participate');
-								//to do    wait new gb to success page
-								//location.href="./quickGB_success.html";
+								location.href="./quickGB_success.html";
 							}else{
 								alert(result.errorMessage);
 							}
