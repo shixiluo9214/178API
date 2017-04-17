@@ -26,7 +26,7 @@
 			},
 			methods: {
 				showDetail: function(val){
-					location.href = "./quickGB_preview.html?type=2&id="+val.id;
+					location.href = "./quickGB_detail.html?id="+val.id;
 				},
 				getList: function(){
 					var self = this;

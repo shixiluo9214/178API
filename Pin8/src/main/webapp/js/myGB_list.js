@@ -50,6 +50,9 @@
 						case 2:
 							location.href="./myGB_detail.html?status="+list.status+"&id="+list.id;
 							break;
+						case 3:
+							location.href="./myGB_detail.html?status=2&id="+list.id;
+							break;
 						case 10:
 							location.href="./myGB_detail.html?status=3&id="+list.id;
 							break;

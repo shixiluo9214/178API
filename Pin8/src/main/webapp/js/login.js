@@ -106,7 +106,7 @@
 
 					if(invitationCode!=null){//need to jump to gb details page
 						//location.href = "./views/myGB_detail.html";;
-						location.href = "./views/quickGB_preview.html?type=3&invitationCode="+invitationCode;
+						location.href = "./views/quickGB_detail.html?invitationCode="+invitationCode;
 						return;
 					}
 					if(currentPage == null){

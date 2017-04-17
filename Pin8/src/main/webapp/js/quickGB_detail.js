@@ -1,5 +1,6 @@
 (function($){
 	$(document).ready(function() {
+		checkUserInfoExist(location.href);
 		var addInfo = sessionData("addInfo");
 		var addLists = sessionData("addLists");
 		var userInfo = sessionData("userInfo");
@@ -13,7 +14,8 @@
 				imageLists: [],
 				userInfo: userInfo,
 				ownerInfo: '',
-				type: urlData("type")  //1 for new group buy    2 for near buy 
+				valuation: null,
+				valuationText: null
 			},
 			methods: {
 				previewPage: function(){
@@ -69,7 +71,7 @@
 					}
 					$.ajax({
 						type: 'POST',
-						url: '../groupbuy/addItem',
+						url: '/Pin8/groupbuy/addItem',
 						data: JSON.stringify(ajaxData),
 						beforeSend: function(XMLHttpRequest) {
 							XMLHttpRequest.setRequestHeader("Content-Type", "multipart/form-data; boundary=6Mzk3h9whuKqi5YM_8irDye2i5_ulrErzYLB2");
@@ -88,10 +90,10 @@
 				joinPin: function(){
 					var self = this;
 					var items = [];
-					for(var i=0;i<self.details.length;i++){
+					for(var i=0;i<self.details.items.length;i++){
 						items.push({
-							"gbiId": self.details[i].id,
-							"quantity": self.details[i].totalQuantity
+							"gbiId": self.details.items[i].id,
+							"quantity": self.details.items[i].totalQuantity
 						})
 					}
 					$.ajax({
@@ -117,18 +119,6 @@
 						}
 					});
 				},
-				decrease: function(list){
-					if(list.quantity || list.quantity.toString()!=""){
-						list.quantity--;
-						sessionData("addLists",this.lists);
-					}
-				},
-				increase: function(list){
-					if(list.quantity.toString()!="" && list.quantity<list.totalQuantity){
-						list.quantity++;
-						sessionData("addLists",this.lists);
-					}
-				},
 				decreaseDetail: function(detail){
 					if(detail.totalQuantity || detail.totalQuantity.toString()!=""){
 						detail.totalQuantity--;
@@ -141,52 +131,25 @@
 						// sessionData("previewDetail",this.details);
 					}
 				},
-				getDetailFunction: function(){
+				getDetailFunction: function(invitationCode){
 					var self = this;
-					$.ajax({
-						type: 'POST',
-						url: '/Pin8/groupbuy/get',
-						data: JSON.stringify({
+					// invitationCode存在，即为分享的拼单
+					// invitationCode不存在，即为附近的拼单
+					if (invitationCode) {
+						var ajaxData = {
+							"gbId": gbId,
+							"invitationCode": invitationCode
+						}
+					} else {
+						var ajaxData = {
 							"gbId": gbId,
 							"userId": userInfo.id
-						}),
-						dataType: 'json',
-						contentType: 'application/json',
-						success: function(result){
-							if(result.status==0){
-								self.info = {
-									id: result.bean.id,
-									title: result.bean.title,
-									description: result.bean.description,
-									count: result.bean.memberLimit,
-									position: {
-										commName: result.bean.deliverInfo
-									},
-									createdBy: result.bean.createdBy
-								}
-								self.details = result.bean.items;
-								console.log('result data');
-								self.$log("details");
-								if(self.type == 2){
-									self.getOwnerInfo();
-								}
-								
-							}
-						},
-						error: function(result){
-						  	console.log('error',result);
 						}
-					});
-				},
-				getDetailByInvitationCodeFunction: function(invitationCode){
-					var self = this;
+					}
 					$.ajax({
 						type: 'POST',
 						url: '/Pin8/groupbuy/get',
-						data: JSON.stringify({
-							"gbId": 0,
-							"invitationCode": invitationCode
-						}),
+						data: JSON.stringify(ajaxData),
 						dataType: 'json',
 						contentType: 'application/json',
 						success: function(result){
@@ -199,15 +162,27 @@
 									position: {
 										commName: result.bean.deliverInfo
 									},
-									createdBy: result.bean.createdBy
+									createdBy: result.bean.createdBy,
+									type: result.bean.status //召集中=0，采购中=1，结算中=2，3，已结束=10，20
 								}
-								self.details = result.bean.items;
+								self.details = result.bean;
 								console.log('result data');
 								self.$log("details");
-								if(self.type == 2){
-									self.getOwnerInfo();
-								}
+								self.getOwnerInfo(function() {
+									if (self.info.type == 10 || self.info.type == 20) {
+										self.getValuation();
+									}
+								});
 								
+								var items = self.details.items;
+								for(var i=0;i<items.length;i++) {
+									for(var j=0;j<items[i].pics.length;j++) {
+										self.imageLists.push({
+											"src": items[i].pics[j].picLink,
+											"id": items[i].pics[j].id
+										})
+									}
+								}
 							}
 						},
 						error: function(result){
@@ -215,7 +190,7 @@
 						}
 					});
 				},
-				getOwnerInfo: function(){
+				getOwnerInfo: function(cb){
 					var self = this;
 					$.ajax({
 						type: 'POST',
@@ -230,10 +205,65 @@
 								self.ownerInfo = result.bean;
 								console.log("owner info");
 								self.$log("ownerInfo");
+								cb && cb();
 							}
 						},
 						error: function(result){
 							console.log("error",result);
+						}
+					});
+				},
+				getValuation: function(){
+					var self = this;
+					$.ajax({
+						type: 'POST',
+						url: '/Pin8/comm/getValuations',
+						data: JSON.stringify({
+						    "valuator": userInfo.id,
+						    "valuatee": this.ownerInfo.id,
+						    "eventType": "EVENT_GROUPBUY",
+						    "eventId": gbId,
+						    "valuateType": "GroupBuyOwner"
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: function(result){
+							if(result.status==0){
+								self.valuation = result.bean;
+								console.log("get valuation:");
+								self.$log("valuation");
+							}
+						},
+						error: function(result){
+						  	console.log('error',result);
+						}
+					});
+				},
+				submitValuation: function(){
+					var self = this;
+					$.ajax({
+						type: 'POST',
+						url: '/Pin8/comm/valuate',
+						data: JSON.stringify({
+						    "valuator": userInfo.id,
+						    "valuatee": this.owner.id,
+						    "eventType": "EVENT_GROUPBUY",
+						    "eventId": shopId,
+						    "valuateType": "GroupBuyOwner",
+						    "detail": this.valuationText,
+						    "scale": this.valuateScore
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: function(result){
+							if(result.status==0){
+								self.valuation = result.bean[0];
+								console.log("get valuation:");
+								self.$log("valuation");
+							}
+						},
+						error: function(result){
+						  	console.log('error',result);
 						}
 					});
 				},
@@ -246,26 +276,13 @@
 					if(!$(".carousel .preview-img.active").hasClass("left") && !$(".carousel .preview-img.active").hasClass("right")){
 						$('.carousel').carousel("prev");	
 					}
+				},
+				clickItem: function(index) {
+					$('.carousel').carousel(index);	
 				}
 			},
 			ready: function(){
-				//1 for new group buy    2 for near buy  3 by invitation code
-				if(this.type == 1){
-					this.info = addInfo;
-					this.lists = addLists;	
-					for(var i=0;i<this.lists.length;i++){
-						for(var j=0;j<this.lists[i].imgBox.length;j++){
-							this.imageLists.push(this.lists[i].imgBox[j].src);
-						}
-					}
-					this.$log("imageLists");
-				}else if(this.type == 2){
-					this.getDetailFunction();
-				}
-				else if(this.type == 3){//with invitation code
-					var inviCode = urlData("invitationCode") ; 
-					this.getDetailByInvitationCodeFunction(inviCode);
-				}
+				this.getDetailFunction(urlData("invitationCode"));
 				
 				$('.carousel').carousel({
 				  interval: false

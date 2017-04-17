@@ -217,6 +217,9 @@
 	border-bottom: 1px solid #EEEEEE;
 	margin-bottom: 10px;
 }
+.preview-owner img {
+	height: 100%;
+}
 .preview-owner .owner-role{
 	width: 10%;
 	line-height: 60px;
@@ -323,6 +326,10 @@
 	font-size: 15px;
 	font-weight: bold;
 }
+.billing.detail {
+	float: left;
+	width: 100%;
+}
 
 .bootstrap-switch.bootstrap-switch-focused{
 	box-shadow: none;
@@ -359,6 +366,117 @@
 
 .preview-img-container{
 	height: 100%;
+}
+
+.valuate-box{
+	text-align: center;
+}
+
+.valuate-box .score-title:before,
+.valuate-box .score-title:after{
+	content: '';
+	display: inline-block;
+	width: 50px;
+	height: 1px;
+	background: #DBDBDB;
+	margin-bottom: 5px;
+}
+.valuate-box .score-title:before{
+	margin-right: 14px;
+}
+.valuate-box .score-title:after{
+	margin-left: 14px;
+}
+.valuate-box .score-title{
+	margin-top: 35px;
+}
+
+.valuate-box .starIcon{
+	width: 30px;
+	height: 30px;
+	background-size: 30px;
+	margin: 15px 0;
+}
+.valuate-box .starIcon + .starIcon{
+	margin-left: 10px;
+}
+
+.valuate-box .valuate-title:before,
+.valuate-box .valuate-title:after{
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 1px;
+	background: #DBDBDB;
+	margin-bottom: 5px;
+}
+.valuate-box .valuate-title:before{
+	margin-right: 14px;
+}
+.valuate-box .valuate-title:after{
+	margin-left: 14px;
+}
+
+.valuate-box textarea{
+	resize: none;
+    margin-top: 33px;
+    background: #edf1f4;
+    border-color: #d2d2d2;
+    padding-top: 10px;
+    padding-left: 10px;
+    outline: none;
+}
+
+.valuate-box .valuate-btn{
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background: #8BAE29;
+    margin: 24px auto 0;
+}
+.valuate-box .valuate-btn:disabled{
+	background: #d2d2d2;
+}
+
+.valuate-name{
+	color: #1dc700;
+}
+
+.valuate-result{
+	text-align: center;
+}
+.valuate-result .result-title:before,
+.valuate-result .result-title:after{
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 1px;
+	background: #DBDBDB;
+	margin-bottom: 5px;
+}
+.valuate-result .result-title:before{
+	margin-right: 14px;
+}
+.valuate-result .result-title:after{
+	margin-left: 14px;
+}
+.valuate-result .result-title{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.valuate-result .result-content{
+    display: inline-block;
+    background: #d2d2d2;
+    padding: 5px 10px;
+    min-width: 232px;
+    text-align: left;
+}
+
+.valuate-result .result-me-img {
+	height: 30px;
 }
 
 
