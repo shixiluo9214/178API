@@ -91,6 +91,7 @@
 					for(var i=0;i<self.details.length;i++){
 						items.push({
 							"gbiId": self.details[i].id,
+							"userId": self.userInfo.id,
 							"quantity": self.details[i].totalQuantity
 						})
 					}
