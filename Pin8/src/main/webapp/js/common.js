@@ -22,6 +22,6 @@ function urlData(name){
 function checkUserInfoExist(currentPage){
 	if($.isEmptyObject(sessionData("userInfo"))){
 		sessionData("currentPage",currentPage);
-		location.href = './login.html';
+		location.href = '/Pin8';
 	}
 }

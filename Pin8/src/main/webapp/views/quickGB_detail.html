@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="../css/common.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="../css/quickGB.css">
+	
+	<title>预览</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="preview-scroll">
+				<div class="col-xs-12 preview-img-box">
+					<div id="carousel-example-generic" class="carousel slide preview-img-container" data-ride="carousel">
+				  		<!-- Indicators -->
+				  		<ol class="carousel-indicators">
+					    	<li data-target="#carousel-example-generic" v-for="img in imageLists" 
+					    	data-slide-to="{{$index}}" :class="[$index==0?'active':'']"></li>
+		 		 		</ol>
+
+				  		<!-- Wrapper for slides -->
+				  		<div class="carousel-inner preview-inner" role="listbox">
+				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
+					      		<img :src="img.src" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
+					      		<div class="preview-info clearfix">
+									<span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
+									<span class="info-status">已报名</span>
+									<span class="info-place">{{info.position.commName}}</span>
+								</div>
+					    	</div>
+					    	
+				  		</div>
+				  	</div>
+				</div>
+				<div class="col-xs-12 preview-title-container">
+					<div class="title">{{info.title}}</div>
+					<div class="detail">{{info.description}}</div>
+				</div>
+				<div class="col-xs-12 clearfix preview-owner">
+					<img :src="'..'+ownerInfo.picLink">
+					<div class="preview-owner-info">
+						<div>{{ownerInfo.nickName}}</div>
+					</div>
+					<div class="pull-right owner-role">单主</div>
+				</div>
+				<div class="col-xs-12 number-input" v-if="details.items && (info.type==0 || info.type==1 || info.type==2 || info.type==3)" 
+				v-for="detail in details.items" @click="clickItem($index)">
+					<div class="row">
+						<div class="col-xs-6 title">
+							<div class="name">{{detail.name}}</div>
+							<div class="money">￥{{detail.listPrice?detail.listPrice:'未知'}}</div>
+						</div>
+						<div class="col-xs-6 calculate pull-right">
+							<div class="btn-decs" v-if="info.type==0 && detail.totalQuantity>0" @click.stop="decreaseDetail(detail)"></div>
+							<span>{{detail.totalQuantity.toString()==''?'无上限':
+							(detail.totalQuantity>=0?detail.totalQuantity:'')}}</span>
+					    	<div class="btn-incs" v-if="info.type==0 && detail.totalQuantity.toString()!=''" 
+					    	@click.stop="increaseDetail(detail)"></div>
+						</div>
+					</div>
+				</div>
+				<div class="billing detail" v-if="details && (info.type==2 || info.type==3)">
+					<div class="box-center total-box">
+						<div class="shipping">邮费 ￥ {{details.netAmount}}</div>
+						<div class="total">合计 ￥ {{details.total}}</div>
+					</div>
+				</div>
+				<div class="valuate-box" v-if="!valuation.length">
+					<div class="score-title">请对本次拼单进行评价</div>
+					<i class="starIcon full-star" v-for="i in valuateScore" @click="setValuateScore($event)"></i>
+					<i class="starIcon empty-star" v-for="i in 5-valuateScore" @click="setValuateScore($event)"></i>
+					<div class="valuate-title">请选择您对<span class='valuate-name'>{{owner.nickName}}</span>的印象</div>
+					<textarea cols="35" rows="5" placeholder="请说说对TA的印象吧" v-model="valuationText"></textarea>
+					<button class="valuate-btn" @click="submitValuation" :disabled="!valuateScore||!valuationText">提交评价</button>
+				</div>
+				<div class="valuate-result" v-if="valuation.length">
+					<div class="result-title">你对<span class='valuate-name'>{{owner.nickName}}</span>的印象</div>
+					<div class="result-content">{{valuation[0].detail}}</div>
+					<img :src="'..'+userInfo.picLink" class="result-me-img">
+				</div>
+			</div>
+			<div class="col-xs-12 preview-groups">
+				<div class="row">
+					<div class="col-xs-12 text-center preview-confirm" @click="joinPin" v-if="info.type==0">参加拼单</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="../js/lib/jquery-2.2.1.js"></script>
+<script src="../js/lib/iscroll.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/lib/hammer.min.js"></script>
+<script src="../js/lib/vue-touch.min.js"></script>
+<script src="../js/common.js"></script>
+<!-- mmodule js -->
+<script src="../js/quickGB_detail.js"></script>

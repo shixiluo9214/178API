@@ -642,6 +642,10 @@
     text-align: left;
 }
 
+.valuate-result .result-me-img {
+	height: 30px;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 3),
 only screen and (min--moz-device-pixel-ratio: 3),
 only screen and (-o-min-device-pixel-ratio: 3/1),

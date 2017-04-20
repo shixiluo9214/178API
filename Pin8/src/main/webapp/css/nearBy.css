@@ -1,3 +1,7 @@
+img {
+	max-width: 100%;
+}
+
 .list-container{
 	background: #5c645f;
 	height: 100%;
