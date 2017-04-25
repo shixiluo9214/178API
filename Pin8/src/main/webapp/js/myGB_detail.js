@@ -70,7 +70,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: '../groupbuy/get',
+						url: '/Pin8/groupbuy/get',
 						data: JSON.stringify({
 							"userId": userInfo.id,
 							"gbId":shopId
@@ -94,7 +94,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: '../user/getUser',
+						url: '/Pin8/user/getUser',
 						data: JSON.stringify({
 							"id": self.gbDetail.createdBy
 						}),
@@ -119,7 +119,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: '../groupbuy/receive',
+						url: '/Pin8/groupbuy/receive',
 						data: JSON.stringify({
 							"id": shopId
 						}),
@@ -147,7 +147,7 @@
 					}
 					$.ajax({
 						type: 'POST',
-						url: '../groupbuy/participate',
+						url: '/Pin8/groupbuy/participate',
 						data: JSON.stringify({
 							"gbId": shopId,
 							"userId": userInfo.id,
@@ -157,7 +157,8 @@
 						contentType: 'application/json',
 						success: function(result){
 							if(result.status==0){
-								console.log("Submit update successfully.");
+//								console.log("Submit update successfully.");
+								location.href = "./myGB_list.html?id="+shopId;
 							}
 						},
 						error: function(result){
@@ -169,7 +170,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: '../groupbuy/pay',
+						url: '/Pin8/groupbuy/pay',
 						data: JSON.stringify({
 							"id": shopId
 						}),
@@ -193,7 +194,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: '../comm/getValuations',
+						url: '/Pin8/comm/getValuations',
 						data: JSON.stringify({
 						    "valuator": userInfo.id,
 						    "valuatee": this.owner.id,
@@ -219,7 +220,7 @@
 					var self = this;
 					$.ajax({
 						type: 'POST',
-						url: '../comm/valuate',
+						url: '/Pin8/comm/valuate',
 						data: JSON.stringify({
 						    "valuator": userInfo.id,
 						    "valuatee": this.owner.id,
