@@ -30,7 +30,7 @@
 				  		<!-- Wrapper for slides -->
 				  		<div class="carousel-inner preview-inner" role="listbox">
 				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
-					      		<img :src="img.src" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
+					      		<img :src="'..'+img.src" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
 					      		<div class="preview-info clearfix">
 									<span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
 									<span class="info-status">已报名</span>

@@ -11,6 +11,15 @@
 				}
 			}
 		});
+		Vue.filter("getPics", function(purchases) {
+			var array = [];
+			for(var i=0;i<purchases.length;i++) {
+				if(purchases[i].picLink) {
+					array.push(purchases[i].picLink);
+				}
+			}
+			return array;
+		});
 		var vm = new Vue({
 			el: "body",
 			data: {

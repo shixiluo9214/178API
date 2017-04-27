@@ -20,14 +20,14 @@
 		<div class="list-box row" v-for="list in lists" @click="showDetail(list)">
 			<div class="list-content clearfix">
 				<div class="col-xs-4 col-md-4">
-				<img src="list.picLink?('..'+list.picLink):'../img/btn_neworder_normal@2x.png'" 
+				<img :src="list.picLink?('..'+list.picLink):'../img/btn_neworder_normal@2x.png'" 
 				class="img-fluid" alt="Responsive image" onerror="this.src='../img/btn_neworder_normal@2x.png'"></img>
 				</div>
 				<div class="col-xs-8 content">
 					<div class="title">{{list.title}}</div>
 					<div class="description">{{list.description}}</div>
 					<div class="header-imgs">
-						<img class="header-img" v-for="img in list.attendList">
+						<img class="header-img" v-for="img in list.purchases | getPics" :src="'..'+img">
 					</div>
 					<div class="position">{{list.nickName}}</div>
 					<div class="attendee">{{list.totalMember}}/{{list.memberLimit}} 已报名</div>

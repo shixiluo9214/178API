@@ -97,8 +97,8 @@ img {
     white-space: nowrap;
 }
 .header-imgs{
-	margin-top: 10px;
-	margin-bottom: 40px;
+	margin-top: 20px;
+	display: flex;
 }
 .header-img{
 	width: 24px;
@@ -106,7 +106,7 @@ img {
 	border-radius: 50%;
 }
 .header-img + .header-img{
-	margin-left: 13px;
+	margin-left: 8px;
 }
 
 
