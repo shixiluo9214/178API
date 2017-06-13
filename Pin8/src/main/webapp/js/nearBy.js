@@ -37,6 +37,12 @@
 				showDetail: function(val){
 					location.href = "./quickGB_detail.html?id="+val.id;
 				},
+				addAddress: function() {
+					location.href = "./locationList.html";
+				},
+				closeDialog: function() {
+					$(".dialog").hide();
+				},
 				getList: function(){
 					var self = this;
 					$.ajax({
@@ -60,10 +66,35 @@
 						  	console.log('error',result);
 						}
 					});
+				},
+				getAddress: function() {
+					var self = this;
+					$.ajax({
+						type: 'POST',
+						url: '../user/getAddresses',
+						data: JSON.stringify({
+							"userId": userInfo.id
+						}),
+						dataType: 'json',
+						contentType: 'application/json',
+						success: function(result){
+							if(result.status==0){
+//								self.lists = result.bean;
+								if(result.bean.length && result.bean[0]) {
+									self.getList();
+								}
+							} else {
+								$(".dialog").show();
+							}
+						},
+						error: function(result){
+						  	console.log('error',result);
+						}
+					});
 				}
 			},
 			ready: function(){
-				this.getList();
+				this.getAddress();
 			}
 		});
 	});	

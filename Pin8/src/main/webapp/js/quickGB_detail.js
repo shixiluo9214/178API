@@ -126,7 +126,7 @@
 					}
 				},
 				increaseDetail: function(detail){
-					if(detail.totalQuantity.toString()!="" && detail.totalQuantity<detail.quantityLimit){
+					if(detail.totalQuantity.toString()!="" && detail.totalQuantity<detail.quantityLimit || detail.quantityLimit==-1){
 						detail.totalQuantity++;
 						// sessionData("previewDetail",this.details);
 					}

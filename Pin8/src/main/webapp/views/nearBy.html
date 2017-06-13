@@ -20,20 +20,28 @@
 		<div class="list-box row" v-for="list in lists" @click="showDetail(list)">
 			<div class="list-content clearfix">
 				<div class="col-xs-4 col-md-4">
-				<img :src="list.picLink?('..'+list.picLink):'../img/btn_neworder_normal@2x.png'" 
-				class="img-fluid" alt="Responsive image" onerror="this.src='../img/btn_neworder_normal@2x.png'"></img>
+				<img :src="list.picLink?('..'+list.picLink):'../img/default.jpg'" 
+				class="img-fluid" alt="Responsive image" onerror="this.src='../img/default.jpg'"></img>
 				</div>
 				<div class="col-xs-8 content">
 					<div class="title">{{list.title}}</div>
 					<div class="description">{{list.description}}</div>
 					<div class="header-imgs">
-						<img class="header-img" v-for="img in list.purchases | getPics" :src="'..'+img">
+						<img class="header-img" v-for="img in list.purchases | getPics" :src="'..'+img"
+						onerror="this.style='display:none;'">
 					</div>
-					<div class="position">{{list.nickName}}</div>
+					<div class="position">{{list.deliverInfo}}</div>
 					<div class="attendee">{{list.totalMember}}/{{list.memberLimit}} 已报名</div>
 				</div>
 			</div>
 			<progress :left="list.totalMember" :total="list.memberLimit"></progress>
+		</div>
+		<div class="dialog">
+			<div class="dialog-contain">
+				<p class="dialog-content">您需要添加常驻地址才能看到附近拼单</p>
+				<div class="dialog-cancel" @click="closeDialog">取消</div>
+				<div class="dialog-confirm" @click="addAddress">前往添加</div>
+			</div>
 		</div>
 	</div>
 

@@ -13,7 +13,7 @@
 	<!-- module css -->
 	<link rel="stylesheet" media="screen" href="../css/quickGB.css">
 	
-	<title>预览</title>
+	<title>拼单详情</title>
 </head>
 <body>
 	<div class="container">
@@ -32,14 +32,16 @@
 				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
 					      		<img :src="'..'+img.src" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
 					      		<div class="preview-info clearfix">
-									<span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
-									<span class="info-status">已报名</span>
-									<span class="info-place">{{info.position.commName}}</span>
+									<!-- <span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
+									<span class="info-status">已报名</span> 
+									<span class="info-place">{{info.position.commName}}</span>-->
 								</div>
 					    	</div>
 					    	
 				  		</div>
 				  	</div>
+				  	<p class="preview-member">{{details.totalMember}}/{{details.memberLimit}} 已报名</p>
+				  	<p class="preview-place">{{info.position.commName}}</p>
 				</div>
 				<div class="col-xs-12 preview-title-container">
 					<div class="title">{{info.title}}</div>

@@ -157,6 +157,19 @@
 	padding: 0;
 }
 
+.preview-member {
+	position: absolute;
+	left: 10px;
+	bottom: 0;
+	color: #fff;
+}
+.preview-place {
+	position: absolute;
+	right:10px;
+	bottom: 0;
+	color: #fff;
+}
+
 
 
 .preview-info{
@@ -219,6 +232,7 @@
 }
 .preview-owner img {
 	height: 100%;
+	border-radius: 50%;
 }
 .preview-owner .owner-role{
 	width: 10%;
@@ -227,7 +241,7 @@
 .preview-owner .preview-owner-info{
 	position: absolute;
 	top: 50%;
-	left: 75px;
+	left: 90px;
 	transform: translateY(-50%);
 }
 

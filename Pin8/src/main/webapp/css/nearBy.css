@@ -109,6 +109,40 @@ img {
 	margin-left: 8px;
 }
 
+.dialog{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.4);
+	display: none;
+}
+.dialog .dialog-contain{
+	width: 260px;
+	position: absolute;
+	background: #fff;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+}
+.dialog .dialog-content {
+	padding:30px 20px;
+	text-align: center;
+	border-bottom: 1px solid;
+}
+.dialog .dialog-cancel,
+.dialog .dialog-confirm {
+	display: inline-block;
+	width: 50%;
+	float: left;
+	text-align: center;
+	padding: 10px 0;
+}
+.dialog .dialog-confirm {
+	background: #8AA932;
+	color: #fff;
+}
 
 
 
