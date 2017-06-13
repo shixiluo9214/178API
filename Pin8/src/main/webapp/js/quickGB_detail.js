@@ -279,6 +279,13 @@
 				},
 				clickItem: function(index) {
 					$('.carousel').carousel(index);	
+				},
+				download: function() {
+					if (navigator.userAgent.toLowerCase().match(/iphone|ipad/ig)) {
+						alert("暂时不支持苹果下载");
+					} else {
+						location.href = "http://zilian.co:8080/Pin8/download";
+					}
 				}
 			},
 			ready: function(){

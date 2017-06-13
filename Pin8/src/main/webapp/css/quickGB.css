@@ -107,7 +107,7 @@
 	font-size: 13px;
 	color: #666666;
 	padding-top: 2px;
-}
+}	
 
 
 
@@ -260,6 +260,13 @@
 .preview-groups .preview-confirm{
 	background-color: #8CAD2B;
 	color: #fff;
+}
+.download {
+	position: absolute;
+	right: 10px;
+	bottom: 50px;
+	padding: 5px 10px 0;
+	border-bottom: 1px solid;
 }
 
 
