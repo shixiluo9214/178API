@@ -1,0 +1,33 @@
+.distpicker {
+	margin-top: 50px;
+}
+.distpicker select {
+	width: 30%;
+}
+
+.name, .number{
+	margin-top: 20px;
+	font-size: 18px;
+}
+
+.name input,
+.number input {
+    margin-left: 14px;
+    font-size: 18px;
+    width: 270px;
+    background: #edf1f4;
+    border-bottom: 1px solid;
+}
+
+.save {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 42px;
+	line-height: 42px;
+	text-align:center;
+	background: #8CAD2B;
+	color: #fff;
+	font-size: 20px;
+}

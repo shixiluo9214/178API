@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- common css -->
+	<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" media="screen" href="../css/common.css">
+	<link rel="stylesheet" media="screen" href="../css/animate.css">
+	<!-- module css -->
+	<link rel="stylesheet" media="screen" href="../css/locationAdd.css">
+	
+	<title>地址添加</title>
+</head>
+<body class="container-fluid">
+	<div data-toggle="distpicker" class="distpicker">
+	  <select data-province="---- 选择省 ----"></select>
+	  <select data-city="---- 选择市 ----"></select>
+	  <select data-district="---- 选择区 ----"></select>
+	</div>
+	<div class="name">
+		<span>小区名</span>
+		<input placeholder="点击输入您所居住小区的名称">
+	</div>
+	<div class="number">
+		<span>门牌号</span>
+		<input placeholder="点击输入您具体地址用以接收快递">
+	</div>
+	<div class="save">保存设置</div>
+</body>
+</html>
+
+<!-- common js -->
+<script src="../js/lib/jquery-2.2.1.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/lib/distpicker.min.js"></script>
+<!-- module js -->
+<script src="../js/locationAdd.js"></script>

@@ -13,7 +13,7 @@
 	<!-- module css -->
 	<link rel="stylesheet" media="screen" href="../css/quickGB.css">
 	
-	<title>预览</title>
+	<title>拼单详情</title>
 </head>
 <body>
 	<div class="container">
@@ -32,14 +32,16 @@
 				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
 					      		<img :src="'..'+img.src" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
 					      		<div class="preview-info clearfix">
-									<span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
-									<span class="info-status">已报名</span>
-									<span class="info-place">{{info.position.commName}}</span>
+									<!-- <span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
+									<span class="info-status">已报名</span> 
+									<span class="info-place">{{info.position.commName}}</span>-->
 								</div>
 					    	</div>
 					    	
 				  		</div>
 				  	</div>
+				  	<p class="preview-member">{{details.totalMember}}/{{details.memberLimit}} 已报名</p>
+				  	<p class="preview-place">{{info.position.commName}}</p>
 				</div>
 				<div class="col-xs-12 preview-title-container">
 					<div class="title">{{info.title}}</div>
@@ -88,6 +90,7 @@
 					<img :src="'..'+userInfo.picLink" class="result-me-img">
 				</div>
 			</div>
+			<div class="download" @click="download">快来客户端查看拼单进度吧！</div>
 			<div class="col-xs-12 preview-groups">
 				<div class="row">
 					<div class="col-xs-12 text-center preview-confirm" @click="joinPin" v-if="info.type==0">参加拼单</div>

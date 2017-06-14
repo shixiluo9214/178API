@@ -126,7 +126,7 @@
 					}
 				},
 				increaseDetail: function(detail){
-					if(detail.totalQuantity.toString()!="" && detail.totalQuantity<detail.quantityLimit){
+					if(detail.totalQuantity.toString()!="" && detail.totalQuantity<detail.quantityLimit || detail.quantityLimit==-1){
 						detail.totalQuantity++;
 						// sessionData("previewDetail",this.details);
 					}
@@ -279,6 +279,13 @@
 				},
 				clickItem: function(index) {
 					$('.carousel').carousel(index);	
+				},
+				download: function() {
+					if (navigator.userAgent.toLowerCase().match(/iphone|ipad/ig)) {
+						alert("暂时不支持苹果下载");
+					} else {
+						location.href = "http://zilian.co:8080/Pin8/download";
+					}
 				}
 			},
 			ready: function(){
