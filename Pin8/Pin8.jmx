@@ -35,7 +35,7 @@
           </elementProp>
           <elementProp name="host" elementType="Argument">
             <stringProp name="Argument.name">host</stringProp>
-            <stringProp name="Argument.value">ec2-54-254-198-133.ap-southeast-1.compute.amazonaws.com</stringProp>
+            <stringProp name="Argument.value">ec2-52-221-245-219.ap-southeast-1.compute.amazonaws.com</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="path" elementType="Argument">
@@ -1348,7 +1348,7 @@ Address status:
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 GroupBuy" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 GroupBuy" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7495,15 +7495,13 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Comm_getAllMessage" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GroupBuy_Get" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-    &quot;receiver&quot;: &quot;42&quot;,&quot;fromDate&quot;:&quot;2016-10-01 10:45:00&quot;,&quot;toDate&quot;:&quot;2017-07-21 15:28:11&quot;&#xd;
-}</stringProp>
+                <stringProp name="Argument.value">{&quot;gbId&quot;:&quot;685&quot;,&quot;userId&quot;:&quot;99&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -7514,7 +7512,7 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-          <stringProp name="HTTPSampler.path">/${path}/comm/getMessages</stringProp>
+          <stringProp name="HTTPSampler.path">/${path}/groupbuy/get</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7522,8 +7520,256 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Output:
+{
+    &quot;status&quot;: 0,
+    &quot;errorCode&quot;: null,
+    &quot;errorMessage&quot;: null,
+    &quot;bean&quot;: {
+        &quot;id&quot;: 309,
+        &quot;title&quot;: &quot;德国海淘奶粉&quot;,
+        &quot;catalog&quot;: &quot;食品&quot;,
+        &quot;startDate&quot;: null,
+        &quot;dueDate&quot;: &quot;2015-05-20&quot;,
+        &quot;status&quot;: 20,
+        &quot;deliverStatus&quot;: 1,
+        &quot;deliverInfo&quot;: &quot;请到12-5-6-5取货&quot;,
+        &quot;memberLimit&quot;: 5,
+        &quot;totalMember&quot;: 2,
+        &quot;createdBy&quot;: 22,
+        &quot;nickName&quot;: &quot;FIEHJDFJ_nickname&quot;,
+        &quot;description&quot;: &quot;德国原装奶粉，运费40，数量有限&quot;,
+        &quot;picLink&quot;: null,
+        &quot;freightCal&quot;: &quot;按重量分摊运费&quot;,
+        &quot;listAmount&quot;: 141327.78,
+        &quot;netAmount&quot;: 90,
+        &quot;freight&quot;: 18,
+        &quot;total&quot;: 108,
+        &quot;items&quot;: [
+            {
+                &quot;id&quot;: 264,
+                &quot;gbId&quot;: 309,
+                &quot;name&quot;: &quot;奶粉1&quot;,
+                &quot;listPrice&quot;: 14.31,
+                &quot;netPrice&quot;: 5,
+                &quot;unit&quot;: &quot;罐&quot;,
+                &quot;quantityLimit&quot;: 10,
+                &quot;totalQuantity&quot;: 8,
+                &quot;netQuantity&quot;: 9,
+                &quot;freight&quot;: 9,
+                &quot;detail&quot;: &quot;一段奶粉&quot;,
+                &quot;quantity&quot;: 5,
+                &quot;pics&quot;: [
+                    {
+                        &quot;id&quot;: 393,
+                        &quot;picLink&quot;: &quot;/upload/groupbuyItemFolder/309_1_0_1443014897605.xlsx&quot;
+                    }
+                ],
+                &quot;itemPurchases&quot;: [
+                    {
+                        &quot;id&quot;: 549,
+                        &quot;gbpId&quot;: 391,
+                        &quot;gbiId&quot;: 264,
+                        &quot;quantity&quot;: 5,
+                        &quot;netQuantity&quot;: 5,
+                        &quot;freight&quot;: 5,
+                        &quot;userId&quot;: 22,
+                        &quot;nickName&quot;: &quot;FIEHJDFJ_nickname&quot;,
+                        &quot;name&quot;: &quot;奶粉1&quot;,
+                        &quot;listPrice&quot;: 14.31,
+                        &quot;netPrice&quot;: 5,
+                        &quot;unit&quot;: &quot;罐&quot;
+                    },
+                    {
+                        &quot;id&quot;: 551,
+                        &quot;gbpId&quot;: 392,
+                        &quot;gbiId&quot;: 264,
+                        &quot;quantity&quot;: 3,
+                        &quot;netQuantity&quot;: 4,
+                        &quot;freight&quot;: 4,
+                        &quot;userId&quot;: 21,
+                        &quot;nickName&quot;: &quot;金成参与者2&quot;,
+                        &quot;name&quot;: &quot;奶粉1&quot;,
+                        &quot;listPrice&quot;: 14.31,
+                        &quot;netPrice&quot;: 5,
+                        &quot;unit&quot;: &quot;罐&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 265,
+                &quot;gbId&quot;: 309,
+                &quot;name&quot;: &quot;奶粉2&quot;,
+                &quot;listPrice&quot;: 14121.33,
+                &quot;netPrice&quot;: 5,
+                &quot;unit&quot;: &quot;罐&quot;,
+                &quot;quantityLimit&quot;: 10,
+                &quot;totalQuantity&quot;: 10,
+                &quot;netQuantity&quot;: 9,
+                &quot;freight&quot;: 9,
+                &quot;detail&quot;: &quot;二段奶粉&quot;,
+                &quot;quantity&quot;: 5,
+                &quot;pics&quot;: [
+                    {
+                        &quot;id&quot;: 395,
+                        &quot;picLink&quot;: &quot;/upload/groupbuyItemFolder/309_2_0_1443014897605.lnk&quot;
+                    },
+                    {
+                        &quot;id&quot;: 396,
+                        &quot;picLink&quot;: &quot;/upload/groupbuyItemFolder/309_2_1_1443014897606.txt&quot;
+                    }
+                ],
+                &quot;itemPurchases&quot;: [
+                    {
+                        &quot;id&quot;: 550,
+                        &quot;gbpId&quot;: 391,
+                        &quot;gbiId&quot;: 265,
+                        &quot;quantity&quot;: 5,
+                        &quot;netQuantity&quot;: 5,
+                        &quot;freight&quot;: 5,
+                        &quot;userId&quot;: 22,
+                        &quot;nickName&quot;: &quot;FIEHJDFJ_nickname&quot;,
+                        &quot;name&quot;: &quot;奶粉2&quot;,
+                        &quot;listPrice&quot;: 14121.33,
+                        &quot;netPrice&quot;: 5,
+                        &quot;unit&quot;: &quot;罐&quot;
+                    },
+                    {
+                        &quot;id&quot;: 552,
+                        &quot;gbpId&quot;: 392,
+                        &quot;gbiId&quot;: 265,
+                        &quot;quantity&quot;: 5,
+                        &quot;netQuantity&quot;: 4,
+                        &quot;freight&quot;: 4,
+                        &quot;userId&quot;: 21,
+                        &quot;nickName&quot;: &quot;金成参与者2&quot;,
+                        &quot;name&quot;: &quot;奶粉2&quot;,
+                        &quot;listPrice&quot;: 14121.33,
+                        &quot;netPrice&quot;: 5,
+                        &quot;unit&quot;: &quot;罐&quot;
+                    }
+                ]
+            }
+        ],
+        &quot;purchases&quot;: [
+            {
+                &quot;id&quot;: 392,
+                &quot;gbId&quot;: 309,
+                &quot;userId&quot;: 21,
+                &quot;status&quot;: 0,
+                &quot;payStatus&quot;: 0,
+                &quot;collectStatus&quot;: 1,
+                &quot;receiveStatus&quot;: 0,
+                &quot;listAmount&quot;: 70649.58,
+                &quot;netAmount&quot;: 40,
+                &quot;freight&quot;: 8,
+                &quot;total&quot;: 48,
+                &quot;nickName&quot;: &quot;金成参与者2&quot;,
+                &quot;items&quot;: null
+            },
+            {
+                &quot;id&quot;: 391,
+                &quot;gbId&quot;: 309,
+                &quot;userId&quot;: 22,
+                &quot;status&quot;: 0,
+                &quot;payStatus&quot;: 1,
+                &quot;collectStatus&quot;: 1,
+                &quot;receiveStatus&quot;: 1,
+                &quot;listAmount&quot;: 70678.2,
+                &quot;netAmount&quot;: 50,
+                &quot;freight&quot;: 10,
+                &quot;total&quot;: 60,
+                &quot;nickName&quot;: &quot;FIEHJDFJ_nickname&quot;,
+                &quot;items&quot;: null
+            }
+        ],
+        &quot;accesses&quot;: [
+            {
+                &quot;id&quot;: 345,
+                &quot;scopeType&quot;: &quot;COMM&quot;,
+                &quot;scopeId&quot;: 1
+            },
+            {
+                &quot;id&quot;: 346,
+                &quot;scopeType&quot;: &quot;USER&quot;,
+                &quot;scopeId&quot;: 21
+            }
+        ],
+        &quot;contactTypes&quot;: [
+            {
+                &quot;id&quot;: 543,
+                &quot;contactType&quot;: &quot;EMAIL&quot;
+            },
+            {
+                &quot;id&quot;: 544,
+                &quot;contactType&quot;: &quot;PHONE&quot;
+            }
+        ],
+        &quot;payinfos&quot;: [
+            {
+                &quot;id&quot;: 87,
+                &quot;paymentType&quot;: &quot;Alipay&quot;,
+                &quot;accountId&quot;: &quot;xxxxxx&quot;,
+                &quot;accountName&quot;: &quot;陈二丫&quot;
+            },
+            {
+                &quot;id&quot;: 88,
+                &quot;paymentType&quot;: &quot;WeChat&quot;,
+                &quot;accountId&quot;: &quot;xxxxxx&quot;,
+                &quot;accountName&quot;: null
+            },
+            {
+                &quot;id&quot;: 89,
+                &quot;paymentType&quot;: &quot;Cash&quot;,
+                &quot;accountId&quot;: null,
+                &quot;accountName&quot;: null
+            }
+        ],
+        &quot;message&quot;: null,
+        &quot;countOfQuestion&quot;: 0,
+        &quot;countOfMessage&quot;: 0
+    }
+}</stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor - gbiId" enabled="true">
+            <stringProp name="VAR">gbiId</stringProp>
+            <stringProp name="JSONPATH">$.bean.items[*].id</stringProp>
+            <stringProp name="DEFAULT">0</stringProp>
+            <stringProp name="VARIABLE"></stringProp>
+            <stringProp name="SUBJECT">BODY</stringProp>
+          </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+          <hashTree/>
+          <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor - gbipId" enabled="true">
+            <stringProp name="VAR">gbipId</stringProp>
+            <stringProp name="JSONPATH">$.bean.items[*].itemPurchases[*].id</stringProp>
+            <stringProp name="DEFAULT">0</stringProp>
+            <stringProp name="VARIABLE"></stringProp>
+            <stringProp name="SUBJECT">BODY</stringProp>
+          </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+          <hashTree/>
+          <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor - gbpId" enabled="true">
+            <stringProp name="VAR">gbpId</stringProp>
+            <stringProp name="JSONPATH">$.bean.purchases[*].id</stringProp>
+            <stringProp name="DEFAULT">0</stringProp>
+            <stringProp name="VARIABLE"></stringProp>
+            <stringProp name="SUBJECT">BODY</stringProp>
+          </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+          <hashTree/>
+        </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
@@ -8384,7 +8630,7 @@ Input3:
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 Friend" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 Friend" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
