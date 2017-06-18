@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.ccc.comm.controller.CommController;
+import com.framework.utils.Cfg;
 
 /**
  * This servlet is used to provide the download service for android apk
@@ -25,13 +27,21 @@ public class DownloadServlet extends HttpServlet {
 	private static final Logger logger = Logger.getLogger(CommController.class);
 	private static final int BYTES_DOWNLOAD = 1024;
 
-	private static final String FILENAME_ANDROID_APK = "pin8-android.apk";
+	private static final String DEFAULT_DOANLOWD_PATH = "upload/download/pin8-android.apk";
 	private static final String FILENAME_DISPLAY_IN_BROWSER = "pin8-android.apk";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		String rootPath = getServletConfig().getServletContext().getRealPath("/");
-		File downloadFile = new File(rootPath + File.separator + FILENAME_ANDROID_APK);
+		
+		/**
+		 * the path could be configured in the system.properties file.
+		 */
+		String androidAppPath = Cfg.getSysProperty(Cfg.KEY_DOWNLOAD_ANDROID_PATH);
+		if(StringUtils.isEmpty(androidAppPath)){
+			androidAppPath = DEFAULT_DOANLOWD_PATH;
+		}
+		File downloadFile = new File(rootPath + File.separator + androidAppPath);
 		System.out.println("path:" + downloadFile.getAbsolutePath());
 		System.out.println("exists:" + downloadFile.exists());
 
@@ -44,7 +54,7 @@ public class DownloadServlet extends HttpServlet {
 					String.format("attachment; filename=\"%s\"", FILENAME_DISPLAY_IN_BROWSER));
 
 			ServletContext ctx = getServletContext();
-			InputStream is = ctx.getResourceAsStream("/" + FILENAME_ANDROID_APK);
+			InputStream is = ctx.getResourceAsStream("/" + androidAppPath);
 
 			int read = 0;
 			byte[] bytes = new byte[BYTES_DOWNLOAD];

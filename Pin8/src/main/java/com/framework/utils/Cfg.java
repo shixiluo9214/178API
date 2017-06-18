@@ -13,6 +13,8 @@ public final class Cfg {
     private static Properties errorProps = null;
     private static Properties messageProps = null;
     public static boolean debug = false;
+    
+    public static final String KEY_DOWNLOAD_ANDROID_PATH = "download.android.path";
 
     static {
         try {
