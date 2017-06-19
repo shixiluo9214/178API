@@ -93,7 +93,8 @@
 			<div class="download" @click="download">快来客户端查看拼单进度吧！</div>
 			<div class="col-xs-12 preview-groups">
 				<div class="row">
-					<div class="col-xs-12 text-center preview-confirm" @click="joinPin" v-if="info.type==0">参加拼单</div>
+					<div class="col-xs-12 text-center preview-confirm" @click="joinPin" v-if="info.type==0 && !hasAttended">参加拼单</div>
+					<div class="col-xs-12 text-center preview-confirm" @click="btnAttended" v-if="info.type==0 && hasAttended">已参加拼单，前往我的拼单进行操作</div>
 				</div>
 			</div>
 		</div>

@@ -84,6 +84,24 @@
 							}
 							console.log("My gb detail:");
 							self.$log("gbDetail");
+							if (!status) {
+								switch(result.bean.type) {
+								case 0:
+									self.statusIndex = 0;
+									break;
+								case 1:
+									self.statusIndex = 1;
+									break;
+								case 2:
+								case 3:
+									self.statusIndex = 2;
+									break;
+								case 10:
+								case 20:
+									self.statusIndex = 3;
+									break;
+								}
+							}
 						},
 						error: function(result){
 						  	console.log('error',result);

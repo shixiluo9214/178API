@@ -15,7 +15,8 @@
 				userInfo: userInfo,
 				ownerInfo: '',
 				valuation: null,
-				valuationText: null
+				valuationText: null,
+				hasAttended: false,
 			},
 			methods: {
 				previewPage: function(){
@@ -119,6 +120,9 @@
 						}
 					});
 				},
+				btnAttended: function(){
+					window.location.href = "./myGB_detail.html?id=" + gbId;
+				},
 				decreaseDetail: function(detail){
 					if(detail.totalQuantity || detail.totalQuantity.toString()!=""){
 						detail.totalQuantity--;
@@ -181,6 +185,12 @@
 											"src": items[i].pics[j].picLink,
 											"id": items[i].pics[j].id
 										})
+									}
+								}
+								var purchases = self.details.purchases;
+								for(var i=0;i<purchases.length;i++) {
+									if (purchases[i].userId == userInfo.id) {
+										self.hasAttended = true;
 									}
 								}
 							}
