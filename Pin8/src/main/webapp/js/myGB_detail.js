@@ -39,12 +39,14 @@
 				// 	this.statusIndex = i;
 				// },
 				decrease: function(list){
-					if(list.totalQuantity || list.totalQuantity.toString()!=""){
+					if(list.quantity || list.quantity.toString()!=""){
+						list.quantity--;
 						list.totalQuantity--;
 					}
 				},
 				increase: function(list){
-					if((list.totalQuantity || list.totalQuantity.toString()!="") && list.totalQuantity<list.quantityLimit){
+					if((list.quantity || list.quantity.toString()!="") && list.totalQuantity<list.quantityLimit){
+						list.quantity++;
 						list.totalQuantity++;
 					}
 				},

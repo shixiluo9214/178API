@@ -233,16 +233,14 @@
 .preview-owner img {
 	height: 100%;
 	border-radius: 50%;
+	display: inline-block;
 }
 .preview-owner .owner-role{
 	width: 10%;
 	line-height: 60px;
 }
 .preview-owner .preview-owner-info{
-	position: absolute;
-	top: 50%;
-	left: 90px;
-	transform: translateY(-50%);
+	display: inline-block;
 }
 
 .preview-groups{
@@ -386,6 +384,11 @@
 }
 
 .preview-img-container{
+	height: 100%;
+}
+.preview-img-container img{
+	display: block;
+	margin: 0 auto;
 	height: 100%;
 }
 

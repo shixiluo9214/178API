@@ -29,7 +29,7 @@
 
 				  		<!-- Wrapper for slides -->
 				  		<div class="carousel-inner preview-inner" role="listbox">
-				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
+				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists" v-if="imageLists.length">
 					      		<img :src="'..'+img.src" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
 					      		<div class="preview-info clearfix">
 									<!-- <span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
@@ -37,7 +37,7 @@
 									<span class="info-place">{{info.position.commName}}</span>-->
 								</div>
 					    	</div>
-					    	
+					    	<img v-else src="../img/default.jpg">
 				  		</div>
 				  	</div>
 				  	<p class="preview-member">{{details.totalMember}}/{{details.memberLimit}} 已报名</p>

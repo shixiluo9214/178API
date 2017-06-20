@@ -44,16 +44,16 @@
 			<span>{{gbDetail.description}}<span>
 		</div>
 		<div class="detail-lists">
-			<div class="detail-list-1" v-for="list in gbDetail.items">
+			<div class="detail-list-1" v-for="list in gbDetail.items" v-if="list.quantity">
 				<div class="title">
 					<div class="name">{{list.name}}</div>
 					<div class="extra">{{list.detail}}</div>
 					<div class="money">￥{{list.listPrice?list.listPrice:'未知'}}</div>
 				</div>
 				<div class="calculate">
-					<div class="btn-decs" v-if="list.totalQuantity>0" @click="decrease(list)"></div>
-					<span>{{list.totalQuantity}}</span>
-					<div class="btn-incs" v-if="list.totalQuantity.toString()!=''" @click="increase(list)"></div>
+					<div class="btn-decs" v-if="list.quantity>0" @click="decrease(list)"></div>
+					<span>{{list.quantity}}</span>
+					<div class="btn-incs" v-if="list.quantity.toString()!=''" @click="increase(list)"></div>
 				</div>
 			</div>
 		</div>
