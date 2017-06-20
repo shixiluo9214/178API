@@ -62,10 +62,10 @@
 							<div class="money">￥{{detail.listPrice?detail.listPrice:'未知'}}</div>
 						</div>
 						<div class="col-xs-6 calculate pull-right">
-							<div class="btn-decs" v-if="info.type==0 && detail.totalQuantity>0" @click.stop="decreaseDetail(detail)"></div>
+							<div class="btn-decs" v-if="info.type==0 && detail.quantity>0 && !hasAttended" @click.stop="decreaseDetail(detail)"></div>
 							<span>{{detail.totalQuantity.toString()==''?'无上限':
-							(detail.totalQuantity>=0?detail.totalQuantity:'')}}</span>
-					    	<div class="btn-incs" v-if="info.type==0 && detail.totalQuantity.toString()!=''" 
+							(detail.quantity>=0?detail.quantity:'')}}</span>
+					    	<div class="btn-incs" v-if="info.type==0 && detail.quantity.toString()!='' && !hasAttended" 
 					    	@click.stop="increaseDetail(detail)"></div>
 						</div>
 					</div>

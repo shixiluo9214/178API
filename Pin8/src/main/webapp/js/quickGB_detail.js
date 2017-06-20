@@ -94,7 +94,7 @@
 					for(var i=0;i<self.details.items.length;i++){
 						items.push({
 							"gbiId": self.details.items[i].id,
-							"quantity": self.details.items[i].totalQuantity
+							"quantity": self.details.items[i].quantity
 						})
 					}
 					$.ajax({
@@ -124,13 +124,15 @@
 					window.location.href = "./myGB_detail.html?id=" + gbId;
 				},
 				decreaseDetail: function(detail){
-					if(detail.totalQuantity || detail.totalQuantity.toString()!=""){
+					if(detail.quantity || detail.quantity.toString()!=""){
+						detail.quantity--;
 						detail.totalQuantity--;
 						// sessionData("previewDetail",this.details);
 					}
 				},
 				increaseDetail: function(detail){
-					if(detail.totalQuantity.toString()!="" && detail.totalQuantity<detail.quantityLimit || detail.quantityLimit==-1){
+					if(detail.quantity.toString()!="" && detail.totalQuantity<detail.quantityLimit || detail.quantityLimit==-1){
+						detail.quantity++;
 						detail.totalQuantity++;
 						// sessionData("previewDetail",this.details);
 					}
