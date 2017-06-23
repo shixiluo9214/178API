@@ -210,12 +210,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int applyFriend(FriendBean friend) {
-		return userDaoImpl.insertFriendApply(friend);
+		int result =  userDaoImpl.insertFriendApply(friend);
+		userDaoImpl.disableFriendApplys(friend);
+		return result;
 	}
 
 	@Override
 	public int confirmFriend(FriendBean friend) {
 		int result = userDaoImpl.updateFriendApply(friend);
+		userDaoImpl.disableFriendApplys(friend);
 
 		friend.setStatus(10);
 		friend.setId(0);

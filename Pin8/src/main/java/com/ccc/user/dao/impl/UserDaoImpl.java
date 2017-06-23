@@ -150,6 +150,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		return DaoUtils.insert(namedJdbcTemplate, friend, sql);
 	}
 
+
+	@Override
+	public int disableFriendApplys(FriendBean friend) {
+		String sql = "update t_friend_apply set status=20 where status<= 20 and id != :id and ((user_id =:userId and friend_id=:friendId) or (user_id =:friendId and friend_id=:userId))";
+		return namedJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(friend));
+	}
+
 	@Override
 	public List<FriendBean> getFriendList(long userId) {
         String sql = "select f.id,f.user_id, f.friend_id,10 status, u.nick_name, f.created_date,u.pic_link"
@@ -164,15 +171,16 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public List<FriendBean> getFriendApplyList(long userId) {
 		String sql = "select f.id,f.user_id, f.friend_id,f.status, u.nick_name, f.created_date,u.pic_link" +
 				" from t_friend_apply f, t_user u" +
-				" where f.user_id=:id and f.friend_id=u.id" +
+				" where f.user_id=:id and f.friend_id=u.id and f.status < 20" +
 				" union" +
 				" select f.id,f.user_id, f.friend_id,f.status, u.nick_name, f.created_date,u.pic_link" +
 				" from t_friend_apply f, t_user u" +
-				" where f.friend_id=:id and f.user_id=u.id";
+				" where f.friend_id=:id and f.user_id=u.id and f.status < 20";
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("id", Long.valueOf(userId));
 		return namedJdbcTemplate.query(sql, paramMap, new BeanPropertyRowMapper<FriendBean>(FriendBean.class));
 	}
+
 
 	@Override
 	public int addFriendinGB(long gbId) {
