@@ -45,7 +45,7 @@
 					}
 				},
 				increase: function(list){
-					if((list.quantity || list.quantity.toString()!="") && list.totalQuantity<list.quantityLimit){
+					if((list.quantity || list.quantity.toString()!="") && list.totalQuantity<list.quantityLimit || list.quantityLimit==-1){
 						list.quantity++;
 						list.totalQuantity++;
 					}
@@ -162,7 +162,7 @@
 					for(var i=0;i<self.gbDetail.items.length;i++){
 						items.push({
 							"gbiId": self.gbDetail.items[i].id,
-							"quantity": self.gbDetail.items[i].totalQuantity
+							"quantity": self.gbDetail.items[i].quantity
 						})
 					}
 					$.ajax({
@@ -178,7 +178,7 @@
 						success: function(result){
 							if(result.status==0){
 //								console.log("Submit update successfully.");
-								location.href = "./myGB_list.html?id="+shopId;
+								location.href="./quickGB_success.html?gbId="+result.bean.gbId;
 							}
 						},
 						error: function(result){

@@ -21,10 +21,9 @@
 			<div class="text-center success-alert">
 				<div>恭喜你！成功参与了拼单！</div>
 			</div>
-			<div class="col-xs-12 title">我的拼单详情：</div>
 			<div class="detail-lists">
 				<div class="catalogue">账单详情</div>
-				<div class="detail-list" v-for="list in details.items">
+				<div class="detail-list" v-for="list in details.items" v-if="list.quantity > 0">
 					<div class="title box-center">
 						<div class="name">{{list.name}}</div>
 						<div class="money">￥{{list.listPrice}}</div>

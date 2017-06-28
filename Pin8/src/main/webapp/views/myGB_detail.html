@@ -41,10 +41,10 @@
 	</div>
 	<div class="detail-container scrollable" v-if="statusIndex==0">
 		<div class="detail-description">
-			<span>{{gbDetail.description}}<span>
+			<span>{{gbDetail.description? gbDetail.description: '单主比较懒，什么也没留下...'}}<span>
 		</div>
 		<div class="detail-lists">
-			<div class="detail-list-1" v-for="list in gbDetail.items" v-if="list.quantity">
+			<div class="detail-list-1" v-for="list in gbDetail.items">
 				<div class="title">
 					<div class="name">{{list.name}}</div>
 					<div class="extra">{{list.detail}}</div>

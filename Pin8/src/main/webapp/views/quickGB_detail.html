@@ -36,11 +36,12 @@
 									<span class="info-status">已报名</span> 
 									<span class="info-place">{{info.position.commName}}</span>-->
 								</div>
+								<div class="preview-cover"></div>
 					    	</div>
 					    	<img v-else src="../img/default.jpg">
 				  		</div>
 				  	</div>
-				  	<p class="preview-member">{{details.totalMember}}/{{details.memberLimit}} 已报名</p>
+				  	<p class="preview-member">{{details.totalMember}}<span v-if="details.memberLimit != -1">/{{details.memberLimit}}</span> 人已报名</p>
 				  	<p class="preview-place">{{info.position.commName}}</p>
 				</div>
 				<div class="col-xs-12 preview-title-container">

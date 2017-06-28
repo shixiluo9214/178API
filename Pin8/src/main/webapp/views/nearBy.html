@@ -31,7 +31,7 @@
 						onerror="this.style='display:none;'">
 					</div>
 					<div class="position">{{list.deliverInfo}}</div>
-					<div class="attendee">{{list.totalMember}}/{{list.memberLimit}} 已报名</div>
+					<div class="attendee">{{list.totalMember}}<span v-if="list.memberLimit != -1">/{{list.memberLimit}}</span> 人已报名</div>
 				</div>
 			</div>
 			<progress :left="list.totalMember" :total="list.memberLimit"></progress>
