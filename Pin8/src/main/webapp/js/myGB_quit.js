@@ -17,7 +17,7 @@
 						type: 'POST',
 						url: '../groupbuy/terminateParticipation',
 						data: JSON.stringify({
-							"id": shopId,
+							"id": JSON.parse(shopId),
 							"userId": userInfo.id,
 							"message": self.quitOption + self.quitReason,
 							"surveys": []

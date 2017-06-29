@@ -29,18 +29,19 @@
 
 				  		<!-- Wrapper for slides -->
 				  		<div class="carousel-inner preview-inner" role="listbox">
-				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists">
+				    		<div class="item preview-img" :class="[$index==0?'active':'']" v-for="img in imageLists" v-if="imageLists.length">
 					      		<img :src="'..'+img.src" v-touch:panLeft="panLeft" v-touch:panRight="panRight">
 					      		<div class="preview-info clearfix">
 									<!-- <span class="info-number"><span class="current-number">{{$index+1}}</span>/{{imageLists.length}}</span>
 									<span class="info-status">已报名</span> 
 									<span class="info-place">{{info.position.commName}}</span>-->
 								</div>
+								<div class="preview-cover"></div>
 					    	</div>
-					    	
+					    	<img v-else src="../img/default.jpg">
 				  		</div>
 				  	</div>
-				  	<p class="preview-member">{{details.totalMember}}/{{details.memberLimit}} 已报名</p>
+				  	<p class="preview-member">{{details.totalMember}}<span v-if="details.memberLimit != -1">/{{details.memberLimit}}</span> 人已报名</p>
 				  	<p class="preview-place">{{info.position.commName}}</p>
 				</div>
 				<div class="col-xs-12 preview-title-container">
@@ -62,10 +63,10 @@
 							<div class="money">￥{{detail.listPrice?detail.listPrice:'未知'}}</div>
 						</div>
 						<div class="col-xs-6 calculate pull-right">
-							<div class="btn-decs" v-if="info.type==0 && detail.totalQuantity>0" @click.stop="decreaseDetail(detail)"></div>
+							<div class="btn-decs" v-if="info.type==0 && detail.quantity>0 && !hasAttended" @click.stop="decreaseDetail(detail)"></div>
 							<span>{{detail.totalQuantity.toString()==''?'无上限':
-							(detail.totalQuantity>=0?detail.totalQuantity:'')}}</span>
-					    	<div class="btn-incs" v-if="info.type==0 && detail.totalQuantity.toString()!=''" 
+							(detail.quantity>=0?detail.quantity:'')}}</span>
+					    	<div class="btn-incs" v-if="info.type==0 && detail.quantity.toString()!='' && !hasAttended" 
 					    	@click.stop="increaseDetail(detail)"></div>
 						</div>
 					</div>
@@ -93,7 +94,8 @@
 			<div class="download" @click="download">快来客户端查看拼单进度吧！</div>
 			<div class="col-xs-12 preview-groups">
 				<div class="row">
-					<div class="col-xs-12 text-center preview-confirm" @click="joinPin" v-if="info.type==0">参加拼单</div>
+					<div class="col-xs-12 text-center preview-confirm" @click="joinPin" v-if="info.type==0 && !hasAttended">参加拼单</div>
+					<div class="col-xs-12 text-center preview-confirm" @click="btnAttended" v-if="info.type==0 && hasAttended">已参加拼单，前往我的拼单进行操作</div>
 				</div>
 			</div>
 		</div>

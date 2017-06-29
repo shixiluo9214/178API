@@ -7,7 +7,11 @@
 			props: ["left","total"],
 			computed: {
 				percent: function(){
-					return this.left / this.total * 100 + '%';
+					if (this.total > 0) {
+						return this.left / this.total * 100 + '%';
+					} else {
+						return 0;
+					}
 				}
 			}
 		});

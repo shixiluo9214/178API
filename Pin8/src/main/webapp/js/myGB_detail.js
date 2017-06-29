@@ -39,12 +39,14 @@
 				// 	this.statusIndex = i;
 				// },
 				decrease: function(list){
-					if(list.totalQuantity || list.totalQuantity.toString()!=""){
+					if(list.quantity || list.quantity.toString()!=""){
+						list.quantity--;
 						list.totalQuantity--;
 					}
 				},
 				increase: function(list){
-					if((list.totalQuantity || list.totalQuantity.toString()!="") && list.totalQuantity<list.quantityLimit){
+					if((list.quantity || list.quantity.toString()!="") && list.totalQuantity<list.quantityLimit || list.quantityLimit==-1){
+						list.quantity++;
 						list.totalQuantity++;
 					}
 				},
@@ -84,6 +86,24 @@
 							}
 							console.log("My gb detail:");
 							self.$log("gbDetail");
+							if (!status) {
+								switch(result.bean.type) {
+								case 0:
+									self.statusIndex = 0;
+									break;
+								case 1:
+									self.statusIndex = 1;
+									break;
+								case 2:
+								case 3:
+									self.statusIndex = 2;
+									break;
+								case 10:
+								case 20:
+									self.statusIndex = 3;
+									break;
+								}
+							}
 						},
 						error: function(result){
 						  	console.log('error',result);
@@ -142,7 +162,7 @@
 					for(var i=0;i<self.gbDetail.items.length;i++){
 						items.push({
 							"gbiId": self.gbDetail.items[i].id,
-							"quantity": self.gbDetail.items[i].totalQuantity
+							"quantity": self.gbDetail.items[i].quantity
 						})
 					}
 					$.ajax({
@@ -158,7 +178,7 @@
 						success: function(result){
 							if(result.status==0){
 //								console.log("Submit update successfully.");
-								location.href = "./myGB_list.html?id="+shopId;
+								location.href="./quickGB_success.html?gbId="+result.bean.gbId;
 							}
 						},
 						error: function(result){

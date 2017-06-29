@@ -55,4 +55,6 @@ public interface UserDao {
 	int insertFriendApply(FriendBean friend);
 
 	List<FriendBean> getFriendApplyList(long userId);
+
+	int disableFriendApplys(FriendBean friend);
 }

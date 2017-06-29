@@ -15,7 +15,8 @@
 				userInfo: userInfo,
 				ownerInfo: '',
 				valuation: null,
-				valuationText: null
+				valuationText: null,
+				hasAttended: false,
 			},
 			methods: {
 				previewPage: function(){
@@ -90,11 +91,14 @@
 				joinPin: function(){
 					var self = this;
 					var items = [];
+					var pItems = [];
 					for(var i=0;i<self.details.items.length;i++){
-						items.push({
-							"gbiId": self.details.items[i].id,
-							"quantity": self.details.items[i].totalQuantity
-						})
+						if (self.details.items[i].quantity) {
+							items.push({
+								"gbiId": self.details.items[i].id,
+								"quantity": self.details.items[i].quantity
+							});
+						}
 					}
 					$.ajax({
 						type: 'POST',
@@ -109,7 +113,7 @@
 						success: function(result){
 							if(result.status==0){
 								console.log('success participate');
-								location.href="./quickGB_success.html";
+								location.href="./quickGB_success.html?gbId="+result.bean.gbId;
 							}else{
 								alert(result.errorMessage);
 							}
@@ -119,14 +123,19 @@
 						}
 					});
 				},
+				btnAttended: function(){
+					window.location.href = "./myGB_detail.html?id=" + gbId;
+				},
 				decreaseDetail: function(detail){
-					if(detail.totalQuantity || detail.totalQuantity.toString()!=""){
+					if(detail.quantity || detail.quantity.toString()!=""){
+						detail.quantity--;
 						detail.totalQuantity--;
 						// sessionData("previewDetail",this.details);
 					}
 				},
 				increaseDetail: function(detail){
-					if(detail.totalQuantity.toString()!="" && detail.totalQuantity<detail.quantityLimit || detail.quantityLimit==-1){
+					if(detail.quantity.toString()!="" && detail.totalQuantity<detail.quantityLimit || detail.quantityLimit==-1){
+						detail.quantity++;
 						detail.totalQuantity++;
 						// sessionData("previewDetail",this.details);
 					}
@@ -176,11 +185,23 @@
 								
 								var items = self.details.items;
 								for(var i=0;i<items.length;i++) {
-									for(var j=0;j<items[i].pics.length;j++) {
+									if (items[i].pics.length) {
+										for(var j=0;j<items[i].pics.length;j++) {
+											self.imageLists.push({
+												"src": items[i].pics[j].picLink,
+												"id": items[i].pics[j].id
+											})
+										}
+									} else {
 										self.imageLists.push({
-											"src": items[i].pics[j].picLink,
-											"id": items[i].pics[j].id
-										})
+											"src": "/img/default.jpg"
+										});
+									}
+								}
+								var purchases = self.details.purchases;
+								for(var i=0;i<purchases.length;i++) {
+									if (purchases[i].userId == userInfo.id) {
+										self.hasAttended = true;
 									}
 								}
 							}
@@ -278,7 +299,18 @@
 					}
 				},
 				clickItem: function(index) {
-					$('.carousel').carousel(index);	
+					var self = this;
+					var indexAmount = 0;
+					if (index > 0) {
+						for(var i=0;i<index;i++) {
+							if (self.details.items[i].pics.length) {
+								indexAmount += self.items[i].pics.length
+							} else {
+								indexAmount++;
+							}
+						}
+					}
+					$('.carousel').carousel(indexAmount);
 				},
 				download: function() {
 					if (navigator.userAgent.toLowerCase().match(/iphone|ipad/ig)) {

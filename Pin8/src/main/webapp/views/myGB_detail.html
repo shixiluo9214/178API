@@ -41,7 +41,7 @@
 	</div>
 	<div class="detail-container scrollable" v-if="statusIndex==0">
 		<div class="detail-description">
-			<span>{{gbDetail.description}}<span>
+			<span>{{gbDetail.description? gbDetail.description: '单主比较懒，什么也没留下...'}}<span>
 		</div>
 		<div class="detail-lists">
 			<div class="detail-list-1" v-for="list in gbDetail.items">
@@ -51,9 +51,9 @@
 					<div class="money">￥{{list.listPrice?list.listPrice:'未知'}}</div>
 				</div>
 				<div class="calculate">
-					<div class="btn-decs" v-if="list.totalQuantity>0" @click="decrease(list)"></div>
-					<span>{{list.totalQuantity}}</span>
-					<div class="btn-incs" v-if="list.totalQuantity.toString()!=''" @click="increase(list)"></div>
+					<div class="btn-decs" v-if="list.quantity>0" @click="decrease(list)"></div>
+					<span>{{list.quantity}}</span>
+					<div class="btn-incs" v-if="list.quantity.toString()!=''" @click="increase(list)"></div>
 				</div>
 			</div>
 		</div>

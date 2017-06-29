@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -11,7 +11,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Set host to localhost" enabled="false">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Set host to localhost" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="host" elementType="Argument">
             <stringProp name="Argument.name">host</stringProp>
@@ -26,7 +26,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Set host to AWS Server" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Set host to AWS Server" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="host_old" elementType="Argument">
             <stringProp name="Argument.name">host_old</stringProp>
@@ -640,6 +640,15 @@ Address status:
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Address_authenticateAddress" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="id" elementType="HTTPArgument">
@@ -670,15 +679,6 @@ Address status:
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
-                <stringProp name="File.paramname">file</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
@@ -893,6 +893,15 @@ Address status:
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User_UploadPic" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="id" elementType="HTTPArgument">
@@ -916,15 +925,6 @@ Address status:
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
-                <stringProp name="File.paramname">file</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
@@ -1348,7 +1348,7 @@ Address status:
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 GroupBuy" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 GroupBuy" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1479,6 +1479,25 @@ Address status:
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GroupBuy AddItem" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
+                <stringProp name="File.paramname">1</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg</stringProp>
+                <stringProp name="File.paramname">2</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg</stringProp>
+                <stringProp name="File.paramname">2</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="jsonContent" elementType="HTTPArgument">
@@ -1502,6 +1521,11 @@ Address status:
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GroupBuy AddItem" enabled="true">
           <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
             <collectionProp name="HTTPFileArgs.files">
               <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
@@ -1521,11 +1545,6 @@ Address status:
               </elementProp>
             </collectionProp>
           </elementProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GroupBuy AddItem" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="jsonContent" elementType="HTTPArgument">
@@ -1549,25 +1568,6 @@ Address status:
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
-                <stringProp name="File.paramname">1</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg</stringProp>
-                <stringProp name="File.paramname">2</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg</stringProp>
-                <stringProp name="File.paramname">2</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
@@ -4975,6 +4975,15 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User_ValidateAddress&amp;UploadFile" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="userId" elementType="HTTPArgument">
@@ -5033,15 +5042,6 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
-                <stringProp name="File.paramname">file</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
@@ -5648,6 +5648,15 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Comm_applyComm&amp;UploadFile" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
+                <stringProp name="File.paramname">commFile</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="name" elementType="HTTPArgument">
@@ -5713,15 +5722,6 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
-                <stringProp name="File.paramname">commFile</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
@@ -5982,6 +5982,25 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GroupBuy AddItem" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
+                <stringProp name="File.paramname">1</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg</stringProp>
+                <stringProp name="File.paramname">2</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg</stringProp>
+                <stringProp name="File.paramname">2</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="jsonContent" elementType="HTTPArgument">
@@ -6005,25 +6024,6 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
-                <stringProp name="File.paramname">1</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg</stringProp>
-                <stringProp name="File.paramname">2</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg</stringProp>
-                <stringProp name="File.paramname">2</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
@@ -7415,7 +7415,7 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Unit Test" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Unit Test" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7911,6 +7911,15 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User_ValidateAddress&amp;UploadFile" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\xilshi\Home\picture\temp\P40213-103445.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\xilshi\Home\picture\temp\P40213-103445.jpg</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="userId" elementType="HTTPArgument">
@@ -7969,15 +7978,6 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\xilshi\Home\picture\temp\P40213-103445.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\xilshi\Home\picture\temp\P40213-103445.jpg</stringProp>
-                <stringProp name="File.paramname">file</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
@@ -8093,6 +8093,25 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
       </ThreadGroup>
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Experience_Create" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
+                <stringProp name="File.paramname">1</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg</stringProp>
+                <stringProp name="File.paramname">2</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg</stringProp>
+                <stringProp name="File.paramname">3</stringProp>
+                <stringProp name="File.mimetype"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="jsonContent" elementType="HTTPArgument">
@@ -8116,25 +8135,6 @@ topic 和 message是用户输入，messageType，eventType，eventId，ancestorI
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-            <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_01.jpg</stringProp>
-                <stringProp name="File.paramname">1</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_02.jpg</stringProp>
-                <stringProp name="File.paramname">2</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-              <elementProp name="C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Users\xilshi\Documents\美图图库\示例图片_03.jpg</stringProp>
-                <stringProp name="File.paramname">3</stringProp>
-                <stringProp name="File.mimetype"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="TestPlan.comments">Input1:
@@ -8630,7 +8630,7 @@ Input3:
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 Friend" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pin8 Friend" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -8645,7 +8645,7 @@ Input3:
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Friend_applyFriend" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Friend_applyFriend" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -8697,14 +8697,14 @@ Input3:
           </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Friend_confirmFriend" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Friend_confirmFriend" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;id&quot;:&quot;${friendId}&quot;,&#xd;
+	&quot;id&quot;:&quot;95&quot;,&#xd;
 	&quot;userId&quot;:&quot;1&quot;,&#xd;
 	&quot;friendId&quot;:&quot;7&quot;&#xd;
 }</stringProp>
@@ -8799,7 +8799,7 @@ Input3:
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Friend_deleteFriend" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Friend_deleteFriend" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
