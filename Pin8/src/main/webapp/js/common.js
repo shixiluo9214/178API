@@ -27,7 +27,7 @@ function checkUserInfoExist(currentPage){
 }
 
 if (!$("#loading").length) {
-	$("body").append("<div id='loading' style='position:absolute;top:0;left:0;right:0;bottom:0;height:100%;background:rgba(0,0,0,.2);display:none;'><img src='../img/loading.gif' style='position: relative;top:46%;left:46%;'></div>");
+	$("body").append("<div id='loading' style='position:absolute;top:0;left:0;right:0;bottom:0;height:100%;background:rgba(0,0,0,.2);display:none;z-index:1000;'><img src='../img/loading.gif' style='position: relative;top:46%;left:46%;'></div>");
 }
 $(document).ajaxStart(function(){
 	$("#loading").show();

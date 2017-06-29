@@ -14,7 +14,7 @@
 			computed: {
 				total: function(){
 					var n = 0;
-					var items = this.details.items;
+					var items = this.details.items || [];
 					for(var i=0;i<items.length;i++){
 						n+=items[i].listPrice*items[i].quantity;
 					}

@@ -281,9 +281,13 @@
 }
 
 .success-groups{
-	height: 42px;
-	line-height: 42px;
-	margin-bottom: 20px;
+	height: 60px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 10;
 }
 .success-groups .btn-confirm{
 	height: 40px;
@@ -293,8 +297,7 @@
 }
 
 .detail-lists{
-	margin-top:5px;
-	line-height: 470px;
+	margin:5px 0 60px;
 }
 
 .detail-list{
@@ -382,10 +385,7 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: -webkit-linear-gradient(rgba(0,0,0,0.3), #fff, rgba(0,0,0,0.3));
-	background: -o-linear-gradient(rgba(0,0,0,0.3), #fff, rgba(0,0,0,0.3));
-	background: -moz-linear-gradient(rgba(0,0,0,0.3), #fff, rgba(0,0,0,0.3));
-	background: linear-gradient(rgba(0,0,0,0.3), #fff, rgba(0,0,0,0.3));
+	background: rgba(0,0,0,0.3);
 	z-index: 10;
 	pointer-events: none;
 }
