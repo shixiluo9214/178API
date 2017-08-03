@@ -18,7 +18,7 @@
 <body>
 	<div class="detail-header">
 		<div class="header-top">
-			<img :src="'..'+gbDetail.ownerPic" class="member-photo">
+			<img :src="'..'+gbDetail.ownerPic" class="member-photo" v-if="gbDetail.ownerPic">
 			<div class="member-info">
 				<div>{{gbDetail.nickName}}</div>
 				<!-- <div class="iconfont detail-fullStar">&#xf0042;</div> -->
@@ -136,7 +136,7 @@
 		<div class="valuate-result" v-if="valuation.length">
 			<div class="result-title">你对<span class='valuate-name'>{{owner.nickName}}</span>的印象</div>
 			<div class="result-content">{{valuation[0].detail}}</div>
-			<img :src="'..'+userInfo.picLink" class="result-me-img">
+			<img :src="'..'+userInfo.picLink" class="result-me-img" v-if="userInfo.picLink">
 		</div>
 		<div class="btn-groups">
 			<button class="detail-submit" @click="historyPage4()">拼单历史</button>

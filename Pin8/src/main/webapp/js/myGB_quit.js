@@ -1,6 +1,7 @@
 (function($){
 	$(document).ready(function() {
 		var shopId = urlData("id");
+		var gbpId = urlData("gbpid");
 		var userInfo = sessionData("userInfo");
 		var vm = new Vue({
 			el: "body",
@@ -17,9 +18,9 @@
 						type: 'POST',
 						url: '../groupbuy/terminateParticipation',
 						data: JSON.stringify({
-							"id": JSON.parse(shopId),
+							"id": JSON.parse(gbpId),
 							"userId": userInfo.id,
-							"message": self.quitOption + self.quitReason,
+							"message": self.quitOption + ',' + self.quitReason,
 							"surveys": []
 						}),
 						dataType: 'json',

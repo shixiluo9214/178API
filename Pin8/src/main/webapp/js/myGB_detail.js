@@ -54,7 +54,7 @@
 					this.submitUpdate();
 				},
 				returnPage1: function(){
-					location.href = "./myGB_quit.html?id="+shopId;
+					location.href = "./myGB_quit.html?id="+shopId+"&gbpid="+this.gbDetail.purchases[0].id;
 				},
 				payPage3: function(){
 					this.payStatus = true;
@@ -159,17 +159,17 @@
 				submitUpdate: function(){
 					var self = this;
 					var items = [];
-					for(var i=0;i<self.gbDetail.items.length;i++){
+					for(var i=0;i<self.gbDetail.purchases.length;i++){
 						items.push({
-							"gbiId": self.gbDetail.items[i].id,
-							"quantity": self.gbDetail.items[i].quantity
+							"gbiId": self.gbDetail.purchases[i].id,
+							"quantity": self.gbDetail.purchases[i].quantity
 						})
 					}
 					$.ajax({
 						type: 'POST',
 						url: '/Pin8/groupbuy/participate',
 						data: JSON.stringify({
-							"gbId": shopId,
+							"gbId": JSON.parse(shopId),
 							"userId": userInfo.id,
 							"items": items
 						}),
