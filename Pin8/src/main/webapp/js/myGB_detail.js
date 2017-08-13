@@ -169,6 +169,7 @@
 					for(var i=0;i<self.gbDetail.purchases.length;i++) {
 						if(self.gbDetail.purchases[i].userId === userInfo.id) {
 							_id = self.gbDetail.purchases[i].id;
+							return;
 						}
 					}
 					
