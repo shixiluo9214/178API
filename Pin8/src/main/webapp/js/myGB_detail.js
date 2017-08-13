@@ -159,19 +159,27 @@
 				submitUpdate: function(){
 					var self = this;
 					var items = [];
-					for(var i=0;i<self.gbDetail.purchases.length;i++){
+					var _id;
+					for(var i=0;i<self.gbDetail.items.length;i++){
 						items.push({
-							"gbiId": self.gbDetail.purchases[i].id,
-							"quantity": self.gbDetail.purchases[i].quantity
+							"gbiId": self.gbDetail.items[i].id,
+							"quantity": self.gbDetail.items[i].quantity
 						})
 					}
+					for(var i=0;i<self.gbDetail.purchases.length;i++) {
+						if(self.gbDetail.purchases[i].userId === userInfo.id) {
+							_id = self.gbDetail.purchases[i].id;
+						}
+					}
+					
 					$.ajax({
 						type: 'POST',
 						url: '/Pin8/groupbuy/participate',
 						data: JSON.stringify({
 							"gbId": JSON.parse(shopId),
 							"userId": userInfo.id,
-							"items": items
+							"items": items,
+							"id": _id
 						}),
 						dataType: 'json',
 						contentType: 'application/json',
