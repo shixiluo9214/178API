@@ -103,6 +103,13 @@
 	color: #fff;
 }
 
+.detail-header .member-nickname{
+	max-widh: 120px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .detail-fullStar,
 .detail-halfStar,
 .detail-emptyStar{
@@ -122,9 +129,9 @@
 
 .starIcon{
 	display: inline-block;
-	width: 20px;
-	height: 20px;
-	background-size: 20px;
+	width: 16px;
+	height: 16px;
+	background-size: 16px;
 	background-repeat: no-repeat;
 }
 .starIcon.full-star{
@@ -281,6 +288,10 @@
 	position: relative;
 	top: 7px;
 	background: none;
+}
+.detail-container .valuate-groups {
+	position:relative;
+	margin-top: 40px;
 }
 .detail-container .detail-submit{
 	color: #8BAE29;
@@ -488,12 +499,13 @@
 }
 
 .payBackground .payContainer{
-	position: absolute;
+	position: fixed;
 	top: 47%;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	background: #fff;
+	z-index: 500;
 }
 
 .payBackground .pay-title{

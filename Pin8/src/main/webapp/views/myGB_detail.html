@@ -20,7 +20,7 @@
 		<div class="header-top">
 			<img :src="'..'+gbDetail.ownerPic" class="member-photo" v-if="gbDetail.ownerPic">
 			<div class="member-info">
-				<div>{{gbDetail.nickName}}</div>
+				<div class="member-nickname">{{gbDetail.nickName}}</div>
 				<!-- <div class="iconfont detail-fullStar">&#xf0042;</div> -->
 				<i class="starIcon full-star" v-for="i in fullNum"></i>
 				<i class="starIcon half-star" v-for="i in halfNum"></i>
@@ -75,7 +75,10 @@
 					<div class="money">￥{{list.listPrice}}</div>
 					<!-- <del class="preMoney" v-if="list.preMoney">￥{{list.preMoney}}</del> -->
 				</div>
-				<div class="number box-center">x{{list.totalQuantity}}</div>
+				<div class="number box-center">
+					x{{list.quantity}}
+					<del v-if="list.quantity && list.quantity!=list.netQuantity">x{{list.quantity}}</del>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -93,7 +96,10 @@
 					<div class="name">{{list.name}}</div>
 					<div class="money">￥{{list.listPrice}}</div>
 				</div>
-				<div class="number box-center">x{{list.totalQuantity}}</div>
+				<div class="number box-center">
+					x{{list.netQuantity}}
+					<del v-if="list.quantity && list.quantity!=list.netQuantity">x{{list.quantity}}</del>
+				</div>
 			</div>
 			<div class="billing">
 				<div class="box-center total-box">
@@ -124,7 +130,7 @@
 		</div>
 	</div>
 
-	<div class="detail-container scrollable" v-if="statusIndex==3">
+	<div class="detail-container" v-if="statusIndex==3">
 		<div class="valuate-box" v-if="!valuation.length">
 			<div class="score-title">请对本次拼单进行评价</div>
 			<i class="starIcon full-star" v-for="i in valuateScore" @click="setValuateScore($event)"></i>
@@ -138,7 +144,7 @@
 			<div class="result-content">{{valuation[0].detail}}</div>
 			<img :src="'..'+userInfo.picLink" class="result-me-img" v-if="userInfo.picLink">
 		</div>
-		<div class="btn-groups">
+		<div class="btn-groups valuate-groups">
 			<button class="detail-submit" @click="historyPage4()">拼单历史</button>
 			<button class="detail-submit" @click="sharePage4()" :disabled="!valuation">分享</button>
 		</div>

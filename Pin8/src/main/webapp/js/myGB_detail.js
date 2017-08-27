@@ -141,7 +141,7 @@
 						type: 'POST',
 						url: '/Pin8/groupbuy/receive',
 						data: JSON.stringify({
-							"id": shopId
+							"id": self.gbDetail.purchases[0].id
 						}),
 						dataType: 'json',
 						contentType: 'application/json',
@@ -201,7 +201,7 @@
 						type: 'POST',
 						url: '/Pin8/groupbuy/pay',
 						data: JSON.stringify({
-							"id": shopId
+							"id": self.gbDetail.purchases[0].id
 						}),
 						dataType: 'json',
 						contentType: 'application/json',
