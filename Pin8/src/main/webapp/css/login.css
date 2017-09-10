@@ -31,6 +31,11 @@ button{background:#03B848;color:#fff;border:none;outline:none;font-size: 12px;fo
 	line-height: 40px;
 	border-radius: 6px;
 	margin-top: 6px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
 }
 .input-box div{
 	display: inline-block;
@@ -39,7 +44,6 @@ button{background:#03B848;color:#fff;border:none;outline:none;font-size: 12px;fo
 .input-box .input-title{
 	padding-left: 12px;
 	width: 60px;
-	float: left;
 }
 
 .input-box input{
@@ -50,7 +54,6 @@ button{background:#03B848;color:#fff;border:none;outline:none;font-size: 12px;fo
 	margin: 0;
 	padding: 0;
 	border-radius: 4px;
-	float: left;
 	font-size: 12px;
 }
 
@@ -64,13 +67,16 @@ button{background:#03B848;color:#fff;border:none;outline:none;font-size: 12px;fo
 
 .login-btn-groups{
 	padding-top: 16px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	display: flex;
     justify-content: center;
 }
 .btn-group{
 	width: 150px;
 	height: 40px;
-	float: left;
 }
 .login-btn-groups #login-btn{
 	margin-right: 20px;
@@ -87,4 +93,8 @@ button{background:#03B848;color:#fff;border:none;outline:none;font-size: 12px;fo
 .login-dialog span{
 	color: red;
 	text-align: center;
+}
+#security-cotde-btn {
+	position: absolute;
+	right: 0px;
 }

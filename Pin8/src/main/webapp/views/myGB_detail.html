@@ -48,7 +48,7 @@
 				<div class="title">
 					<div class="name">{{list.name}}</div>
 					<div class="extra">{{list.detail}}</div>
-					<div class="money">￥{{list.listPrice?list.listPrice:'未知'}}</div>
+					<div class="money">￥{{list.listPrice?(list.listPrice==-1?'待定':list.listPrice):'未知'}}</div>
 				</div>
 				<div class="calculate">
 					<div class="btn-decs" v-if="list.quantity>0" @click="decrease(list)"></div>
@@ -72,7 +72,7 @@
 			<div class="detail-list-2" v-for="list in gbDetail.items">
 				<div class="title box-center">
 					<div class="name">{{list.name}}</div>
-					<div class="money">￥{{list.listPrice}}</div>
+					<div class="money">￥{{list.listPrice==-1?'待定':list.listPrice}}</div>
 					<!-- <del class="preMoney" v-if="list.preMoney">￥{{list.preMoney}}</del> -->
 				</div>
 				<div class="number box-center">
@@ -94,7 +94,7 @@
 			<div class="detail-list-3" v-for="list in gbDetail.items">
 				<div class="title box-center">
 					<div class="name">{{list.name}}</div>
-					<div class="money">￥{{list.listPrice}}</div>
+					<div class="money">￥{{list.listPrice==-1?'待定':list.listPrice}}</div>
 				</div>
 				<div class="number box-center">
 					x{{list.netQuantity}}

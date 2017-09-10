@@ -168,6 +168,11 @@
 	right:10px;
 	bottom: 0;
 	color: #fff;
+	width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
 }
 
 

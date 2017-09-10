@@ -60,7 +60,7 @@
 					<div class="row">
 						<div class="col-xs-6 title">
 							<div class="name">{{detail.name}}</div>
-							<div class="money">￥{{detail.listPrice?detail.listPrice:'未知'}}</div>
+							<div class="money">￥{{detail.listPrice?(detail.listPrice==-1?'待定':detail.listPrice):'未知'}}</div>
 						</div>
 						<div class="col-xs-6 calculate pull-right">
 							<div class="btn-decs" v-if="info.type==0 && detail.quantity>0 && !hasAttended" @click.stop="decreaseDetail(detail)"></div>
