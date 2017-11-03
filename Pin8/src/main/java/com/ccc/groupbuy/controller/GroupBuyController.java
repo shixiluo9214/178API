@@ -73,6 +73,10 @@ public class GroupBuyController {
 		ResponseBean response = new ResponseBean();
 		try {
 			groupBuyServiceImpl.purchase(groupBuy);
+			GroupBuySearchBean search = new GroupBuySearchBean();
+			search.setGbId(groupBuy.getId());
+			GroupBuyBean groupBuyW = groupBuyServiceImpl.getGroupBuy(search);
+			response.setBean(groupBuyW);
 		} catch (Exception e) {
 			ErrorUtils.setError(response, e);
 		}
