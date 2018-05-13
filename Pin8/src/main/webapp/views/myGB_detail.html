@@ -17,9 +17,11 @@
 </head>
 <body>
 	<div class="detail-header">
+		<img class="head-img" :src="gbDetail.items[0].pics[0].picLink" onerror="this.src='../img/default.jpg'">
+		<div class="head-cover"></div>
 		<div class="header-top">
-			<img :src="'..'+gbDetail.ownerPic" class="member-photo" v-if="gbDetail.ownerPic">
-			<div class="member-info">
+			<img :src="'..'+gbDetail.ownerPic" class="member-photo" v-if="gbDetail.ownerPic" @click="showOwnerCard()">
+			<div class="member-info" @click="showOwnerCard()">
 				<div class="member-nickname">{{gbDetail.nickName}}</div>
 				<!-- <div class="iconfont detail-fullStar">&#xf0042;</div> -->
 				<i class="starIcon full-star" v-for="i in fullNum"></i>
@@ -147,6 +149,25 @@
 		<div class="btn-groups valuate-groups">
 			<button class="detail-submit" @click="historyPage4()">拼单历史</button>
 			<button class="detail-submit" @click="sharePage4()" :disabled="!valuation">分享</button>
+		</div>
+	</div>
+	
+	<div class="ownerCardWrap" v-show="ownerCardStatus">
+		<div class="ownerCard">
+			<p class="nickName">{{owner.nickName}}</p>
+			<div class="stars">
+				<i class="starIcon full-star" v-for="i in fullNum"></i>
+				<i class="starIcon half-star" v-for="i in halfNum"></i>
+				<i class="starIcon empty-star" v-for="i in emptyNum"></i>
+				<span class="detail-score">{{owner.credit}}</span>
+			</div>
+			<div class="infor"><i class="iconfont">&#xe6cf;</i><span>{{owner.phone}}</span></div>
+			<div class="infor"><i class="iconfont">&#xe6cf;</i><span>{{owner.wechatId}}</span></div>
+			
+			<div class="ownerContact">
+				<a :href="'sms:'+owner.phone"><div class="detail-email"></div></a>
+				<a :href="'tel:'+owner.phone"><div class="iconfont detail-phone">&#xe6cf;</div></a>
+			</div>
 		</div>
 	</div>
 </body>

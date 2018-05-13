@@ -98,7 +98,7 @@
 				}
 			},
 			ready: function(){
-				this.getAddress();
+				this.getList();
 			}
 		});
 	});	

@@ -20,8 +20,12 @@
 						data: JSON.stringify({
 							"id": JSON.parse(gbpId),
 							"userId": userInfo.id,
-							"message": self.quitOption + ',' + self.quitReason,
-							"surveys": []
+							"message": self.quitOption,
+							"surveys": [{
+								"question": "question1",
+								"number": 1,
+								"answer": self.quitReason
+							}]
 						}),
 						dataType: 'json',
 						contentType: 'application/json',
