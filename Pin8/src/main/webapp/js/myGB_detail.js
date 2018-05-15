@@ -14,7 +14,8 @@
 				payStatus: false,
 				valuation: '',
 				valuateScore: 0,
-				valuationText: ''
+				valuationText: '',
+				ownerCardStatus: false
 			},
 			computed: {
 				fullNum: function(){
@@ -83,6 +84,7 @@
 							if(result.status==0){
 								self.gbDetail = result.bean;
 								self.getOwner();
+								document.title = self.gbDetail.title;
 							}
 							console.log("My gb detail:");
 							self.$log("gbDetail");
@@ -169,7 +171,7 @@
 					for(var i=0;i<self.gbDetail.purchases.length;i++) {
 						if(self.gbDetail.purchases[i].userId === userInfo.id) {
 							_id = self.gbDetail.purchases[i].id;
-							return;
+							break;
 						}
 					}
 					
@@ -283,6 +285,9 @@
 				    document.execCommand('copy');
 				    document.removeEventListener('copy',save);
 				    alert('复制成功！');
+				},
+				showOwnerCard: function() {
+					this.ownerCardStatus = true;
 				}
 			}
 		});
