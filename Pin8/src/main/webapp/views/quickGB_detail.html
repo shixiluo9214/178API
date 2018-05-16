@@ -48,12 +48,12 @@
 					<div class="title">{{info.title}}</div>
 					<div class="detail">{{info.description}}</div>
 				</div>
-				<div class="col-xs-12 clearfix preview-owner">
-					<img :src="'..'+ownerInfo.picLink">
+				<div class="col-xs-12 preview-owner">
+					<img :src="'..'+ownerInfo.picLink" onerror="this.src='../img/user.png'">
 					<div class="preview-owner-info">
 						<div>{{ownerInfo.nickName}}</div>
 					</div>
-					<div class="pull-right owner-role">单主</div>
+					<div class="owner-role">单主</div>
 				</div>
 				<div class="col-xs-12 number-input" v-if="details.items && (info.type==0 || info.type==1 || info.type==2 || info.type==3)" 
 				v-for="detail in details.items" @click="clickItem($index)">
@@ -91,7 +91,7 @@
 					<img :src="'..'+userInfo.picLink" class="result-me-img">
 				</div>
 			</div>
-			<div class="download" @click="download">快来客户端查看拼单进度吧！</div>
+			<div class="download" @click="download" v-if="info.type==0 && hasAttended">快来客户端查看拼单进度吧！</div>
 			<div class="col-xs-12 preview-groups">
 				<div class="row">
 					<div class="col-xs-12 text-center preview-confirm" @click="joinPin" v-if="info.type==0 && !hasAttended">参加拼单</div>

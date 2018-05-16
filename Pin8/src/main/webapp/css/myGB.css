@@ -270,6 +270,9 @@
 	top: -2px;
 }
 
+.detail-container {
+	padding-bottom: 90px;
+}
 .detail-container .btn-groups{
 	border-top: 1px solid #CBD0CF;
 	height: 50px;
@@ -293,8 +296,12 @@
 	background: none;
 }
 .detail-container .valuate-groups {
-	position:relative;
+	position: fixed;
 	margin-top: 40px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 50px;
 }
 .detail-container .detail-submit{
 	color: #8BAE29;
